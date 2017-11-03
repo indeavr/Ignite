@@ -2,6 +2,7 @@
 using Microsoft.AspNet.Identity.EntityFramework;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,5 +20,11 @@ namespace Ignite.Data
         {
             return new ApplicationDbContext();
         }
+
+        public IDbSet<Course> Courses { get; set; }
+
+        public IDbSet<Question> Questions { get; set; }
+
+        public IDbSet<Assignment> Assignments { get; set; }
     }
 }

@@ -76,6 +76,10 @@
     <Compile Include="Migrations\201711021308451_User_Initial.Designer.cs">
       <DependentUpon>201711021308451_User_Initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201711031530556_Beta-Migration.cs" />
+    <Compile Include="Migrations\201711031530556_Beta-Migration.Designer.cs">
+      <DependentUpon>201711031530556_Beta-Migration.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
     <Compile Include="Models\Assignment.cs" />
@@ -90,6 +94,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201711021308451_User_Initial.resx">
       <DependentUpon>201711021308451_User_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711031530556_Beta-Migration.resx">
+      <DependentUpon>201711031530556_Beta-Migration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
