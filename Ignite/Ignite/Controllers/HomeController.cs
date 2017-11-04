@@ -31,11 +31,6 @@ namespace Ignite.Controllers
         {
             ViewBag.Message = "Your application description page.";
 
-            // Specify your admin user (it must be registered)
-            //var username = "admin@ignite.com";
-            //var user = await this.userManager.FindByNameAsync(username);
-            //await this.userManager.AddToRoleAsync(user.Id, "Admin");
-
             return View();
         }
 

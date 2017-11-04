@@ -14,5 +14,18 @@ namespace Ignite.Areas.Admin.Controllers
         {
             return View();
         }
+
+        public ActionResult UploadCourse()
+        {
+
+            return this.View();
+        }
+
+        //[HttpPost]
+        //public JsonResult UploadCourse()
+        //{
+
+        //    return this.View();
+        //}
     }
 }
