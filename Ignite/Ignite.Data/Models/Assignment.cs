@@ -15,16 +15,17 @@ namespace Ignite.Data.Models
 
         }
 
-        public int Id { get; set; }
-
         [Required]
-        public int CourseId { get; set; }
+        public int Id { get; set; }
 
         [Required]
         public string UserId { get; set; }
 
         [ForeignKey("UserId")]
         public virtual ApplicationUser User { get; set; }
+
+        [Required]
+        public int CourseId { get; set; }
 
         [ForeignKey("CourseId")]
         public virtual Course Course { get; set; }

@@ -10,6 +10,8 @@ namespace Ignite.App_Start
 
     using Ninject;
     using Ninject.Web.Common;
+    using Microsoft.AspNet.Identity.Owin;
+    using Ignite.Data;
 
     public static class NinjectWebCommon 
     {
@@ -61,6 +63,15 @@ namespace Ignite.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
+            kernel.Bind<ApplicationUserManager>()
+                .ToMethod(_ => HttpContext.Current
+                .GetOwinContext()
+                .GetUserManager<ApplicationUserManager>());
+
+            kernel.Bind<ApplicationDbContext>()
+                .ToMethod(_ => HttpContext.Current
+                .GetOwinContext()
+                .GetUserManager<ApplicationDbContext>());
         }        
     }
 }

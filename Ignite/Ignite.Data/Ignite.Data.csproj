@@ -72,13 +72,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationDbContext.cs" />
-    <Compile Include="Migrations\201711021308451_User_Initial.cs" />
-    <Compile Include="Migrations\201711021308451_User_Initial.Designer.cs">
-      <DependentUpon>201711021308451_User_Initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201711031530556_Beta-Migration.cs" />
-    <Compile Include="Migrations\201711031530556_Beta-Migration.Designer.cs">
-      <DependentUpon>201711031530556_Beta-Migration.cs</DependentUpon>
+    <Compile Include="Migrations\201711040953308_Initial.cs" />
+    <Compile Include="Migrations\201711040953308_Initial.Designer.cs">
+      <DependentUpon>201711040953308_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
@@ -92,11 +88,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201711021308451_User_Initial.resx">
-      <DependentUpon>201711021308451_User_Initial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201711031530556_Beta-Migration.resx">
-      <DependentUpon>201711031530556_Beta-Migration.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201711040953308_Initial.resx">
+      <DependentUpon>201711040953308_Initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
