@@ -1,4 +1,6 @@
-﻿@section scripts {
+﻿@model Ignite.Areas.Admin.ViewModels.UploadJsonModel
+
+@section scripts {
     @Scripts.Render("~/bundles/uploadCourse");
 }
 
@@ -6,12 +8,15 @@
     <h2>Upload a Course</h2>
 </div>
 
-@using (Html.BeginForm("UploadCourse", "Admin", FormMethod.Post, new { id = "file-upload-form", @class = "uploader", enctype = "multipart/form-data" }))
+@using (Html.BeginForm("UploadCourse", "Admin", FormMethod.Post,
+    new { id = "file-upload-form", @class = "uploader", enctype = "multipart/form-data" }))
 {
 
 
     <!-- Upload  -->
-    <input id="file-upload" type="file" name="fileUpload" accept=".json" />
+    @Html.TextBoxFor(m => m.Json, new { type = "file", id = "file-upload" })
+   
+    //<input id="file-upload" type="file" name="Json" accept=".json" />
 
         <label for="file-upload" id="file-drag">
             <img id="file-image" src="#" alt="Preview" class="hidden">
@@ -27,7 +32,10 @@
                     <span>0</span>%
                 </progress>
             </div>
+            @Html.ValidationMessageFor(m => m.Json)
         </label>
+
+        <input type="submit" />
 
 
         @*<div class="box__input">

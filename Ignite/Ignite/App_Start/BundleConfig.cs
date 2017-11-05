@@ -34,8 +34,19 @@ namespace Ignite
                     "~/Content/bootstrap.css",
                     "~/Content/uploadCourse.css"));
 
+            //bundles.Add(new StyleBundle("~/Content/imageUpload").Include(
+            //        "~/Content/imageUpload.css"));
+
             bundles.Add(new ScriptBundle("~/bundles/uploadCourse").Include(
                      "~/Scripts/uploadCourse.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/dropzonescripts").Include(
+                     "~/Scripts/dropzone/dropzone-amd-module.js",
+                     "~/Scripts/dropzone/dropzone.js"));
+
+            bundles.Add(new StyleBundle("~/Content/dropzonescss").Include(
+                     "~/Scripts/dropzone/basic.css",
+                     "~/Scripts/dropzone/dropzone.css"));
         }
     }
 }

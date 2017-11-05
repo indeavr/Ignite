@@ -4,8 +4,8 @@
         console.log("Upload Initialised");
 
         var fileSelect = document.getElementById('file-upload'),
-            fileDrag = document.getElementById('file-drag'),
-            submitButton = document.getElementById('submit-button');
+            fileDrag = document.getElementById('file-drag');
+            //submitButton = document.getElementById('submit-button');
 
         fileSelect.addEventListener('change', fileSelectHandler, false);
 
@@ -31,11 +31,10 @@
     function fileSelectHandler(e) {
         // Fetch FileList object
         var files = e.target.files || e.dataTransfer.files;
-
         // Cancel event and hover styling
         fileDragHover(e);
 
-        // Process all File objects
+         // Process all File objects
         for (var i = 0, f; f = files[i]; i++) {
             parseFile(f);
             uploadFile(f);
@@ -60,22 +59,22 @@
         // console.log(fileType);
         var imageName = file.name;
             
-        var isGood = (/\.(?=json)/gi).test(imageName);
-        if (isGood) {
+     //   var isGood = (/\.(?=json)/gi).test(imageName);
+       // if (isGood) {
             document.getElementById('start').classList.add("hidden");
             document.getElementById('response').classList.remove("hidden");
             document.getElementById('notimage').classList.add("hidden");
             // Thumbnail Preview
-            document.getElementById('file-image').classList.remove("hidden");
-            document.getElementById('file-image').src = URL.createObjectURL(file);
-        }
-        else {
-            document.getElementById('file-image').classList.add("hidden");
-            document.getElementById('notimage').classList.remove("hidden");
-            document.getElementById('start').classList.remove("hidden");
-            document.getElementById('response').classList.add("hidden");
-            document.getElementById("file-upload-form").reset();
-        }
+            //document.getElementById('file-image').classList.remove("hidden");
+            //document.getElementById('file-image').src = URL.createObjectURL(file);
+        //}
+        //else {
+        //    document.getElementById('file-image').classList.add("hidden");
+        //    document.getElementById('notimage').classList.remove("hidden");
+        //    document.getElementById('start').classList.remove("hidden");
+        //    document.getElementById('response').classList.add("hidden");
+        //    document.getElementById("file-upload-form").reset();
+        //}
     }
 
     function setProgressMaxValue(e) {
@@ -119,11 +118,15 @@
                 };
 
                 // Start upload
-                xhr.open('POST', document.getElementById('file-upload-form').action, true);
-                xhr.setRequestHeader('X-File-Name', file.name);
-                xhr.setRequestHeader('X-File-Size', file.size);
-                xhr.setRequestHeader('Content-Type', 'multipart/form-data');
-                xhr.send(file);
+
+               // xhr.open('POST', document.getElementById('file-upload-form').action, true);
+                //xhr.setRequestHeader('X-File-Name', file.name);
+                //xhr.setRequestHeader('X-File-Size', file.size);
+                //xhr.setRequestHeader('Content-Type', 'multipart/form-data');
+
+                $('#file-upload').val(file);
+
+                //xhr.send(file);
             } else {
                 output('Please upload a smaller file (< ' + fileSizeLimit + ' MB).');
             }

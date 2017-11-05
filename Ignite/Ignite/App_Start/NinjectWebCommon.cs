@@ -12,6 +12,8 @@ namespace Ignite.App_Start
     using Ninject.Web.Common;
     using Microsoft.AspNet.Identity.Owin;
     using Ignite.Data;
+    using Ignite.Admin.Services.Interfaces;
+    using Ignite.Admin.Services;
 
     public static class NinjectWebCommon 
     {
@@ -72,6 +74,8 @@ namespace Ignite.App_Start
                 .ToMethod(_ => HttpContext.Current
                 .GetOwinContext()
                 .GetUserManager<ApplicationDbContext>());
+
+            kernel.Bind<IUploadCourseService>().To<UploadCourseService>();
         }        
     }
 }

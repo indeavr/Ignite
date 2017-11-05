@@ -1,0 +1,38 @@
+﻿@{
+    ViewBag.Title = "UploadSlides";
+}
+
+<h2>UploadSlides</h2>
+
+<div class="jumbotron">
+    <form action="~/admin/admin/uploadslides" method="post" enctype="multipart/form-data" class="dropzone" id="dropzoneForm" >
+        <div class="fallback">
+            <input name="file" type="file" multiple />
+            <input type="submit" value="Upload" />
+        </div>
+    </form>
+</div>
+
+@*<div id="wrapper-slides">
+    <section id="sort-slides"></section>
+    <section id="upload-slides">
+       
+    </section>
+</div>*@
+
+@section scripts {
+    @Scripts.Render("~/bundles/dropzonescripts");
+
+    <script>
+        //File Upload response from the server
+        //Dropzone.options.dropzoneForm = {
+        //    init: function () {
+        //        this.on("complete", function (data) {
+        //            //var res = eval('(' + data.xhr.responseText + ')');
+        //            var res = JSON.parse(data.xhr.responseText);
+        //        });
+        //    }
+        //};
+    </script>
+}
+
