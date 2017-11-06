@@ -8,19 +8,19 @@
 
 <div class="jumbotron">
     @using (Html.BeginForm("UploadSlides", "Admin", new { courseId = courseId }, FormMethod.Post,
-                                                        new { @class = "dropzone", id = "myId" }))
+                                                                        new { @class = "dropzone", id = "myId" }))
     {
 
     }
 
     <button id="submit-all">
-       Upload Files
+        Upload Files
     </button>
-    @Html.ActionLink("Done !", "DoneUploading", "Admin");
+    @* @Html.ActionLink("Done !", "DoneUploading", "Admin");*@
 
     @*<button id="done-uploading"  onclick = @Url.Action("DoneUploading", "Admin")>
-       Done !
-    </button>*@
+           Done !
+        </button>*@
 </div>
 @section scripts {
     @Scripts.Render("~/bundles/dropzonescripts");
@@ -44,9 +44,15 @@
 
                 init: function () {
                     myDropzone = this;
-                    @*myDropzone.on("complete", function (file) {
-                        location.href(@Html.Action("DoneUploading"));
-                    });*@
+
+                    myDropzone.on("complete", (function(_this) {
+                        return function(file) {
+                            if (_this.getUploadingFiles().length === 0
+                                && _this.getQueuedFiles().length === 0) {
+                                setTimeout(function(){window.location.href='@Url.Action("DoneUploading")'},500);
+                             }
+                         };
+                    })(myDropzone));
 
                     //myDropzone.on("addedfile", function (file) {
                     //    if (!file.type.match(/image.*/)) {
