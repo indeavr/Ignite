@@ -13,6 +13,7 @@ namespace Ignite.Data.Models
         {
             this.Questions = new HashSet<Question>();
             this.Assignments = new HashSet<Assignment>();
+            this.Images = new HashSet<Image>();
         }
 
         public int Id { get; set; }
@@ -29,7 +30,7 @@ namespace Ignite.Data.Models
         [Required]
         public double RequiredScore { get; set; }
 
-        // content
+        public virtual IEnumerable<Image> Images { get; set; }
 
         public virtual IEnumerable<Question> Questions { get; set; }
 

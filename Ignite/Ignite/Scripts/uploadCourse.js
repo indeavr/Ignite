@@ -4,7 +4,7 @@
         console.log("Upload Initialised");
 
         var fileSelect = document.getElementById('file-upload'),
-            fileDrag = document.getElementById('file-drag');
+            fileDrag = document.getElementById('file-drag')
             //submitButton = document.getElementById('submit-button');
 
         fileSelect.addEventListener('change', fileSelectHandler, false);

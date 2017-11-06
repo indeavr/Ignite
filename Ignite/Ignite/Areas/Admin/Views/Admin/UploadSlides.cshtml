@@ -1,29 +1,151 @@
-﻿@{
-    ViewBag.Title = "UploadSlides";
+﻿@model List<Ignite.Areas.Admin.ViewModels.ImageViewModel>
+
+@{
+    int courseId = ViewBag.courseId;
 }
 
 <h2>UploadSlides</h2>
 
 <div class="jumbotron">
-    <form action="~/admin/admin/uploadslides" method="post" enctype="multipart/form-data" class="dropzone" id="dropzoneForm" >
-        <div class="fallback">
-            <input name="file" type="file" multiple />
-            <input type="submit" value="Upload" />
-        </div>
-    </form>
+    @using (Html.BeginForm("UploadSlides", "Admin", new { courseId = courseId }, FormMethod.Post,
+                                                        new { @class = "dropzone", id = "myId" }))
+    {
+
+    }
+
+    <button id="submit-all">
+       Upload Files
+    </button>
+    @Html.ActionLink("Done !", "DoneUploading", "Admin");
+
+    @*<button id="done-uploading"  onclick = @Url.Action("DoneUploading", "Admin")>
+       Done !
+    </button>*@
 </div>
-
-@*<div id="wrapper-slides">
-    <section id="sort-slides"></section>
-    <section id="upload-slides">
-       
-    </section>
-</div>*@
-
 @section scripts {
     @Scripts.Render("~/bundles/dropzonescripts");
 
     <script>
+
+
+        $(document).ready(function () {
+            Dropzone.autoDiscover = false;
+
+            $("#myId").dropzone({
+                autoProcessQueue: false,
+                uploadMultiple: true,
+                parallelUploads: 10,
+                addRemoveLinks: true,
+                removedfile: function (file) {
+                    var _ref;
+                    return (_ref = file.previewElement) != null ? _ref.parentNode.removeChild(file.previewElement) : void 0;
+                },
+
+
+                init: function () {
+                    myDropzone = this;
+                    @*myDropzone.on("complete", function (file) {
+                        location.href(@Html.Action("DoneUploading"));
+                    });*@
+
+                    //myDropzone.on("addedfile", function (file) {
+                    //    if (!file.type.match(/image.*/)) {
+                    //        if (file.type.match(/application.zip/)) {
+                    //            myDropzone.emit("thumbnail", file, "path/to/img");
+                    //        } else {
+                    //            myDropzone.emit("thumbnail", file, "path/to/img");
+                    //        }
+                    //    }
+                    //});
+                    //myDropzone.on("complete", function (file) {
+                    //    myDropzone.removeFile(file);
+                    //});
+
+
+                },
+            });
+
+            let submitButton = document.querySelector("#submit-all")
+            submitButton.addEventListener("click", function () {
+                myDropzone.processQueue();
+            });
+
+            //$('#submit-all').on('click', function (e) {
+            //    e.preventDefault();
+            //    myDropzone.processQueue();
+            //});
+        });
+
+        @*let adPhotosDropzone = new Dropzone("form#dropzoneJsForm", {
+            autoProcessQueue: false,
+            parallelUploads: 3
+        });*@
+
+       // Dropzone.autoDiscover = false;
+
+        // var dropzoneJsForm = new Dropzone("#dropzoneJsForm");
+
+        @*$('#submit-all').click(function () {
+            dropzoneJsForm.options.autoProcessQueue = true;
+            dropzoneJsForm.processQueue();
+        });
+
+        Dropzone.options.dropzoneJsForm = {
+            autoProcessQueue: false,
+            parallelUploads: 10,
+          //  url: location.href = '@Url.Action("UploadSlides", "Admin")',
+
+            init: function () {
+                this.on("complete", function (data) {
+                    //var res = eval('(' + data.xhr.responseText + ')');
+                    var res = JSON.parse(data.xhr.responseText);
+                }),
+                    this.on("queuecomplete", function (file) {
+                        dropzoneForm.options.autoProcessQueue = false;
+                    });
+
+            }
+        }*@
+
+        //Dropzone.autoDiscover = false;
+        //$("div#dropzonePreview").dropzone(
+        //    {
+        //        url: "~/admin/admin/uploadslides",
+        //        paramName: "images",
+        //        autoProcessQueue: true,
+        //        addRemoveLinks: true,
+        //        //clickable: "#dropzonePreview",
+        //        uploadMultiple: true,
+        //       // acceptedFiles: "image/*",
+        //        maxFiles: 100,
+        //        parallelUploads: 10,
+        //        dictInvalidFileType: "Please upload an image",
+        //        dictFileTooBig: "Billedet er for stort",
+        //        success: function (file, response) {
+        //            $('#ImageIds').val($('#ImageIds').val() + "," + response.Ids);
+        //            done();
+        //        }
+        //    });
+
+        //var theDropzone = $("dropzoneForm").dropzone({ url: "~/admin/admin/uploadslides" });
+        //Dropzone.options.theDropzone = {
+        //      init: function () {
+        //          this.on("addedfile", function (file) { alert("Added file."); });
+        //      },
+        //      paramName: "file", // The name that will be used to transfer the file
+        //      maxFilesize: 2, // MB
+        //      accept: function (file, done) {
+        //        if (file.name == "azis.jpg") {
+        //            done("Naha, you don't.");
+        //        }
+        //        else { done(); }
+        //       },
+        //       uploadMultiple: true,
+
+
+        //};
+
+
         //File Upload response from the server
         //Dropzone.options.dropzoneForm = {
         //    init: function () {

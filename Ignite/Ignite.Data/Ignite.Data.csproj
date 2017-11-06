@@ -76,10 +76,15 @@
     <Compile Include="Migrations\201711041812463_Initial.Designer.cs">
       <DependentUpon>201711041812463_Initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201711061225378_Image Initial.cs" />
+    <Compile Include="Migrations\201711061225378_Image Initial.Designer.cs">
+      <DependentUpon>201711061225378_Image Initial.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
     <Compile Include="Models\Assignment.cs" />
     <Compile Include="Models\Course.cs" />
+    <Compile Include="Models\Image.cs" />
     <Compile Include="Models\Question.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -90,6 +95,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201711041812463_Initial.resx">
       <DependentUpon>201711041812463_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711061225378_Image Initial.resx">
+      <DependentUpon>201711061225378_Image Initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

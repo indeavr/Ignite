@@ -1,4 +1,5 @@
 ﻿using Ignite.Admin.Services.Interfaces;
+using Ignite.Areas.Admin.ViewModels;
 using Ignite.Data;
 using Ignite.Data.Models;
 using Newtonsoft.Json;
@@ -13,6 +14,13 @@ namespace Ignite.Admin.Services
     public class UploadCourseService : IUploadCourseService
     {
         private readonly ApplicationDbContext context;
+
+        private int currentCourseId;
+
+        public int GetCourseId()
+        {
+            return this.currentCourseId;
+        }
 
         public UploadCourseService(ApplicationDbContext context)
         {
@@ -40,12 +48,45 @@ namespace Ignite.Admin.Services
                     this.context.Questions.Add(question);
                 }
                 this.context.SaveChanges();
+
+                this.currentCourseId = course.Id;
             }
         }
 
         public bool ValidateJson(HttpPostedFileBase json)
         {
             return true;
+        }
+
+        public byte[] ImageToByteArray(HttpPostedFileBase ProfilePhoto)
+        {
+            if (ProfilePhoto != null)
+            {
+                using (MemoryStream ms = new MemoryStream())
+                {
+                    ProfilePhoto.InputStream.Seek(0, SeekOrigin.Begin);
+                    ProfilePhoto.InputStream.CopyTo(ms);
+                    byte[] array = ms.GetBuffer();
+                    return array;
+                }
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        public void SaveSlidesToCourse(int courseId, List<ImageViewModel> imagesView)
+        {
+            // var course = this.context.Courses.First(c => c.Id == courseId);
+
+            foreach (var imageView in imagesView)
+            {
+                var image = new Image(imageView.Name, imageView.Content, imageView.Order);
+                image.CourseId = courseId;
+                this.context.Images.Add(image);
+            }
+            this.context.SaveChanges();
         }
     }
 }

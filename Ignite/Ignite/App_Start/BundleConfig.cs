@@ -34,8 +34,8 @@ namespace Ignite
                     "~/Content/bootstrap.css",
                     "~/Content/uploadCourse.css"));
 
-            //bundles.Add(new StyleBundle("~/Content/imageUpload").Include(
-            //        "~/Content/imageUpload.css"));
+            bundles.Add(new StyleBundle("~/Content/imageUpload").Include(
+                    "~/Content/imageUpload.css"));
 
             bundles.Add(new ScriptBundle("~/bundles/uploadCourse").Include(
                      "~/Scripts/uploadCourse.js"));

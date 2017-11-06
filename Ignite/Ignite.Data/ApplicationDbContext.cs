@@ -26,5 +26,7 @@ namespace Ignite.Data
         public IDbSet<Question> Questions { get; set; }
 
         public IDbSet<Assignment> Assignments { get; set; }
+
+        public IDbSet<Image> Images { get; set; }
     }
 }
