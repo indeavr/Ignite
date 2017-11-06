@@ -26,7 +26,6 @@ namespace Ignite
              defaults: new { controller = "admin", action = "home", courseId = UrlParameter.Optional }
              );
 
-
             routes.LowercaseUrls = true;
         }
     }

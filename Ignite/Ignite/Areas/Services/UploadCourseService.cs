@@ -40,6 +40,9 @@ namespace Ignite.Admin.Services
                 }
 
                 Course course = JsonConvert.DeserializeObject<Course>(jsonString);
+
+                // call validateJson method
+
                 this.context.Courses.Add(course);
 
                 foreach (var question in course.Questions)
@@ -55,17 +58,18 @@ namespace Ignite.Admin.Services
 
         public bool ValidateJson(HttpPostedFileBase json)
         {
+
             return true;
         }
 
-        public byte[] ImageToByteArray(HttpPostedFileBase ProfilePhoto)
+        public byte[] ImageToByteArray(HttpPostedFileBase image)
         {
-            if (ProfilePhoto != null)
+            if (image != null)
             {
                 using (MemoryStream ms = new MemoryStream())
                 {
-                    ProfilePhoto.InputStream.Seek(0, SeekOrigin.Begin);
-                    ProfilePhoto.InputStream.CopyTo(ms);
+                    image.InputStream.Seek(0, SeekOrigin.Begin);
+                    image.InputStream.CopyTo(ms);
                     byte[] array = ms.GetBuffer();
                     return array;
                 }

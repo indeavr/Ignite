@@ -21,12 +21,12 @@ namespace Ignite.Data
             return new ApplicationDbContext();
         }
 
-        public IDbSet<Course> Courses { get; set; }
+        public virtual DbSet<Course> Courses { get; set; }
 
-        public IDbSet<Question> Questions { get; set; }
+        public virtual DbSet<Question> Questions { get; set; }
 
-        public IDbSet<Assignment> Assignments { get; set; }
+        public virtual DbSet<Assignment> Assignments { get; set; }
 
-        public IDbSet<Image> Images { get; set; }
+        public virtual DbSet<Image> Images { get; set; }
     }
 }

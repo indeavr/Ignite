@@ -74,15 +74,6 @@ namespace Ignite.Areas.Admin.Controllers
                 var fileName = Request.Files["file[" + i + "]"].FileName;
 
                 HttpPostedFileBase file = Request.Files["file[" + i + "]"];
-                var extension = file.FileName.Split('.')[1];
-
-                var supportedTypes = new[] { "jpg", "jpeg", "png" };
-
-                if (!supportedTypes.Contains(extension))
-                {
-                    ModelState.AddModelError("wrongExtension", "Invalid file type. Please upload an image");
-                    return this.View("UploadSlides");
-                }
 
                 if (file != null && file.ContentLength > 0)
                 {
@@ -100,17 +91,7 @@ namespace Ignite.Areas.Admin.Controllers
 
             return this.RedirectToAction("Home");
         }
-
-        public ActionResult ProcessAllImages(List<ImageViewModel> images)
-        {
-            // TODO: Process the models
-
-            foreach (var fileName in Request.Files)
-            {
-            }
-            return this.View("UploadCourse");
-        }
-
+       
         public ActionResult DoneUploading()
         {
             // validate if files are uploaded

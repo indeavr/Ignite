@@ -30,7 +30,7 @@
                 parallelUploads: 10,
                 addRemoveLinks: true,
                 removedfile: function (file) {
-                    var ref;
+                    let ref;
                     return (ref = file.previewElement) != null ? ref.parentNode.removeChild(file.previewElement) : void 0;
                 },
 
@@ -52,38 +52,6 @@
                 myDropzone.processQueue();
             });
         });
-
-        @*let adPhotosDropzone = new Dropzone("form#dropzoneJsForm", {
-            autoProcessQueue: false,
-            parallelUploads: 3
-        });*@
-
-       // Dropzone.autoDiscover = false;
-
-        // var dropzoneJsForm = new Dropzone("#dropzoneJsForm");
-
-        @*$('#submit-all').click(function () {
-            dropzoneJsForm.options.autoProcessQueue = true;
-            dropzoneJsForm.processQueue();
-        });
-
-        Dropzone.options.dropzoneJsForm = {
-            autoProcessQueue: false,
-            parallelUploads: 10,
-          //  url: location.href = '@Url.Action("UploadSlides", "Admin")',
-
-            init: function () {
-                this.on("complete", function (data) {
-                    //var res = eval('(' + data.xhr.responseText + ')');
-                    var res = JSON.parse(data.xhr.responseText);
-                }),
-                    this.on("queuecomplete", function (file) {
-                        dropzoneForm.options.autoProcessQueue = false;
-                    });
-
-            }
-        }*@
-
         //Dropzone.autoDiscover = false;
         //$("div#dropzonePreview").dropzone(
         //    {
@@ -118,19 +86,6 @@
         //        else { done(); }
         //       },
         //       uploadMultiple: true,
-
-
-        //};
-
-
-        //File Upload response from the server
-        //Dropzone.options.dropzoneForm = {
-        //    init: function () {
-        //        this.on("complete", function (data) {
-        //            //var res = eval('(' + data.xhr.responseText + ')');
-        //            var res = JSON.parse(data.xhr.responseText);
-        //        });
-        //    }
         //};
     </script>
 }
