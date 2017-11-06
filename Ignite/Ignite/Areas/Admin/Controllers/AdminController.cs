@@ -65,7 +65,7 @@ namespace Ignite.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public ActionResult UploadSlides(int courseId, string willBeDeleted)
+        public ActionResult UploadSlidesToDb(int courseId)
         {
             var images = new List<ImageViewModel>();
 
@@ -74,6 +74,16 @@ namespace Ignite.Areas.Admin.Controllers
                 var fileName = Request.Files["file[" + i + "]"].FileName;
 
                 HttpPostedFileBase file = Request.Files["file[" + i + "]"];
+                var extension = file.FileName.Split('.')[1];
+
+                var supportedTypes = new[] { "jpg", "jpeg", "png" };
+
+                if (!supportedTypes.Contains(extension))
+                {
+                    ModelState.AddModelError("wrongExtension", "Invalid file type. Please upload an image");
+                    return this.View("UploadSlides");
+                }
+
                 if (file != null && file.ContentLength > 0)
                 {
                     var imageByteArray = this.uploadService.ImageToByteArray(file);

@@ -7,67 +7,43 @@
 <h2>UploadSlides</h2>
 
 <div class="jumbotron">
-    @using (Html.BeginForm("UploadSlides", "Admin", new { courseId = courseId }, FormMethod.Post,
+    @using (Html.BeginForm("UploadSlidesToDb", "Admin", new { courseId = courseId }, FormMethod.Post,
                                                                         new { @class = "dropzone", id = "myId" }))
     {
-
     }
 
     <button id="submit-all">
         Upload Files
     </button>
-    @* @Html.ActionLink("Done !", "DoneUploading", "Admin");*@
-
-    @*<button id="done-uploading"  onclick = @Url.Action("DoneUploading", "Admin")>
-           Done !
-        </button>*@
 </div>
 @section scripts {
     @Scripts.Render("~/bundles/dropzonescripts");
 
     <script>
-
-
         $(document).ready(function () {
             Dropzone.autoDiscover = false;
 
             $("#myId").dropzone({
+                acceptedFiles: ".png,.jpg,.jpeg",
                 autoProcessQueue: false,
                 uploadMultiple: true,
                 parallelUploads: 10,
                 addRemoveLinks: true,
                 removedfile: function (file) {
-                    var _ref;
-                    return (_ref = file.previewElement) != null ? _ref.parentNode.removeChild(file.previewElement) : void 0;
+                    var ref;
+                    return (ref = file.previewElement) != null ? ref.parentNode.removeChild(file.previewElement) : void 0;
                 },
-
 
                 init: function () {
                     myDropzone = this;
 
-                    myDropzone.on("complete", (function(_this) {
+                    myDropzone.on("success", (function(_this) {
                         return function(file) {
-                            if (_this.getUploadingFiles().length === 0
-                                && _this.getQueuedFiles().length === 0) {
-                                setTimeout(function(){window.location.href='@Url.Action("DoneUploading")'},500);
+                            if (_this.getQueuedFiles().length === 0) {
+                                setTimeout(function(){window.location.href='@Url.Action("DoneUploading")'},100);
                              }
                          };
                     })(myDropzone));
-
-                    //myDropzone.on("addedfile", function (file) {
-                    //    if (!file.type.match(/image.*/)) {
-                    //        if (file.type.match(/application.zip/)) {
-                    //            myDropzone.emit("thumbnail", file, "path/to/img");
-                    //        } else {
-                    //            myDropzone.emit("thumbnail", file, "path/to/img");
-                    //        }
-                    //    }
-                    //});
-                    //myDropzone.on("complete", function (file) {
-                    //    myDropzone.removeFile(file);
-                    //});
-
-
                 },
             });
 
@@ -75,11 +51,6 @@
             submitButton.addEventListener("click", function () {
                 myDropzone.processQueue();
             });
-
-            //$('#submit-all').on('click', function (e) {
-            //    e.preventDefault();
-            //    myDropzone.processQueue();
-            //});
         });
 
         @*let adPhotosDropzone = new Dropzone("form#dropzoneJsForm", {
