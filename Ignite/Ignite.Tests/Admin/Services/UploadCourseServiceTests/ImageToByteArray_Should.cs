@@ -41,6 +41,7 @@ namespace Ignite.Tests.Admin.Services.UploadCourseServiceTests
 
             // Assert
             CollectionAssert.AreEqual(rightByteArray, actualResult);
+            stream.Dispose();
         }
 
         [TestMethod]

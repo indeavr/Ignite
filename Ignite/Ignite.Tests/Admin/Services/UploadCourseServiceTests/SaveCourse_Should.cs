@@ -46,6 +46,8 @@ namespace Ignite.Tests.Admin.Services.UploadCourseServiceTests
             // Assert
             Assert.AreEqual(dbMock.Object.Courses.ToList().Count, 1);
             Assert.AreEqual(dbMock.Object.Questions.ToList().Count, 2);
+
+            stream.Dispose();
         }
 
         [TestMethod]
@@ -81,6 +83,8 @@ namespace Ignite.Tests.Admin.Services.UploadCourseServiceTests
 
             // Assert
             Assert.AreEqual(expectedId, uploadService.GetCourseId());
+
+            stream.Dispose();
         }
     }
 }
