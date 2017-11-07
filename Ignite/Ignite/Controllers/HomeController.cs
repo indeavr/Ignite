@@ -31,12 +31,16 @@ namespace Ignite.Controllers
         {
             ViewBag.Message = "Your application description page.";
 
+            return HttpNotFound();
+
             return View();
         }
 
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";
+
+            throw new HttpException(400, "ko praish be");
 
             return View();
         }

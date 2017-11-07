@@ -8,8 +8,6 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Web;
 
 namespace Ignite.Tests.Admin.Services.UploadCourseServiceTests

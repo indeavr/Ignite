@@ -1,9 +1,7 @@
-﻿using Ignite.Admin.Services.Interfaces;
+﻿using Bytes2you.Validation;
+using Ignite.Admin.Services.Interfaces;
 using Ignite.Areas.Admin.ViewModels;
-using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
@@ -21,6 +19,8 @@ namespace Ignite.Areas.Admin.Controllers
 
         public AdminController(IUploadCourseService uploadService)
         {
+            Guard.WhenArgument(uploadService, "uploadService").IsNull().Throw();
+
             this.uploadService = uploadService;
         }
 
@@ -53,7 +53,7 @@ namespace Ignite.Areas.Admin.Controllers
                     return this.RedirectToAction("UploadSlides", new { courseId = this.uploadService.GetCourseId() });
                 }
             }
-            return this.View();
+            return this.View(file);
         }
 
         [HttpGet]
