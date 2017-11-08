@@ -1,9 +1,5 @@
-﻿@{ 
+﻿@{
     var grid = ViewBag.grid;
-}
-
-@section scripts{
-    @Scripts.Render("~/bundles/jqGrid")
 }
 
 
@@ -19,21 +15,32 @@
                 new AjaxOptions
                 {
                     InsertionMode = InsertionMode.Replace,
-                    UpdateTargetId = "wrapper-grid"
+                    UpdateTargetId = "wrapper-grid",
+                    OnSuccess = "onGridLoaded"
                 })
-            </li> 
+            </li>
             <li class="tab col s3">
                 @Ajax.ActionLink("Courses", "ChangeViewStatistic", new { type = "course" },
                      new AjaxOptions
                      {
                          InsertionMode = InsertionMode.Replace,
-                         UpdateTargetId = "wrapper-grid"
+                         UpdateTargetId = "wrapper-grid",
+                         OnSuccess = "onGridLoaded"
                      })
-            </li> 
+            </li>
         </ul>
     </div>
     <div id="wrapper-grid" class="col s12">
-       
+        @Html.Action("ChangeViewStatistic")
     </div>
 </div>
 
+@section scripts {
+    @Scripts.Render("~/bundles/jqGrid")
+
+    <script>
+        $(function () {
+            onGridLoaded()
+        })
+    </script>
+}

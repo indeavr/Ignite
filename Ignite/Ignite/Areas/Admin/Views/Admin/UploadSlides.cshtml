@@ -40,7 +40,7 @@
                     myDropzone.on("success", (function(_this) {
                         return function(file) {
                             if (_this.getQueuedFiles().length === 0) {
-                                setTimeout(function(){window.location.href='@Url.Action("DoneUploading")'}, 200);
+                                window.location.href='@Url.Action("DoneUploading")'
                              }
                          };
                     })(myDropzone));

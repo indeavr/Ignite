@@ -1,4 +1,4 @@
-﻿$(function () {
+﻿function onGridLoaded () {
     jQuery("#grid-user").jqGrid({
         url: 'DataProviderForTable',
         datatype: "json",
@@ -35,6 +35,6 @@
         },
         caption: "Initially hidden data"
     });
-});
+}
 
 

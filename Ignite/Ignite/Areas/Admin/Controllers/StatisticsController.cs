@@ -33,16 +33,16 @@ namespace Ignite.Areas.Admin.Controllers
         {
             var assignments = this.statService.GetDataFromServer();
 
-            assignments.Select(a => new
-            {
-                Id = a.Id,
-                Username = a.Username,
-                CourseName = a.CourseName,
-                DueDate = a.DueDate,
-                DateOfAssignment = a.DateOfAssignment,
-                Type = a.Type,
-                State = a.State
-            });
+            //assignments.Select(a => new
+            //{
+            //    Id = a.Id,
+            //    Username = a.Username,
+            //    CourseName = a.CourseName,
+            //    DueDate = a.DueDate,
+            //    DateOfAssignment = a.DateOfAssignment,
+            //    Type = a.Type,
+            //    State = a.State
+            //});
 
             var result = new { total = 1, page = 1, records = assignments.Count, rows = assignments };
             Console.WriteLine("Bravo");
@@ -61,9 +61,6 @@ namespace Ignite.Areas.Admin.Controllers
                 default:
                     return this.PartialView("_UserGrid");
             }
-
-
-
         }
     }
 }
