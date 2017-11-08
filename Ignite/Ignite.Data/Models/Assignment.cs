@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Ignite.Data.Enums;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -40,7 +41,7 @@ namespace Ignite.Data.Models
         public string Type { get; set; }
 
         [Required]
-        public string State { get; set; }
+        public AssignmentState State { get; set; }
 
         public decimal? TestResult { get; set; }
 

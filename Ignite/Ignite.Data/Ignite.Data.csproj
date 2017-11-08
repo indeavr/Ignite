@@ -72,13 +72,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationDbContext.cs" />
-    <Compile Include="Migrations\201711041812463_Initial.cs" />
-    <Compile Include="Migrations\201711041812463_Initial.Designer.cs">
-      <DependentUpon>201711041812463_Initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201711061225378_Image Initial.cs" />
-    <Compile Include="Migrations\201711061225378_Image Initial.Designer.cs">
-      <DependentUpon>201711061225378_Image Initial.cs</DependentUpon>
+    <Compile Include="Enums\AssignmentState.cs" />
+    <Compile Include="Migrations\201711071555355_Initial.cs" />
+    <Compile Include="Migrations\201711071555355_Initial.Designer.cs">
+      <DependentUpon>201711071555355_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
@@ -93,11 +90,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201711041812463_Initial.resx">
-      <DependentUpon>201711041812463_Initial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201711061225378_Image Initial.resx">
-      <DependentUpon>201711061225378_Image Initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201711071555355_Initial.resx">
+      <DependentUpon>201711071555355_Initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

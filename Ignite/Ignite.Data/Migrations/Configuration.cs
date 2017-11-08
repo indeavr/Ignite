@@ -24,7 +24,7 @@ namespace Ignite.Data.Migrations
 
 
             if (!context.Roles.Any())
-            {
+            {   
                 var role = new IdentityRole("Admin");
                 context.Roles.Add(role);
 
