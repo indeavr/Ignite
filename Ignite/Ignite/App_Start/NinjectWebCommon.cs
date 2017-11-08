@@ -16,6 +16,8 @@ namespace Ignite.App_Start
     using Ignite.Admin.Services;
     using Ignite.Services.Contracts;
     using Ignite.Services;
+    using Ignite.Areas.Admin.Services;
+    using Ignite.Areas.Admin.Services.Interfaces;
 
     public static class NinjectWebCommon 
     {
@@ -79,7 +81,7 @@ namespace Ignite.App_Start
 
             kernel.Bind<IUploadCourseService>().To<UploadCourseService>();
             kernel.Bind<IUserCourseService>().To<UserCoursesService>();
-        }   
-        
+            kernel.Bind<IStatisticsService>().To<StatisticsService>();
+        }        
     }
 }

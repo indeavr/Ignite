@@ -11,7 +11,7 @@ namespace Ignite.Data.Models
 {
     public class Assignment
     {
-        public Assignment()
+        public Assignment() 
         {
 
         }

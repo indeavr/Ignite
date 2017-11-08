@@ -7,3 +7,48 @@
 
 @Html.ActionLink("Upload a new Course", "UploadCourse", "Admin")
 
+@Html.ActionLink("View Statistics and User Progress", "Home", "Statistics") 
+
+@*@Ajax.ActionLink("Started", "ChangeCourses",new { state = "started" } , 
+    new AjaxOptions
+    {
+        InsertionMode = InsertionMode.Replace,
+        UpdateTargetId = "container"    
+    })
+
+@Ajax.ActionLink("Started", "ChangeCourses", new { state = "started" },
+    new AjaxOptions
+    {
+        InsertionMode = InsertionMode.Replace,
+        UpdateTargetId = "container"
+    })
+
+
+@Ajax.ActionLink("Started", "ChangeCourses", new { state = "started" },
+    new AjaxOptions
+    {
+        InsertionMode = InsertionMode.Replace,
+        UpdateTargetId = "container"
+    })
+
+
+
+
+<div id="container">
+    
+</div>
+
+@{ 
+    MethodAccessException(string state)
+        {
+        allassing
+
+        switch (state)
+        {
+            case: "Started"
+                    return PartialCachingAttribute
+            default:
+                break;
+        }
+    }
+}*@

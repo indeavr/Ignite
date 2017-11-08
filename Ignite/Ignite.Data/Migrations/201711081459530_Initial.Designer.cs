@@ -13,7 +13,7 @@ namespace Ignite.Data.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201711071555355_Initial"; }
+            get { return "201711081459530_Initial"; }
         }
         
         string IMigrationMetadata.Source

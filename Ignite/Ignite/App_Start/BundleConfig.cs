@@ -31,7 +31,6 @@ namespace Ignite
                       "~/Content/site.css"));
 
             bundles.Add(new StyleBundle("~/Content/uploadCourse").Include(
-                    "~/Content/bootstrap.css",
                     "~/Content/uploadCourse.css"));
 
             bundles.Add(new StyleBundle("~/Content/imageUpload").Include(
@@ -47,6 +46,21 @@ namespace Ignite
             bundles.Add(new StyleBundle("~/Content/dropzonescss").Include(
                      "~/Scripts/dropzone/basic.css",
                      "~/Scripts/dropzone/dropzone.css"));
+
+            bundles.Add(new StyleBundle("~/Content/jquery-ui.css").Include(
+               "~/Content/themes/base/jquery-ui.css"));
+
+            bundles.Add(new StyleBundle("~/Content/jqgrid.css").Include(
+                "~/Content/jquery.jqGrid/ui.jqgrid.css"));
+
+            bundles.Add(new ScriptBundle("~/bundles/jqGrid").Include(
+                "~/Scripts/i18n/grid.locale-en.js",
+                "~/Scripts/jquery.jqGrid.js",
+                "~/Scripts/jquery-ui-{version}.js",
+                "~/Scripts/JqGridTables.js"));
+
+            bundles.Add(new StyleBundle("~/Content/statistics.css").Include(
+              "~/Content/statistics.css"));
         }
     }
 }

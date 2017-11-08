@@ -10,6 +10,7 @@ namespace Ignite.Data.Enums
     {
         Completed,
         Pending,
-        Started
+        Started,
+        Overdue
     }
 }

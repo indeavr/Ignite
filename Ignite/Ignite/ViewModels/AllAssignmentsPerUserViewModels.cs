@@ -6,9 +6,9 @@ using System.Web;
 
 namespace Ignite.ViewModels
 {
-    public class AllAssignmentsPerUser
+    public class AllAssignmentsPerUserViewModels
     {
-        public AllAssignmentsPerUser()
+        public AllAssignmentsPerUserViewModels()
         {
             this.Pending = new Queue<Assignment>();
             this.Started = new Queue<Assignment>();
