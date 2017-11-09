@@ -94,7 +94,6 @@ textarea {
 
 .navbar-fixed-left:hover .spanche {
     left: 0;
-    transition: left 0.1s ease;
 }
 
 
@@ -129,7 +128,7 @@ textarea {
     height: 36px;
     position: relative;
     left: 3px;
-    
+    bottom
 }
 
 .fa{
