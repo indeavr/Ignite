@@ -239,8 +239,10 @@
     <Content Include="Content\ErrorPages\NotFound.html" />
     <Content Include="Content\homePage.css" />
     <Content Include="Content\imageUpload.css" />
+    <Content Include="Content\img\flame-logo-png-30.png" />
     <Content Include="Content\jquery.jqGrid\ellipsis-xbl.xml" />
     <Content Include="Content\jquery.jqGrid\ui.jqgrid.css" />
+    <Content Include="Content\slider\home-page.css" />
     <Content Include="Content\statistics.css" />
     <Content Include="Content\themes\base\images\animated-overlay.gif" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
@@ -389,6 +391,11 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Content\slider\hover.css" />
+    <Content Include="Content\slider\slick-theme.css" />
+    <Content Include="Content\slider\slick.css" />
+    <Content Include="Scripts\slider\slick.min.js" />
+    <Content Include="Scripts\VisualSettings.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
@@ -431,6 +438,7 @@
     <Content Include="Views\UserCourse\_CompletedCourses.cshtml" />
     <Content Include="Views\UserCourse\_StartedCourses.cshtml" />
     <Content Include="Views\UserCourse\_PendingCourses.cshtml" />
+    <Content Include="Views\Shared\_LayoutAdmin.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

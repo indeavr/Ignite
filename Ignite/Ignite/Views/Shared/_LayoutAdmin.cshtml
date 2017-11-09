@@ -18,7 +18,22 @@
     @RenderSection("styles", required: false)
 </head>
 <body>
+    <div class="navbar navbar-inverse navbar-fixed-left" id="side-nav">
+        <ul class="nav navbar-nav" id="side">
+            <li><a id="side" href="#" class="log-image"><img src="~/Content/img/flame-logo-png-30.png"/><span class="spanche">Ignite</span></a></li>
+            <hr id="greasy-line" />
+            <li><a id="side" href="#"><i class="fa fa-graduation-cap" aria-hidden="true"></i><span class="spanche">Create Course</span></a></li>
+            <li><a href="#"><i class="fa fa-calendar-plus-o" aria-hidden="true"></i><span class="spanche">Assign Course</span></a></li>
+            <li><a href="#"><i class="fa fa-cogs" aria-hidden="true"></i><span class="spanche">Manage Users</span></a></li>
+            <li><a href="#"><i class="fa fa-line-chart" aria-hidden="true"></i><span class="spanche">View Statistics</span></a></li>
+        </ul>
+    </div>
+
+    <script>
+      
+    </script>
     <div class="navbar navbar-inverse navbar-fixed-top">
+
         <div class="container-fluid">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -26,13 +41,12 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-               @* @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })*@
             </div>
             <div class="navbar-collapse collapse" id="navBar">
                 <ul class="nav navbar-nav">
-                     <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, null)</li>
-                    <li>@Html.ActionLink("About", "About", "Home", new { area = "" }, null)</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home", new { area = "" }, null)</li>
+                     <li style="margin-left: 40px">@Html.ActionLink("Home", "Index", "Home", new { area = "" }, null)</li>
+                    @*<li>@Html.ActionLink("About", "About", "Home", new { area = "" }, null)</li>*@
+                    @*<li>@Html.ActionLink("Contact", "Contact", "Home", new { area = "" }, null)</li>*@
                     @if (this.User.IsInRole("Admin"))
                         {
                             <li>@Html.ActionLink("Admin", "Home", "Admin", new { area = "Admin" }, null)</li>

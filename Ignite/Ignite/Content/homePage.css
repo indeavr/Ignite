@@ -1,2 +1,10 @@
-﻿body {
+﻿#landing {
+    height: 500px;
+    background: rgba(148,25,0,0.9);  
+    background: -webkit-linear-gradient(left, rgba(100,18,0,0.9), rgba(148,25,0,0.9));  
+    background: -o-linear-gradient(right, rgba(100,18,0,0.9), rgba(148,25,0,0.9)); 
+    background: -moz-linear-gradient(right, rgba(100,18,0,0.9), rgba(148,25,0,0.9));  
+    background: linear-gradient(to right, rgba(100,18,0,0.9), rgba(148,25,0,0.9));  
+
+    padding: 50px 0;
 }

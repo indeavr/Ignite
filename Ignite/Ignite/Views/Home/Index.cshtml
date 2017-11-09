@@ -1,31 +1,119 @@
 ﻿@{
     ViewBag.Title = "Home Page";
 }
+@section styles{
+    @Styles.Render("~/Content/slider.css")
+}
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-</div>
+@section scripts{
+    @Scripts.Render("~/bundles/VisualSettings")    
+}
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+<section class="recipe-recommend">
+    <div class="wrapper-scroller-menu slide">
+
+        <article class="recipe" index="0">
+            <a href="">
+                <figure>
+                    <img src="img/ratatouille.jpg" alt="meal">
+                </figure>
+                <ul class="article-info">
+                    <li><span class="article-info-title">Cook Time:</span><br> 20min</li>
+                    <li><span class="article-info-title">Category:</span><br> Dinner, Summer</li>
+                    <li><span class="article-info-title">Tag:</span><br> Chicken, Fish</li>
+                    <li>
+                        <i class="fa fa-star-o" aria-hidden="true"></i>
+                        <i class="fa fa-star-o" aria-hidden="true"></i>
+                        <i class="fa fa-star-o" aria-hidden="true"></i>
+                        <i class="fa fa-star-o" aria-hidden="true"></i>
+                        <i class="fa fa-star-o" aria-hidden="true"></i>
+                    </li>
+                </ul>
+                <h3 class="recipe-name">Ratatouille</h3>
+                <p class="short-description">
+                    “This moreish Mediterranean-style vegetable stew is perfect for a super-healthy midweek supper.
+                    ”
+                    “This moreish Mediterranean-style vegetable stew is perfect for a super-healthy midweek supper.
+                    ”
+                </p>
+            </a>
+        </article>
+
+        <article class="recipe" index="0">
+            <a href="">
+                <figure>
+                    <img src="img/kugelhopf.jpg" alt="meal">
+                </figure>
+                <ul class="article-info">
+                    <li><span class="article-info-title">Cook Time:</span><br>3h and 20min</li>
+                    <li><span class="article-info-title">Category:</span><br> Cake, Dessert</li>
+                    <li><span class="article-info-title">Tag:</span><br> Baking, Christmas</li>
+                    <li>
+                        <i class="fa fa-star-o" aria-hidden="true"></i>
+                        <i class="fa fa-star-o" aria-hidden="true"></i>
+                        <i class="fa fa-star-o" aria-hidden="true"></i>
+                        <i class="fa fa-star-o" aria-hidden="true"></i>
+                        <i class="fa fa-star-o" aria-hidden="true"></i>
+                    </li>
+                </ul>
+                <h3 class="recipe-name">Kugelhopf</h3>
+                <p class="short-description">
+                    “A soft sponge with warming hints of cardamom,
+                    this spiced fruit cake is found in Austria, Alsace, Germany and Switzerland. ”
+                </p>
+            </a>
+        </article>
+
+        <article class="recipe" index="1">
+            <a href="">
+                <figure>
+                    <img src="img/beefwellington.jpg" alt="meal">
+                </figure>
+                <ul class="article-info">
+                    <li><span class="article-info-title">Cook Time:</span><br> 1h and 20min</li>
+                    <li><span class="article-info-title">Category:</span><br> Dinner, Special</li>
+                    <li><span class="article-info-title">Tag:</span><br> Pastry, Beef</li>
+                    <li>
+                        <i class="fa fa-star-o" aria-hidden="true"></i>
+                        <i class="fa fa-star-o" aria-hidden="true"></i>
+                        <i class="fa fa-star-o" aria-hidden="true"></i>
+                        <i class="fa fa-star-o" aria-hidden="true"></i>
+                        <i class="fa fa-star-o" aria-hidden="true"></i>
+                    </li>
+                </ul>
+                <h3 class="recipe-name">Beef Wellington</h3>
+                <p class="short-description">
+                    “This is one of those ultimate blowout dishes that hits the right spot several times in one meal
+                    ”
+                </p>
+            </a>
+        </article>
+
+        <article class="recipe" index="2">
+            <a href="">
+                <figure>
+                    <img src="img/lasagne.jpg" alt="meal">
+                </figure>
+                <ul class="article-info">
+                    <li><span class="article-info-title">Cook Time:</span><br> 2h and 40min</li>
+                    <li><span class="article-info-title">Category:</span><br> Dinner, Family</li>
+                    <li><span class="article-info-title">Tag:</span><br> Italian, Pork, Beef</li>
+                    <li>
+                        <i class="fa fa-star-o" aria-hidden="true"></i>
+                        <i class="fa fa-star-o" aria-hidden="true"></i>
+                        <i class="fa fa-star-o" aria-hidden="true"></i>
+                        <i class="fa fa-star-o" aria-hidden="true"></i>
+                        <i class="fa fa-star-o" aria-hidden="true"></i>
+                    </li>
+                </ul>
+                <h3 class="recipe-name">Lasagne</h3>
+                <p class="short-description">
+                    "Perfect for batch cooking and freezing.
+                    Invest time in the ragù for this lovely lasagne and freeze the extra portions for a rainy day."
+                </p>
+            </a>
+        </article>
     </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div>
-</div>
+
+</section>
+

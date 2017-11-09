@@ -9,7 +9,7 @@ namespace Ignite.Areas.Admin.ViewModels
     public class UploadJsonModel
     {
         [FileType("json")]
-        [FileSize(10000000)]
+        [FileSize(0,10000000)]
         public HttpPostedFileBase Json { get; set; }
     }
 
@@ -46,10 +46,12 @@ namespace Ignite.Areas.Admin.ViewModels
     public class FileSizeAttribute : ValidationAttribute
     {
         private readonly int maxSize;
+        private readonly int minSize;
 
-        public FileSizeAttribute(int maxSize)
+        public FileSizeAttribute(int minSize, int maxSize)
         {
             this.maxSize = maxSize;
+            this.minSize = minSize;
         }
 
         public override bool IsValid(object value)

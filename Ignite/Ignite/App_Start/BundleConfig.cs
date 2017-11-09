@@ -30,6 +30,10 @@ namespace Ignite
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
 
+
+            bundles.Add(new StyleBundle("~/Content/homePage").Include(
+                      "~/Content/homePage.css"));
+
             bundles.Add(new StyleBundle("~/Content/uploadCourse").Include(
                     "~/Content/uploadCourse.css"));
 
@@ -61,6 +65,16 @@ namespace Ignite
 
             bundles.Add(new StyleBundle("~/Content/statistics.css").Include(
               "~/Content/statistics.css"));
+
+            bundles.Add(new StyleBundle("~/Content/slider.css").Include(
+             "~/Content/slider/hover.css",
+             "~/Content/slider/home-page.css",
+             "~/Content/slider/slick-theme.css",
+             "~/Content/slider/slick.css"));
+
+            bundles.Add(new ScriptBundle("~/bundles/VisualSettings").Include(
+                     "~/Scripts/slider/slick.min.js",
+                     "~/Scripts/VisualSettings.js"));
         }
     }
 }

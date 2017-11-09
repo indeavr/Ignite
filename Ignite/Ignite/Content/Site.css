@@ -1,24 +1,137 @@
 ﻿body {
-    padding-top: 50px;
+    padding-top: 60px;
     padding-bottom: 20px;
+    padding-left: 58px;
 }
 
 /* Set padding to keep content from hitting the edges */
+
 .body-content {
     padding-left: 15px;
     padding-right: 15px;
 }
 
 /* Override the default bootstrap behavior where horizontal description lists 
+
    will truncate terms that are too long to fit in the left column 
+
 */
+
 .dl-horizontal dt {
     white-space: normal;
 }
 
 /* Set width on the form input elements since they're 100% wide by default */
+
 input,
 select,
 textarea {
     max-width: 280px;
+}
+
+.container-fluid {
+    height: 60px;
+    padding: 20px, 30px;
+    line-height: 50px;
+}
+
+.navbar-nav > li > a {
+    line-height: 50px;
+}
+
+.navbar-brand {
+    line-height: 50px;
+}
+
+.navbar-fixed-left {
+    width: 58px;
+    position: fixed;
+    border-radius: 0;
+    height: 100%;
+    z-index: 99999;
+    position: fixed;
+    left: 0;
+    top: 0;
+    transition: width 0.4s ease;
+}
+
+    .navbar-fixed-left:hover {
+        -webkit-box-shadow: 54px 0px 124px 36px rgba(0,0,0,0.56);
+        -moz-box-shadow: 54px 0px 124px 36px rgba(0,0,0,0.56);
+        box-shadow: 54px 0px 124px 36px rgba(0,0,0,0.56);
+        position: fixed;
+        width: 180px;
+        /*transition: box-shadow 0.4s ease;*/
+    }
+
+    .navbar-fixed-left .navbar-nav > li {
+        float: none; /* Cancel default li float: left */
+    }
+
+        .navbar-fixed-left .navbar-nav > li > a {
+            height: 70px;
+            padding-left: 0;
+            padding-right: 0;
+            box-sizing: border-box;
+            padding-left: 8px;
+        }
+
+    .navbar-fixed-left + .container {
+        padding-left: 160px;
+    }
+
+    /* On using dropdown menu (To right shift popuped) */
+
+    .navbar-fixed-left .navbar-nav > li > .dropdown-menu {
+        margin-top: -50px;
+        margin-left: 140px;
+    }
+
+.text-for-icons {
+    position: relative;
+    left: -200px;
+}
+
+.navbar-fixed-left:hover .spanche {
+    left: 0;
+    transition: left 0.1s ease;
+}
+
+
+.spanche {
+    position: relative;
+    left: -200px;
+    padding-left: 20px;
+    transition: left 0;
+}
+
+#greasy-line {
+    border-color: black;
+    background-color: black;
+    margin-top: -1px;
+    width: 100%;
+}
+
+.navbar-fixed-left:hover #greasy-line {
+    width: 175px;
+}
+
+#side {
+    width: 58px;
+}
+
+.navbar-fixed-left:hover #side {
+    width: 175px;
+}
+
+.log-image img {
+    width: 24px;
+    height: 36px;
+    position: relative;
+    left: 3px;
+    bottom: 5px;
+}
+
+.fa{
+    font-size: 26px;
 }
