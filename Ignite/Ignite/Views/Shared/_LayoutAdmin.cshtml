@@ -45,13 +45,15 @@
             <div class="navbar-collapse collapse" id="navBar">
                 <ul class="nav navbar-nav">
                      <li style="margin-left: 40px">@Html.ActionLink("Home", "Index", "Home", new { area = "" }, null)</li>
-                    @*<li>@Html.ActionLink("About", "About", "Home", new { area = "" }, null)</li>*@
-                    @*<li>@Html.ActionLink("Contact", "Contact", "Home", new { area = "" }, null)</li>*@
+                    <li>@Html.ActionLink("Press for Error ;)", "About", "Home", new { area = "" }, null)</li>
+                    <li>@Html.ActionLink("Contact", "Contact", "Home", new { area = "" }, null)</li>
+
                     @if (this.User.IsInRole("Admin"))
                         {
                             <li>@Html.ActionLink("Admin", "Home", "Admin", new { area = "Admin" }, null)</li>
                         }
                 </ul>
+
                 @Html.Partial("_LoginPartial")
             </div>
         </div>

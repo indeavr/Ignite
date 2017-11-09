@@ -73,7 +73,7 @@ textarea {
             padding-left: 0;
             padding-right: 0;
             box-sizing: border-box;
-            padding-left: 8px;
+            margin-left: 8px;
         }
 
     .navbar-fixed-left + .container {
@@ -107,7 +107,7 @@ textarea {
 #greasy-line {
     border-color: black;
     background-color: black;
-    margin-top: -1px;
+    margin-top: 8px;
     width: 100%;
 }
 
@@ -127,10 +127,14 @@ textarea {
     width: 24px;
     height: 36px;
     position: relative;
-    left: 3px;
-    bottom
+    left: 5px;
+    bottom: -4px;
 }
 
 .fa{
     font-size: 26px;
+}
+
+#ignite-logo{
+    margin-left:30%;
 }
