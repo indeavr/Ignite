@@ -13,19 +13,13 @@ namespace Ignite.Data.Models
         public int Id { get; set; }
 
         [Required]
+        [StringLength(150, MinimumLength = 6)]
         public string Statement { get; set; }
 
         [Required]
-        public string A { get; set; }
-
-        [Required]
-        public string B { get; set; }
-
-        [Required]
-        public string C { get; set; }
-
-        [Required]
-        public string D { get; set; }
+        [MinLength(2, ErrorMessage = "You must add at least two Answers!")]
+        [MaxLength(8, ErrorMessage = "Max number of allowed answers is 8!")]
+        public IEnumerable<string> Answers { get; set; }
 
         [Required]
         public string CorrectAnswer { get; set; }

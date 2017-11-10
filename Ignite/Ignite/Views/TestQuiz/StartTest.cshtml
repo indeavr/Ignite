@@ -1,0 +1,41 @@
+﻿@model List<Ignite.ViewModels.QuizQuestion>
+
+@{
+}
+
+<h2>StartTest</h2>
+
+<section id="quiz-wrapper">
+    <div id="question-indicator">
+        <span id="indicator-first">
+            1 / 
+        </span>
+        
+        <span id="indicator-first">
+            10
+        </span>
+    </div>
+    @*progress bar*@
+    <div id="quiz">
+        <h3 id="question"></h3>
+        <ul id="answer-ul">
+            <li id="answer">
+
+            </li>
+        </ul>
+    </div>
+    <button id="quizBtn">
+
+    </button>
+</section>
+
+
+<script>
+    $(function () {
+        let model = @Html.Encode(Json.Encode(Model))
+
+        $('#quiz')
+
+    });
+
+</script>

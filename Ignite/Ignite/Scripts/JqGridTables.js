@@ -1,40 +1,50 @@
-﻿function onGridLoaded () {
+﻿function onGridLoaded() {
     jQuery("#grid-user").jqGrid({
-        url: 'DataProviderForTable',
+        url: "DataProviderForTable",
         datatype: "json",
         height: 'auto',
+        width: 800,
         rowNum: 30,
-        colNames: ['Id', 'Username', 'CourseName', 'DueDate', 'DateOfAssignment', 'Type', 'State'],
-        jsonReader: {
-            root: 'rows',
-            id: 'Id',
-            repeatitems: false,
-            page: 'page',
-            total: 'total',
-            records: 'records',
-        },
+        rowList: [10, 20, 30],
+        colNames: ['Index', 'Username', 'Course', 'AssignementDate', 'DueDate', 'State', 'Type'],
         colModel: [
-            { name: 'Id', index: 'Id', key: true },
-            { name: 'Username', index: 'Username', width: 90, sorttype: "string", formatter: "string" },
-            { name: 'CourseName', index: 'CourseName', width: 100, editable: true },
-            { name: 'DueDate', index: 'DueDate', width: 80, align: "right", sorttype: "float", formatter: "number", editable: true },
-            { name: 'DateOfAssignment', index: 'DateOfAssignment', width: 80, align: "right", sorttype: "float", editable: true },
-            { name: 'Type', index: 'Type', width: 80, align: "right", sorttype: "float", editable: true },
-            { name: 'State', index: 'State', width: 150, sortable: false }
+            { name: 'Index', key: true, index: 'Index', width: 30, formatter: "integer", search: false },
+            { name: 'Username', index: 'Username', width: 120, searchoptions: { sopt: ['eq'] } },
+            { name: 'Coursename', index: 'Coursename', width: 120, align: "left", searchoptions: { sopt: ['eq'] } },
+            { name: 'AssignementDate', index: 'AssignementDate', width: 70, align: "left", formatter: "date", search: false },
+            { name: 'DueDate', index: 'DueDate', width: 70, align: "left", formatter: "date", search: false },
+            { name: 'State', index: 'State', width: 60, align: "left", searchoptions: { sopt: ['eq'] } },
+                { name: 'Type', index: 'Type', width: 60, align: "left", searchoptions: { sopt: ['eq'] } }
         ],
+
+        jsonReader: {
+            repeatitems: false,
+            id: "Index",
+            root: 'rows',
+            records: 'records',
+            page: 'page',
+            total: 'total'
+        },
         pager: "#plist485",
         viewrecords: true,
         sortname: 'Username',
         grouping: true,
         groupingView: {
             groupField: ['Username'],
-            groupColumnShow: [false],
+            groupColumnShow: [true],
             groupText: ['<b>{0} - {1} Item(s)</b>'],
             groupCollapse: true,
             groupOrder: ['desc']
         },
-        caption: "Initially hidden data"
+        caption: "Information about all users"
     });
+    jQuery("#grid-user").jqGrid('navGrid', 
+        { edit: false, add: false, del: false },
+        {},
+        {},
+        {},
+        { multipleSearch: true, multipleGroup: true }
+    );
 }
 
 

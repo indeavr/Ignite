@@ -1,5 +1,8 @@
 ﻿using Ignite.Areas.Admin.Services.Interfaces;
+using Ignite.Areas.Admin.ViewModels;
 using Ignite.Areas.Admin.ViewModels.statistics;
+using Ignite.Data;
+using Ignite.Data.Enums;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -13,9 +16,12 @@ namespace Ignite.Areas.Admin.Controllers
     {
         private readonly IStatisticsService statService;
 
-        public StatisticsController(IStatisticsService statService)
+        private readonly ApplicationDbContext context;
+
+        public StatisticsController(IStatisticsService statService, ApplicationDbContext context)
         {
             this.statService = statService;
+            this.context = context;
         }
 
         public StatisticsController()
@@ -29,27 +35,6 @@ namespace Ignite.Areas.Admin.Controllers
             return View();
         }
 
-        public ActionResult DataProviderForTable()
-        {
-            var assignments = this.statService.GetDataFromServer();
-
-            //assignments.Select(a => new
-            //{
-            //    Id = a.Id,
-            //    Username = a.Username,
-            //    CourseName = a.CourseName,
-            //    DueDate = a.DueDate,
-            //    DateOfAssignment = a.DateOfAssignment,
-            //    Type = a.Type,
-            //    State = a.State
-            //});
-
-            var result = new { total = 1, page = 1, records = assignments.Count, rows = assignments };
-            Console.WriteLine("Bravo");
-
-            return Json(result, JsonRequestBehavior.AllowGet);
-        }
-
         public ActionResult ChangeViewStatistic(string type)
         {
             switch (type)
@@ -60,6 +45,22 @@ namespace Ignite.Areas.Admin.Controllers
                     return this.PartialView("_CourseGrid");
                 default:
                     return this.PartialView("_UserGrid");
+            }
+        }
+
+        public ActionResult DataProviderForTable(bool _search, int rows, int page, string filters)
+        {
+            if (_search == false)
+            {
+                var assignments = this.statService.GetDataFromServer();
+
+                var needed = new { total = 1, page = 1, records = assignments.Count, rows = assignments };
+
+                return Json(needed, JsonRequestBehavior.AllowGet);
+            }
+            else
+            {
+                return Json(this.statService.SearchAndGetData(filters), JsonRequestBehavior.AllowGet);
             }
         }
     }

@@ -207,28 +207,36 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminController.cs" />
+    <Compile Include="Areas\Admin\Controllers\CourseStateRowViewModel.cs" />
     <Compile Include="Areas\Admin\Controllers\StatisticsController.cs" />
     <Compile Include="Areas\Admin\Services\Interfaces\IStatisticsService.cs" />
     <Compile Include="Areas\Admin\Services\StatisticsService.cs" />
+    <Compile Include="Areas\Admin\ViewModels\GridRequestViewModel.cs" />
     <Compile Include="Areas\Admin\ViewModels\ImageViewModel.cs" />
+    <Compile Include="Areas\Admin\ViewModels\RulesViewModel.cs" />
     <Compile Include="Areas\Admin\ViewModels\statistics\AssignmentViewModel.cs" />
     <Compile Include="Areas\Admin\ViewModels\UploadJsonModel.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\TestQuizController.cs" />
     <Compile Include="Controllers\UserCourseController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Services\Contracts\IQuizService.cs" />
     <Compile Include="Services\Contracts\IUserCourseService.cs" />
+    <Compile Include="Services\QuizService.cs" />
     <Compile Include="Services\UserCoursesService.cs" />
     <Compile Include="ViewModels\AccountViewModels.cs" />
     <Compile Include="ViewModels\AllAssignmentsPerUserViewModels.cs" />
+    <Compile Include="ViewModels\AnsweViewModel.cs" />
     <Compile Include="ViewModels\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Areas\Admin\Services\Interfaces\IUploadCourseService.cs" />
     <Compile Include="Areas\Admin\Services\UploadCourseService.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\QuizViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
@@ -439,6 +447,7 @@
     <Content Include="Views\UserCourse\_StartedCourses.cshtml" />
     <Content Include="Views\UserCourse\_PendingCourses.cshtml" />
     <Content Include="Views\Shared\_LayoutAdmin.cshtml" />
+    <Content Include="Views\TestQuiz\StartTest.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

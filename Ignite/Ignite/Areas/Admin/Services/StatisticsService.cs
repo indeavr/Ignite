@@ -7,6 +7,8 @@ using Ignite.Areas.Admin.ViewModels.statistics;
 using Ignite.Data;
 using Ignite.Data.Models;
 using Ignite.Data.Enums;
+using Newtonsoft.Json;
+using Ignite.Areas.Admin.ViewModels;
 
 namespace Ignite.Areas.Admin.Services
 {
@@ -25,7 +27,6 @@ namespace Ignite.Areas.Admin.Services
 
             var assignments = this.context.Assignments.ToList();
 
-
             for (int i = 0; i < assignments.Count; i++)
             {
                 var courseName = assignments[i].Course.Name;
@@ -36,7 +37,7 @@ namespace Ignite.Areas.Admin.Services
 
                 assignmentsViewModel.Add(new AssignmentViewModel()
                 {
-                    Id = assignments[i].Id,
+                    Id = i,
                     Username = username,
                     CourseName = courseName,
                     DueDate = assignments[i].DueDate,
@@ -48,6 +49,67 @@ namespace Ignite.Areas.Admin.Services
             assignmentsViewModel.Add(new AssignmentViewModel() { Username = "pesho" });
 
             return assignmentsViewModel;
+        }
+
+        private IList<ApplicationUser> Filtrator(string propertyName, string shortOp, string inputField, IList<ApplicationUser> users)
+        {
+            var result = new List<ApplicationUser>();
+
+            switch (propertyName)
+            {
+                case "Username":
+                    result.AddRange(users.Where(x => x.UserName == inputField).ToList());
+
+                    break;
+                case "State":
+                    var state = (AssignmentState)Enum.Parse(typeof(AssignmentState), inputField);
+                    result.AddRange(users.Where(u => u.Assignments.Select(a => a.State).Contains(state)));
+
+                    break;
+                case "Coursename":
+                    result.AddRange(users.Where(x => x.Assignments.Select(y => y.Course.Name).Contains(inputField)));
+
+                    break;
+            }
+
+            return result;
+        }
+
+        public object SearchAndGetData(string filters)
+        {
+            var parsedFilters = JsonConvert.DeserializeObject<GridRequestViewModel>(filters);
+            var counter = 1;
+
+            var users = context.Users.ToList();
+
+            var propertyName = parsedFilters.rules.First().field;
+            var shortenedOperator = parsedFilters.rules.First().op;
+            var inputedField = parsedFilters.rules.First().data;
+            var result = new List<AssignmentViewModel>();
+
+            foreach (var user in this.Filtrator(propertyName, shortenedOperator, inputedField, users))
+            { 
+                foreach (var courses in user.Assignments)
+                {
+                    if (courses.DueDate < DateTime.Now)
+                    {
+                        courses.State = AssignmentState.Overdue;
+                    }
+                    result.Add(new AssignmentViewModel()
+                    {
+                        Id = counter,
+                        Username = user.UserName,
+                        CourseName = courses.Course.Name,
+                        DateOfAssignment = courses.DateOfAssignment,
+                        DueDate = courses.DueDate,
+                        State = courses.State
+                    });
+                }
+            }
+
+            var needed = new { total = 1, page = 1, records = result.Count, rows = result };
+
+            return needed;
         }
     }
 }

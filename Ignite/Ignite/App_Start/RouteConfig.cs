@@ -20,11 +20,11 @@ namespace Ignite
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
 
-            //routes.MapRoute(
-            // name: "Upload",
-            // url: "admin/{controller}/{action}/{courseId}",
-            // defaults: new { controller = "admin", action = "home", courseId = UrlParameter.Optional }
-            // );
+            routes.MapRoute(
+             name: "Upload",
+             url: "admin/{controller}/{action}/{courseId}",
+             defaults: new { controller = "admin", action = "home", courseId = UrlParameter.Optional }
+             );
 
             routes.LowercaseUrls = true;
         }
