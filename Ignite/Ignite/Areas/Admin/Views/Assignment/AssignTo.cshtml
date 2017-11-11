@@ -1,0 +1,47 @@
+﻿@model Ignite.Areas.Admin.ViewModels.CourseNameViewModel
+
+@{
+    ViewBag.Title = "AssignTo";
+}
+
+<div class="heading">
+    <h2>Assign To</h2>
+</div>
+<div>
+    @Model.Name
+    <br />
+    @using (Html.BeginForm("AssignTo", "Assignment", FormMethod.Post))
+    {
+        @Html.Label("User")
+        @Html.DropDownListFor(u => u.UserId, Model.Users.Select(x => new SelectListItem { Text = x.UserName, Value = x.Id }))
+        @Html.HiddenFor(c => c.CourseId)
+        <br />
+        @Html.Label("Mandatory")
+        @Html.CheckBoxFor(t => t.Type)
+        <br />
+        @*@Html.Label("State")
+        @Html.EnumDropDownListFor(s => s.State)
+        <br />*@
+        @Html.Label("Duedate")
+        @Html.TextBoxFor(d => d.DueDate, new { id = "datepicker" })
+        <br />
+        <input type="submit" />
+    }
+
+
+
+</div>
+
+
+
+
+
+@*@section scripts{
+    <script>
+        $(document).ready(function () {
+
+            $('.datepicker').datetimepicker({
+                format: 'dd/mm/yyyy'
+            });
+        });
+    </script>}*@

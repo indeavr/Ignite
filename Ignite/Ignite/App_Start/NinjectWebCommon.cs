@@ -83,6 +83,7 @@ namespace Ignite.App_Start
             kernel.Bind<IUserCourseService>().To<UserCoursesService>();
             kernel.Bind<IStatisticsService>().To<StatisticsService>();
             kernel.Bind<IQuizService>().To<QuizService>();
-        }        
+            kernel.Bind<IAssignmentService>().To<AssignmentService>();
+        }
     }
 }
