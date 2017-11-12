@@ -52,6 +52,12 @@
                         {
                             <li>@Html.ActionLink("Admin", "Home", "Admin", new { area = "Admin" }, null)</li>
                         }
+
+                    @if (this.User.IsInRole("Admin"))
+
+                    {
+                        <li>@Html.ActionLink("My Courses", "Home", "UserCourse", new { area = "" }, null)</li>
+                    }
                 </ul>
 
                 @Html.Partial("_LoginPartial")

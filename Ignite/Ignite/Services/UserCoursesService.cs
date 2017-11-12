@@ -53,7 +53,7 @@ namespace Ignite.Services
                 CourseId = 1,
                 Course = new Course() { Name = "Maina" },
                 DueDate = DateTime.Now,
-                DateOfAssignment = DateTime.Today,
+                DateOfAssignment = DateTime.Today,  
                 Type = "Something",
                 State = AssignmentState.Started,
                 TestResult = 100,

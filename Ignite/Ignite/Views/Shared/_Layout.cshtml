@@ -35,6 +35,13 @@
                     <li>@Html.ActionLink("Contact", "Contact", "Home", new { area = "" }, null)</li>
                     
                     @if (this.User.Identity.IsAuthenticated)
+
+                    {
+                        <li>@Html.ActionLink("My Courses", "Home", "UserCourse", new { area = "" }, null)</li>
+                    }
+
+                    @if (this.User.IsInRole("Admin"))
+
                     {
                         <li>@Html.ActionLink("My Courses", "Home", "UserCourse", new { area = "" }, null)</li>
                     }
@@ -59,17 +66,14 @@
         </footer>
     </div>
 
-
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
-<<<<<<< Updated upstream
     @Scripts.Render("~/bundles/jqueryval")
     @Scripts.Render("~/bundles/ajax")
     @Scripts.Render("~/bundles/modernizr")
-=======
-    @Scripts.Render("~/bundles/ajax")
+    
     @Scripts.Render("~/bundles/myCourses")
->>>>>>> Stashed changes
+
     @RenderSection("scripts", required: false)
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>

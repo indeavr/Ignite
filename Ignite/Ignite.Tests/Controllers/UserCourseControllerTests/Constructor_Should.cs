@@ -10,7 +10,7 @@ namespace Ignite.Tests.Controllers.UserCourseControllerTests
     [TestClass]
     public class Constructor_Should
     {
-        [TestMethod]
+        //[TestMethod]
 
 
     }
