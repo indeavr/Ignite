@@ -75,6 +75,9 @@ namespace Ignite
             bundles.Add(new ScriptBundle("~/bundles/VisualSettings").Include(
                      "~/Scripts/slider/slick.min.js",
                      "~/Scripts/VisualSettings.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/quizTest.js").Include(
+             "~/Scripts/quizTest.js"));
         }
     }
 }

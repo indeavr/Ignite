@@ -43,7 +43,7 @@ namespace Ignite.Data.Models
         [Required]
         public AssignmentState State { get; set; }
 
-        public decimal? TestResult { get; set; }
+        public double? TestResult { get; set; }
 
         public DateTime? DateOfCompletion { get; set; }
     }

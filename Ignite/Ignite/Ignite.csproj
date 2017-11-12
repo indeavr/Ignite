@@ -236,7 +236,8 @@
     <Compile Include="Areas\Admin\Services\Interfaces\IUploadCourseService.cs" />
     <Compile Include="Areas\Admin\Services\UploadCourseService.cs" />
     <Compile Include="Startup.cs" />
-    <Compile Include="ViewModels\QuizViewModel.cs" />
+    <Compile Include="ViewModels\Quiz.cs" />
+    <Compile Include="ViewModels\QuizQuestion.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
@@ -402,6 +403,7 @@
     <Content Include="Content\slider\hover.css" />
     <Content Include="Content\slider\slick-theme.css" />
     <Content Include="Content\slider\slick.css" />
+    <Content Include="Scripts\quizTest.js" />
     <Content Include="Scripts\slider\slick.min.js" />
     <Content Include="Scripts\VisualSettings.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
@@ -448,6 +450,7 @@
     <Content Include="Views\UserCourse\_PendingCourses.cshtml" />
     <Content Include="Views\Shared\_LayoutAdmin.cshtml" />
     <Content Include="Views\TestQuiz\StartTest.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\QuizQuestion.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

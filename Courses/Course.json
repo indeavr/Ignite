@@ -3,22 +3,23 @@
 	"Description": "Mnogo qk",
 	"DateCreated":"\/Date(1330848000000-0800)\/",
 	"RequiredScore" : "5.50",
-	"Questions": [
-		{
-			"Statement": "Which one is a Scripting Language",
-			"A": "C#",
-			"B": "Java",
-			"C": "Python",
-			"D": "C++",
-			"CorrectAnswer": "A"
+	"Questions" : [{
+	    "Statement": "Which one is a Scripting Language ?",
+		"CorrectAnswer": "C",
+		"Answers": [
+			{"Text": "C#", "Letter": "A" },
+			{"Text":"Java", "Letter": "B"},
+			{"Text": "Python", "Letter": "C"},
+			{"Text":"C++", "Letter": "D"}]
 		},
 		{
-			"Statement": "Which one is a Scripting Language",
-			"A": "C#",
-			"B": "Java",
-			"C": "Python",
-			"D": "C++",
-			"CorrectAnswer": "A"
+		"Statement": "Which one is a Scripting Language ?",
+		"CorrectAnswer": "C",
+		"Answers": [
+			{"Text": "C#", "Letter": "A" },
+			{"Text":"Java", "Letter": "B"},
+			{"Text": "Python", "Letter": "C"},
+			{"Text":"C++", "Letter": "D"}]
 		}
-	]
+		]
 } 

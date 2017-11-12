@@ -12,8 +12,6 @@ namespace Ignite.Data.Models
     {
         public Image()
         {
-
-
         }
 
         public Image(string name, byte[] content, int order)
