@@ -1,4 +1,69 @@
-﻿@{ 
+﻿@model Ignite.ViewModels.AllAssignmentsPerUserViewModels
+
+@{
     ViewBag.Title = "Welcome";
 }
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel with-nav-tabs panel-success">
+                <div class="panel-heading">
+                    <ul class="nav nav-tabs">
+                        @*@ajax link => ajax action method sochat kum acton method provera
+                            <li class="active"><a href="#tab1success" data-toggle="tab">Success 1</a></li>*@
+                        <li class="active state-tabs">
+                            @Ajax.ActionLink("Completed",
+                                            "Home",
+                                            new { state = "completed" },
+                                    new AjaxOptions
+                                    {
+                                        InsertionMode = InsertionMode.Replace,
+                                        UpdateTargetId = "tabsuccess",
+                                    })
+                        </li>
+                        <li class="state-tabs">
+                            @Ajax.ActionLink("Pending",
+                                            "Home",
+                                             new { state = "pending" },
+                                    new AjaxOptions
+                                    {
+                                        InsertionMode = InsertionMode.Replace,
+                                        UpdateTargetId = "tabsuccess",
+                                    })
+                        </li>
+                        <li class="state-tabs">
+                            @Ajax.ActionLink("Started",
+                                            "Home",
+                                             new { state = "started" },
+                                    new AjaxOptions
+                                    {
+                                        InsertionMode = InsertionMode.Replace,
+                                        UpdateTargetId = "tabsuccess",
+                                    })
+                        </li>
+
+                        @*<li><a href="#tab2success" data-toggle="tab">Success 2</a></li>
+                            <li><a href="#tab3success" data-toggle="tab">Success 3</a></li>*@
+                    </ul>
+                </div>
+
+                <div class="panel-body">
+                    <div class="tab-content">
+                        <div class="tab-pane fade in active" id="tabsuccess">
+                            @Html.Partial("_CompletedCourses", Model.Completed)
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+<br />
+    
+
+
 

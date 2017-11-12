@@ -1,7 +1,58 @@
-﻿
+﻿@model List<Ignite.ViewModels.AssignmentViewModel>
+
+
 @{
-    ViewBag.Title = "_CompletedCourses";
+    ViewBag.Title = "Courses";
 }
 
-<h2>_CompletedCourses</h2>
+@*<div>
+        @assi gnment.State
+    </div>
+
+<table class="table table-md table-dark table-responsive">
+        <thead>
+            <tr>
+                <th scope="col">CourseId</th>
+                <th scope="col">DateOfAssignment</th>
+                <th scope="col">DateOfCompletion</th>
+                <th scope="col">DueDate</th>
+                <th scope="col">State</th>
+                <th scope="col">TestResult</th>
+                <th scope="col">Type</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>@assignment.CourseId</td>
+                <td>@assignment.DateOfAssignment</td>
+                <td>@assignment.DateOfCompletion</td>
+                <td>@assignment.DueDate</td>
+                <td>@assignment.State</td>
+                <td>@assignment.TestResult</td>
+                <td>@assignment.Type</td>
+            </tr>
+        </tbody>
+    </table>*@
+<div class="row">
+                 @foreach (var assignment in Model)
+                 {
+                    <div class="card card-inverse container col-md-3 col-sm-4 col-xs-6">
+                        <img class="img-responsive card-img" src="~/Content/img.jpg" alt="Card image cap" />
+                        <div class="top-right text-right">                   
+                            @Html.ActionLink(assignment.Type, "DisplayingCourseSlides", new { courseId = assignment.CourseId })                           
+                        </div>
+
+                        <div class="card-block">
+                            <h4 class="card-title">@assignment.Course.Name</h4>
+                            <p class="card-text">@assignment.DateOfAssignment</p>
+                            <p class="card-text">@assignment.DateOfCompletion</p>
+                            <p class="card-text">@assignment.DueDate</p>
+
+                        </div>
+                    </div>
+                 }
+
+    </div>
+
+
 

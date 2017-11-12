@@ -1,0 +1,17 @@
+﻿@model Ignite.Areas.Admin.ViewModels.Assignment2ViewModel
+
+@{
+    ViewBag.Title = "Assign Course";
+}
+<div>
+    <h2>Assign Course</h2>
+</div>
+    
+@foreach (var course in Model.Courses)
+{ 
+    <div id="list-courses">
+        @course.Name
+        @Html.ActionLink("Assign", "AssignTo", new { courseId = course.Id })
+
+    </div>
+}

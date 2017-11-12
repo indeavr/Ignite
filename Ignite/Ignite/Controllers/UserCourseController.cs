@@ -33,7 +33,7 @@ namespace Ignite.Controllers
             var username = this.User.Identity.Name;
 
             var allAssignments = this.userCourseService.GetAllAssignmentsPerUser(username);
-                
+                    
 
             return this.View();
         }
