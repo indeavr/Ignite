@@ -229,6 +229,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+<<<<<<< Updated upstream
     <Compile Include="Services\Contracts\IQuizService.cs" />
     <Compile Include="Services\Contracts\IUserCourseService.cs" />
     <Compile Include="Services\QuizService.cs" />
@@ -236,6 +237,16 @@
     <Compile Include="ViewModels\AccountViewModels.cs" />
     <Compile Include="ViewModels\AllAssignmentsPerUserViewModels.cs" />
     <Compile Include="ViewModels\AnsweViewModel.cs" />
+=======
+    <Compile Include="Services\Contracts\ILaunchCourseService.cs" />
+    <Compile Include="Services\Contracts\IUserCourseService.cs" />
+    <Compile Include="Services\LaunchCourseService.cs" />
+    <Compile Include="Services\UserCoursesService.cs" />
+    <Compile Include="ViewModels\AccountViewModels.cs" />
+    <Compile Include="ViewModels\AllAssignmentsPerUserViewModels.cs" />
+    <Compile Include="ViewModels\AssignmentViewModel.cs" />
+    <Compile Include="ViewModels\ImagesToCourosel.cs" />
+>>>>>>> Stashed changes
     <Compile Include="ViewModels\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Areas\Admin\Services\Interfaces\IUploadCourseService.cs" />
@@ -253,6 +264,7 @@
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Content\homePage.css" />
     <Content Include="Content\imageUpload.css" />
+<<<<<<< Updated upstream
     <Content Include="Content\img\flame-logo-png-30.png" />
     <Content Include="Content\jquery.jqGrid\ellipsis-xbl.xml" />
     <Content Include="Content\jquery.jqGrid\ui.jqgrid.css" />
@@ -320,6 +332,13 @@
     <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.tooltip.min.css" />
+=======
+    <Content Include="Content\slides\1.png" />
+    <Content Include="Content\slides\2.png" />
+    <Content Include="Content\slides\3.png" />
+    <Content Include="Content\slides\4.png" />
+    <Content Include="Content\slides\5.jpg" />
+>>>>>>> Stashed changes
     <Content Include="Content\uploadCourse.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -496,6 +515,7 @@
     <Content Include="Scripts\slider\slick.min.js" />
     <Content Include="Scripts\VisualSettings.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\myCourses.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\uploadCourse.js" />
@@ -535,10 +555,14 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\UserCourse\Home.cshtml" />
     <Content Include="Views\UserCourse\_CompletedCourses.cshtml" />
+<<<<<<< Updated upstream
     <Content Include="Views\UserCourse\_StartedCourses.cshtml" />
     <Content Include="Views\UserCourse\_PendingCourses.cshtml" />
     <Content Include="Views\Shared\_LayoutAdmin.cshtml" />
     <Content Include="Views\TestQuiz\StartTest.cshtml" />
+=======
+    <Content Include="Views\UserCourse\DisplayingCourseSlides.cshtml" />
+>>>>>>> Stashed changes
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -51,6 +51,7 @@ namespace Ignite
                      "~/Scripts/dropzone/basic.css",
                      "~/Scripts/dropzone/dropzone.css"));
 
+<<<<<<< Updated upstream
             bundles.Add(new StyleBundle("~/Content/jquery-ui.css").Include(
                "~/Content/themes/base/jquery-ui.css"));
 
@@ -75,6 +76,11 @@ namespace Ignite
             bundles.Add(new ScriptBundle("~/bundles/VisualSettings").Include(
                      "~/Scripts/slider/slick.min.js",
                      "~/Scripts/VisualSettings.js"));
+=======
+            bundles.Add(new ScriptBundle("~/bundles/myCourses").Include(
+                     "~/Scripts/myCourses.js"));
+
+>>>>>>> Stashed changes
         }
     }
 }
