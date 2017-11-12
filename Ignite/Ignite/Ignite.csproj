@@ -230,11 +230,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Services\Contracts\IQuizService.cs" />
-    <Compile Include="Services\Contracts\IUserCourseService.cs" />
     <Compile Include="Services\QuizService.cs" />
-    <Compile Include="Services\UserCoursesService.cs" />
-    <Compile Include="ViewModels\AccountViewModels.cs" />
-    <Compile Include="ViewModels\AllAssignmentsPerUserViewModels.cs" />
     <Compile Include="ViewModels\AnsweViewModel.cs" />
     <Compile Include="Services\Contracts\ILaunchCourseService.cs" />
     <Compile Include="Services\Contracts\IUserCourseService.cs" />
