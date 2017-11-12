@@ -30,11 +30,11 @@ namespace Ignite.Data.Models
         [Required]
         public double RequiredScore { get; set; }
 
-        public virtual IEnumerable<Image> Images { get; set; }
+        public virtual ICollection<Image> Images { get; set; }
 
-        public virtual IEnumerable<Question> Questions { get; set; }
+        public virtual ICollection<Question> Questions { get; set; }
 
-        public virtual IEnumerable<Assignment> Assignments { get; set; }
+        public virtual ICollection<Assignment> Assignments { get; set; }
 
     }
 }

@@ -11,7 +11,7 @@ namespace Ignite.Tests.Admin.Controllers.AdminControllerTests
     public class UploadCourseGet_Should
     {
         [TestMethod]
-        public void ReturnDefaultViewWithCorrectModel()
+        public void ReturnDefaultViewWithCorrectModel() 
         {
             // Arange
             var uploadServiceMock = new Mock<IUploadCourseService>();

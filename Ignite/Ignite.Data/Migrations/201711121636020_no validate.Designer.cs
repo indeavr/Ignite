@@ -7,13 +7,13 @@ namespace Ignite.Data.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class Initial : IMigrationMetadata
+    public sealed partial class novalidate : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(Initial));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(novalidate));
         
         string IMigrationMetadata.Id
         {
-            get { return "201711102210515_Initial"; }
+            get { return "201711121636020_no validate"; }
         }
         
         string IMigrationMetadata.Source

@@ -28,5 +28,7 @@ namespace Ignite.Data
         public virtual DbSet<Assignment> Assignments { get; set; }
 
         public virtual DbSet<Image> Images { get; set; }
+
+        public virtual DbSet<Answer> Answer { get; set; }
     }
 }

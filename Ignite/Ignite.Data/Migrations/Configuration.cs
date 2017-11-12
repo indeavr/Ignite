@@ -1,9 +1,11 @@
 namespace Ignite.Data.Migrations
 {
+    using Ignite.Data.Enums;
     using Ignite.Data.Models;
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.EntityFramework;
     using System;
+    using System.Collections.Generic;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
@@ -17,11 +19,32 @@ namespace Ignite.Data.Migrations
 
         protected override void Seed(Ignite.Data.ApplicationDbContext context)
         {
-            //  This method will be called after migrating to the latest version.
+            //This method will be called after migrating to the latest version.
 
-            //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
+            //  You can use the DbSet<T>.AddOrUpdate() helper extension method
             //  to avoid creating duplicate seed data.
 
+            //var assignment = new Assignment()
+            //{
+            //    CourseId = 4,
+            //    DateOfAssignment = DateTime.Now,
+            //    DueDate = DateTime.Now,
+            //    State = AssignmentState.Started,
+            //    Type = "Mandatory",
+            //    UserId = context.Users.First().Id
+            //};
+
+            //context.Assignments.Add(assignment);
+
+
+            //var ans = new HashSet<Answer>();
+            //ans.Add(new Answer() { Text = "2", Letter = "A" });
+            //ans.Add(new Answer() { Text = "23", Letter = "B" });
+            //ans.Add(new Answer() { Text = "33", Letter = "C" });
+
+            //context.Questions.Add(new Question() { Id = 15, Answers = ans, Statement = "1 + 1 = ?", CorrectAnswer = "A", CourseId = 1 });
+
+            //context.SaveChanges();
 
             if (!context.Roles.Any())
             {   

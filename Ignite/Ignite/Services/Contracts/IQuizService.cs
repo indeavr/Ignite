@@ -10,6 +10,8 @@ namespace Ignite.Services.Contracts
 {
     public interface IQuizService
     {
-        List<QuizQuestion> GetTest(int courseId);
+        Quiz GetTest(int? courseId);
+
+        double SubmitTest(Quiz quiz);
     }
 }

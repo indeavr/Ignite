@@ -5,10 +5,10 @@ using System.Web;
 
 namespace Ignite.ViewModels
 {
-    public class QuizQuestion
+    public class Quiz
     {
-        public string Statement { get; set; }
+        public List<QuizQuestion> Questions { get; set; }
 
-        public List<AnsweViewModel> Answers;
+        public int AssignmentId { get; set; }
     }
 }
