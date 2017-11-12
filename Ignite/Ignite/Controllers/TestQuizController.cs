@@ -1,5 +1,6 @@
 ﻿using Bytes2you.Validation;
 using Ignite.Services.Contracts;
+using Ignite.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,13 +21,25 @@ namespace Ignite.Controllers
         }
 
         // GET: TestQuiz
-        public ActionResult StartTest(int courseId)
+        public ActionResult StartTest(int? courseId)
         {
-            var quiz = this.quizService.GetTest(courseId);
+            var model = this.quizService.GetTest(courseId);
+            Guard.WhenArgument(model, "quiz").IsNull().Throw();
 
+            return View(model);
+        }
 
+        [HttpPost]
+        public ActionResult SubmitTest(Quiz model)
+        {
+            if (ModelState.IsValid)
+            {
+                var score =  this.quizService.SubmitTest(model);
 
-            return View(quiz);
+                return this.RedirectToAction("VisualizeTestResult");
+            }
+
+            return this.View("StartTest", model);
         }
     }
 }

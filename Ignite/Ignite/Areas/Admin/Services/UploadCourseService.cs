@@ -1,8 +1,10 @@
-﻿using Ignite.Admin.Services.Interfaces;
+﻿using Bytes2you.Validation;
+using Ignite.Admin.Services.Interfaces;
 using Ignite.Areas.Admin.ViewModels;
 using Ignite.Data;
 using Ignite.Data.Models;
 using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Web;
@@ -29,26 +31,37 @@ namespace Ignite.Admin.Services
         {
             if (json.InputStream.CanRead)
             {
-                string jsonString = string.Empty;
-
-                using (BinaryReader biteReader = new BinaryReader(json.InputStream))
+                Course course;
+                using (StreamReader reader = new StreamReader(json.InputStream))
                 {
-                    byte[] biteArray = biteReader.ReadBytes(json.ContentLength);
-                    jsonString = System.Text.Encoding.UTF8.GetString(biteArray);
+                    var content = reader.ReadToEnd();
+                    Guard.WhenArgument(content, "content").IsNullOrWhiteSpace().IsEmpty().Throw();
+                    course = JsonConvert.DeserializeObject<Course>(content);
                 }
-
-                Course course = JsonConvert.DeserializeObject<Course>(jsonString);
-
-                // call validateJson method
 
                 this.context.Courses.Add(course);
 
-                foreach (var question in course.Questions)
+                try
                 {
-                    question.CourseId = course.Id;
-                    this.context.Questions.Add(question);
+                    context.SaveChanges();
                 }
-                this.context.SaveChanges();
+                catch (System.Data.Entity.Validation.DbEntityValidationException dbEx)
+                {
+                    Exception raise = dbEx;
+                    foreach (var validationErrors in dbEx.EntityValidationErrors)
+                    {
+                        foreach (var validationError in validationErrors.ValidationErrors)
+                        {
+                            string message = string.Format("{0}:{1}",
+                                validationErrors.Entry.Entity.ToString(),
+                                validationError.ErrorMessage);
+                            // raise a new exception nesting
+                            // the current instance as InnerException
+                            raise = new InvalidOperationException(message, raise);
+                        }
+                    }
+                    throw raise;
+                }
 
                 this.currentCourseId = course.Id;
             }
@@ -56,7 +69,6 @@ namespace Ignite.Admin.Services
 
         public bool ValidateJson(HttpPostedFileBase json)
         {
-
             return true;
         }
 
