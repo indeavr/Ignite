@@ -18,6 +18,7 @@ namespace Ignite.Areas.Admin.Services
         public AssignmentService(ApplicationDbContext context)
         {
             Guard.WhenArgument(context, "context").IsNull().Throw();
+
             this.context = context;
         }
 
@@ -62,5 +63,17 @@ namespace Ignite.Areas.Admin.Services
 
             return null;
         }
+
+        //public IEnumerable<Assignment> GetAllAssignments()
+        //{
+        //    var dbAssignments = this.context.Assignments.ToList();
+
+        //    return dbAssignments;
+        //}
+
+        //public Assignment RemoveAssignment(int assignmentId)
+        //{
+        //    return null;
+        //}
     }
 }

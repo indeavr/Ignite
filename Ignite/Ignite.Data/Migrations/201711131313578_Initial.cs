@@ -3,7 +3,7 @@ namespace Ignite.Data.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class Database_Initial : DbMigration
+    public partial class Initial : DbMigration
     {
         public override void Up()
         {

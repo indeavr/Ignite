@@ -73,13 +73,9 @@
   <ItemGroup>
     <Compile Include="ApplicationDbContext.cs" />
     <Compile Include="Enums\AssignmentState.cs" />
-    <Compile Include="Migrations\201711121633382_Database_Initial.cs" />
-    <Compile Include="Migrations\201711121633382_Database_Initial.Designer.cs">
-      <DependentUpon>201711121633382_Database_Initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201711121636020_no validate.cs" />
-    <Compile Include="Migrations\201711121636020_no validate.Designer.cs">
-      <DependentUpon>201711121636020_no validate.cs</DependentUpon>
+    <Compile Include="Migrations\201711131313578_Initial.cs" />
+    <Compile Include="Migrations\201711131313578_Initial.Designer.cs">
+      <DependentUpon>201711131313578_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Answer.cs" />
@@ -95,11 +91,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201711121633382_Database_Initial.resx">
-      <DependentUpon>201711121633382_Database_Initial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201711121636020_no validate.resx">
-      <DependentUpon>201711121636020_no validate.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201711131313578_Initial.resx">
+      <DependentUpon>201711131313578_Initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

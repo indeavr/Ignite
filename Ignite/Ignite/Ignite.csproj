@@ -200,6 +200,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Areas\Admin\Controllers\AssignmentController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ManageUserController.cs" />
     <Compile Include="Areas\Admin\Services\AssignmentService.cs" />
     <Compile Include="Areas\Admin\Services\Interfaces\IAssignmentService.cs" />
     <Compile Include="Areas\Admin\ViewModels\Assignment2ViewModel.cs" />
@@ -218,12 +219,15 @@
     <Compile Include="Areas\Admin\ViewModels\GridRequestViewModel.cs" />
     <Compile Include="Areas\Admin\ViewModels\CourseNameViewModel.cs" />
     <Compile Include="Areas\Admin\ViewModels\ImageViewModel.cs" />
+    <Compile Include="Areas\Admin\ViewModels\ManageUserViewModel.cs" />
     <Compile Include="Areas\Admin\ViewModels\RulesViewModel.cs" />
     <Compile Include="Areas\Admin\ViewModels\statistics\AssignmentViewModel.cs" />
     <Compile Include="Areas\Admin\ViewModels\UploadJsonModel.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\Quiz.cs" />
+    <Compile Include="Controllers\QuizQuestion.cs" />
     <Compile Include="Controllers\TestQuizController.cs" />
     <Compile Include="Controllers\UserCourseController.cs" />
     <Compile Include="Global.asax.cs">
@@ -245,7 +249,6 @@
     <Compile Include="Areas\Admin\Services\Interfaces\IUploadCourseService.cs" />
     <Compile Include="Areas\Admin\Services\UploadCourseService.cs" />
     <Compile Include="Startup.cs" />
-    <Compile Include="ViewModels\QuizViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
@@ -423,6 +426,9 @@
     <Content Include="Content\bootstrap\alerts.less" />
     <Content Include="Content\_bootstrap-datetimepicker.less" />
     <Content Include="Content\bootstrap-datetimepicker-build.less" />
+    <Content Include="Areas\Admin\Views\ManageUser\ListUsers.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_EditUser.cshtml" />
+    <Content Include="Areas\Admin\Views\Assignment\RemoveAssignment.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\dropzone\basic.css" />
     <Content Include="Scripts\dropzone\basic.min.css" />
@@ -546,7 +552,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Admin\Views\Shared\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

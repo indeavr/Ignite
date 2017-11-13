@@ -12,8 +12,11 @@ namespace Ignite.Areas.Admin.ViewModels
         public Assignment2ViewModel()
         {
             this.Courses = new List<Course>();
+            //this.Assignments = new List<Assignment>();
         }
 
         public IEnumerable<Course> Courses;
+
+        //public IEnumerable<Assignment> Assignments;
     }
 }

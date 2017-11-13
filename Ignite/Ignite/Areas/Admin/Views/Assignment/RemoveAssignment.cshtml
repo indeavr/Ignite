@@ -1,0 +1,17 @@
+﻿@model Ignite.Areas.Admin.ViewModels.Assignment2ViewModel
+
+@{
+    ViewBag.Title = "Remove Assignments";
+}
+<div>
+    <h2>List Assignments</h2>
+</div>
+
+@foreach (var assignment in Model.Assignments)
+{
+    <div class="list-assignments">
+        @assignment.Id
+        @assignment.State
+        @ActionLink()
+    </div>
+}
