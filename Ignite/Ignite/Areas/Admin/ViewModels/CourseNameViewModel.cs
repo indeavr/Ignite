@@ -15,6 +15,8 @@ namespace Ignite.Areas.Admin.ViewModels
 
         public bool Type { get; set; }
 
+        public AssignmentState State { get; set; }
+
         public string UserId { get; set; }
 
         public IEnumerable<ApplicationUser> Users { get; set; }
