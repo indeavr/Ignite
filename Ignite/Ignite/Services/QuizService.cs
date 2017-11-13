@@ -26,10 +26,14 @@ namespace Ignite.Services
         {
             courseId = 1;
 
+            //Guard.WhenArgument(courseId, "courseId").IsNull().Throw();
+
             var questions = this.context.Courses.First(c => c.Id == courseId).Questions.ToList();
 
             var quizQuestions = new List<QuizQuestion>();
             var counter = 1;
+
+
             foreach (var question in questions)
             {
                 var currentQ = new QuizQuestion();

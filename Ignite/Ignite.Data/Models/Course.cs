@@ -28,7 +28,7 @@ namespace Ignite.Data.Models
         public DateTime DateCreated { get; set; }
 
         [Required]
-       // [Range(1,100)]
+        // [Range(1,100)]
         public double RequiredScore { get; set; }
 
         public virtual ICollection<Image> Images { get; set; }

@@ -1,10 +1,13 @@
-﻿@{
+﻿@model  List<Ignite.Areas.Admin.ViewModels.OverdueCourse>
+
+@{
     var grid = ViewBag.grid;
 }
 
-
 @section styles {
     @Styles.Render("~/Content/statistics.css")
+    @Styles.Render("~/Content/jquery-ui.css")
+    @Styles.Render("~/Content/jqgrid.css")
 }
 
 <div class="row">
@@ -30,6 +33,32 @@
             </li>
         </ul>
     </div>
+
+    <div class="alert alert-danger">
+        <div class="container" id="">
+            <h2 id="overdue-heading">Overdue !!!</h2>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>User</th>
+                        <th>Course Name</th>
+                        <th>Overdue With</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var overdueModel in Model)
+                    {
+                        <tr>
+                            <td>@overdueModel.Username</td>
+                            <td>@overdueModel.CourseName</td>
+                            <td>@overdueModel.OverdueWith</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+
     <div id="wrapper-grid" class="col s12">
         @Html.Action("ChangeViewStatistic")
     </div>

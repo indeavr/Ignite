@@ -12,6 +12,8 @@
     <br />
     @using (Html.BeginForm("AssignTo", "Assignment", FormMethod.Post))
     {
+        @Html.AntiForgeryToken()
+
         @Html.Label("User")
         @Html.DropDownListFor(u => u.UserId, Model.Users.Select(x => new SelectListItem { Text = x.UserName, Value = x.Id }))
         @Html.HiddenFor(c => c.CourseId)

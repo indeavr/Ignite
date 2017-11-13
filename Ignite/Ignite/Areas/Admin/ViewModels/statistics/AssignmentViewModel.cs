@@ -11,9 +11,9 @@ namespace Ignite.Areas.Admin.ViewModels.statistics
     {
         public int Id { get; set; }
 
-        public  string Username { get; set; }
+        public string Username { get; set; }
 
-        public  string CourseName { get; set; }
+        public string CourseName { get; set; }
 
         public DateTime DueDate { get; set; }
 
@@ -21,7 +21,7 @@ namespace Ignite.Areas.Admin.ViewModels.statistics
 
         public string Type { get; set; }
 
-        public AssignmentState State { get; set; }
+        public string State { get; set; }
 
         public decimal? TestResult { get; set; }
 

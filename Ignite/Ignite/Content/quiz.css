@@ -11,6 +11,9 @@
     margin-top: 20px;
     width: 80%;
     margin: 0 auto;
+    /*-webkit-box-shadow: 17px 17px 78px 1px rgba(84,84,84,1);
+    -moz-box-shadow: 17px 17px 78px 1px rgba(84,84,84,1);
+    box-shadow: 17px 17px 78px 1px rgba(84,84,84,1);*/
 }
 
 #test-btn{

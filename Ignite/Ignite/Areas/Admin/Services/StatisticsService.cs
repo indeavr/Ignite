@@ -21,6 +21,32 @@ namespace Ignite.Areas.Admin.Services
             this.context = context;
         }
 
+        public List<OverdueCourse> GetAllOverdue()
+        {
+            var users = this.context.Users
+                .Where(u => u.Assignments.Select(a => a.State).Contains(AssignmentState.Overdue))
+                .ToList();
+
+            var allOverdue = new List<OverdueCourse>();
+            foreach (var user in users)
+            {
+                var assignmentOverdue = user.Assignments
+                    .Where(a => a.State == AssignmentState.Overdue)
+                    .ToList();
+
+                foreach (var assignOverdue in assignmentOverdue)
+                {
+                    var overdueCourse = new OverdueCourse();
+                    overdueCourse.Username = user.UserName;
+                    overdueCourse.CourseName = assignOverdue.Course.Name;
+                    overdueCourse.OverdueWith = DateTime.Now -  assignOverdue.DueDate;
+                    allOverdue.Add(overdueCourse);
+                }
+            }
+
+            return allOverdue;
+        }
+
         public List<AssignmentViewModel> GetDataFromServer()
         {
             var assignmentsViewModel = new List<AssignmentViewModel>();
@@ -43,7 +69,7 @@ namespace Ignite.Areas.Admin.Services
                     DueDate = assignments[i].DueDate,
                     DateOfAssignment = assignments[i].DateOfAssignment,
                     Type = assignments[i].Type,
-                    State = assignments[i].State
+                    State = assignments[i].State.ToString()
                 });
             }
             assignmentsViewModel.Add(new AssignmentViewModel() { Username = "pesho" });
@@ -68,7 +94,6 @@ namespace Ignite.Areas.Admin.Services
                     break;
                 case "Coursename":
                     result.AddRange(users.Where(x => x.Assignments.Select(y => y.Course.Name).Contains(inputField)));
-
                     break;
             }
 
@@ -88,7 +113,7 @@ namespace Ignite.Areas.Admin.Services
             var result = new List<AssignmentViewModel>();
 
             foreach (var user in this.Filtrator(propertyName, shortenedOperator, inputedField, users))
-            { 
+            {
                 foreach (var courses in user.Assignments)
                 {
                     if (courses.DueDate < DateTime.Now)
@@ -102,7 +127,8 @@ namespace Ignite.Areas.Admin.Services
                         CourseName = courses.Course.Name,
                         DateOfAssignment = courses.DateOfAssignment,
                         DueDate = courses.DueDate,
-                        State = courses.State
+                        State = courses.State.ToString(),
+                        Type = courses.Type
                     });
                 }
             }

@@ -38,6 +38,7 @@ namespace Ignite.Areas.Admin.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult UploadCourse(UploadJsonModel file)
         {
             if (ModelState.IsValid)
@@ -65,6 +66,7 @@ namespace Ignite.Areas.Admin.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult UploadSlidesToDb(int courseId)
         {
             var images = new List<ImageViewModel>();

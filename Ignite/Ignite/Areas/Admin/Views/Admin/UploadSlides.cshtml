@@ -4,15 +4,21 @@
     int courseId = ViewBag.courseId;
 }
 
-<h2>UploadSlides</h2>
+@section styles{
+    @Styles.Render("~/Content/imageUpload")
+    @Styles.Render("~/Content/dropzonescss")
+}
 
-<div class="jumbotron">
+<h2 id="heading-slides">Upload the Slides for your Course</h2>
+
+<div class="jumbotron" id="dropzone-container">
     @using (Html.BeginForm("UploadSlidesToDb", "Admin", new { courseId = courseId }, FormMethod.Post,
-                                                                        new { @class = "dropzone", id = "myId" }))
+                                                                                                new { @class = "dropzone formichka", id = "myId" }))
     {
+        @Html.AntiForgeryToken()
     }
 
-    <button id="submit-all">
+    <button class="btn btn-lg btn-info" id="submit-all">
         Upload Files
     </button>
 </div>

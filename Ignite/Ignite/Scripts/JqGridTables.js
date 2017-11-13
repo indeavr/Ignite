@@ -5,16 +5,16 @@
         height: 'auto',
         width: 800,
         rowNum: 30,
-        rowList: [10, 20, 30],
-        colNames: ['Index', 'Username', 'Course', 'AssignementDate', 'DueDate', 'State', 'Type'],
+        rowList: [10, 20, 30, 50, 100],
+        colNames: ['Index', 'Username', 'CourseName', 'AssignementDate', 'DueDate', 'State', 'Type'],
         colModel: [
             { name: 'Index', key: true, index: 'Index', width: 30, formatter: "integer", search: false },
             { name: 'Username', index: 'Username', width: 120, searchoptions: { sopt: ['eq'] } },
-            { name: 'Coursename', index: 'Coursename', width: 120, align: "left", searchoptions: { sopt: ['eq'] } },
-            { name: 'AssignementDate', index: 'AssignementDate', width: 70, align: "left", formatter: "date", search: false },
+            { name: 'CourseName', index: 'CourseName', width: 120, align: "left", searchoptions: { sopt: ['eq'] } },
+            { name: 'DateOfAssignment', index: 'DateOfAssignment', width: 70, align: "left", formatter: "date", search: false },
             { name: 'DueDate', index: 'DueDate', width: 70, align: "left", formatter: "date", search: false },
             { name: 'State', index: 'State', width: 60, align: "left", searchoptions: { sopt: ['eq'] } },
-                { name: 'Type', index: 'Type', width: 60, align: "left", searchoptions: { sopt: ['eq'] } }
+            { name: 'Type', index: 'Type', width: 60, align: "left", searchoptions: { sopt: ['eq'] } }
         ],
 
         jsonReader: {

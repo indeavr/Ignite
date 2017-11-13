@@ -9,6 +9,7 @@ using System.Web.Mvc;
 
 namespace Ignite.Areas.Admin.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class ManageUserController : Controller
     {
         private readonly ApplicationUserManager userManager;

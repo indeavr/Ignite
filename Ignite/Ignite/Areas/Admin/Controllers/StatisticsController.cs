@@ -12,6 +12,7 @@ using System.Web.Mvc;
 
 namespace Ignite.Areas.Admin.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class StatisticsController : Controller
     {
         private readonly IStatisticsService statService;
@@ -32,7 +33,9 @@ namespace Ignite.Areas.Admin.Controllers
         // GET: Admin/Statistics
         public ActionResult Home()
         {
-            return View();
+            var overdueUsers = this.statService.GetAllOverdue();
+
+            return View(overdueUsers);
         }
 
         public ActionResult ChangeViewStatistic(string type)
@@ -54,9 +57,15 @@ namespace Ignite.Areas.Admin.Controllers
             {
                 var assignments = this.statService.GetDataFromServer();
 
-                var needed = new { total = 1, page = 1, records = assignments.Count, rows = assignments };
+                var result = new
+                {
+                    total = assignments.Count / rows + 1,
+                    page = page,
+                    records = assignments.Count,
+                    rows = assignments.Skip((page - 1) * rows).Take(rows).ToList()
+                };
 
-                return Json(needed, JsonRequestBehavior.AllowGet);
+                return Json(result, JsonRequestBehavior.AllowGet);
             }
             else
             {

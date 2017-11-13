@@ -1,0 +1,12 @@
+﻿@model Ignite.ViewModels.Quiz
+
+<h3 id="test-heading">
+    Course Test
+</h3>
+<hr />
+@Html.HiddenFor(m => m.AssignmentId)
+
+@Html.EditorFor(m => m.Questions)
+<div id="btn-test-wrap">
+    <input type="submit" value="Submit Test" id="test-btn" />
+</div>

@@ -1,8 +1,13 @@
 ﻿@model Ignite.Areas.Admin.ViewModels.UploadJsonModel
 
+@section styles{
+    @Styles.Render("~/Content/uploadCourse")
+}
+
 
 @section scripts {
     @Scripts.Render("~/bundles/uploadCourse");
+
 }
 
 <div class="heading">
@@ -10,41 +15,28 @@
 </div>
 
 @using (Html.BeginForm("UploadCourse", "Admin", FormMethod.Post,
-    new { id = "file-upload-form", @class = "uploader", enctype = "multipart/form-data" }))
+                new { id = "file-upload-form", @class = "uploader", enctype = "multipart/form-data" }))
 {
-
-
+    @Html.AntiForgeryToken()
     <!-- Upload  -->
     @Html.TextBoxFor(m => m.Json, new { type = "file", id = "file-upload" })
-   
-    //<input id="file-upload" type="file" name="Json" accept=".json" />
 
-        <label for="file-upload" id="file-drag">
-            <img id="file-image" src="#" alt="Preview" class="hidden">
-            <div id="start">
-                <i class="fa fa-download" aria-hidden="true"></i>
-                <div>Select a file or drag here</div>
-                <div id="notimage" class="hidden">Please select a Json File</div>
-                <span id="file-upload-btn" class="btn btn-primary">Select a file</span>
-            </div>
-            <div id="response" class="hidden">
-                <div id="messages"></div>
-                <progress class="progress" id="file-progress" value="0">
-                    <span>0</span>%
-                </progress>
-            </div>
-            @Html.ValidationMessageFor(m => m.Json)
-        </label>
+    <label for="file-upload" id="file-drag">
+        <img id="file-image" src="#" alt="Preview" class="hidden">
+        <div id="start">
+            <i class="fa fa-download" aria-hidden="true"></i>
+            <div>Select a file or drag here</div>
+            <div id="notimage" class="hidden">Please select a Json File</div>
+            <span id="file-upload-btn" class="btn btn-primary">Select a file</span>
+        </div>
+        <div id="response" class="hidden">
+            <div id="messages"></div>
+            <progress class="progress" id="file-progress" value="0">
+                <span>0</span>%
+            </progress>
+        </div>
+        @Html.ValidationMessageFor(m => m.Json)
+    </label>
 
-        <input type="submit" />
-
-
-        @*<div class="box__input">
-                @Html.TextBox("course", "", new { type = "file", @class = "box__file", name = "files[]" })
-                <label for="file"><strong>Choose a file</strong><span class="box__dragndrop"> or drag it here</span>.</label>
-                <button class="box__button" type="submit">Upload</button>
-            </div>
-            <div class="box__uploading">Uploading&hellip;</div>
-            <div class="box__success">Done!</div>
-            <div class="box__error">Error! <span></span>.</div>*@
+        <input type="submit" class="btn btn-md btn-info" />
 }

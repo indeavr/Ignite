@@ -1,37 +1,44 @@
 ﻿@model Ignite.ViewModels.Quiz
 
 @section styles{
-    @Styles.Render("~/Content/quiz.css");    
+    @Styles.Render("~/Content/quiz.css");
 }
 
-@using (Ajax.BeginForm("SubmitTest", "TestQuiz", new { }, new AjaxOptions { OnSuccess = "onSuccess" }, new { id = "test-form" }))
-@*{*@
-    Html.RenderPartial("", Model)
+@using (Ajax.BeginForm("SubmitTest", "TestQuiz",
+                            new { }, new AjaxOptions
+                            {
+                                HttpMethod = "POST",
+                                OnSuccess = "onSuccess(data)"
+                            },
+                            new { id = "test-form" }))
+{
+    @Html.AntiForgeryToken()
+
     <div id="test-form">
-        <h3 id="test-heading">
-            Course Test
-        </h3>
-        <hr />
-        @Html.HiddenFor(m => m.AssignmentId)
-
-        @Html.EditorFor(m => m.Questions)
-        @Html.ValidationMessageFor(m => )
-        <div id="btn-test-wrap">
-            <input type="submit" value="Submit Test" id="test-btn" />
-        </div>
-
-        <div id="result-popup" class="modal" hidden>
-            <!-- Modal content -->
-            <div class="modal-content" id="myModalContent">
-
-            </div>
-        </div>
+        @Html.Partial("_TestForm", Model)
     </div>
-@*}*@
+}
+
+<div id="result-popup" class="modal" hidden>
+
+</div>
+
 
 @section scripts{
     <script>
-        var URL = "@(Url.Action("SubmitTest", "TestQuiz"))";
+        function onSuccess(data) {
+            debugger;
+            if (data.error) {
+                // $('#test-form')
+            }
+            else {
+                debugger;
+                $('#result-popup').html(data.partialView)
+                $('#result-popup').show()
+            }
+        }
+
+        @*var URL = "@(Url.Action("SubmitTest", "TestQuiz"))";
         var model = @Html.Raw(Json.Encode(Model));
 
         $(function () {
@@ -53,15 +60,15 @@
                         alert("Fail !");
                     }
                 });
-            });
+            });*@
             //$("#closebtn").on('click',function(){
             //    $('#myModal').modal('hide');
 
             //$("#closbtn").click(function () {
             //    $('#myModal').modal('hide');
             //});
-        });
+        //});
 
-</script>  
+    </script>
 }
 

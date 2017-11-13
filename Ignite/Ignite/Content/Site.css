@@ -142,3 +142,12 @@ textarea {
 #main {
     padding-top: 30px;
 }
+
+#igniteLogo {
+    font-size: 15px;
+}
+
+.navbar-fixed-left:hover #igniteLogo {
+    top: 8px;
+    left: 5px;
+}

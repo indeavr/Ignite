@@ -1,4 +1,22 @@
 ﻿container > .jumbotron {
     width: 80%;
+}
+
+#dropzone-container {
+    width: 80%;
     margin: 0 auto;
+    /*background-color: ;*/
+}
+
+.formichka{
+
+}
+
+#submit-all{
+    margin-top: 12px;
+}
+
+#heading-slides{
+    margin: 20px auto;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }

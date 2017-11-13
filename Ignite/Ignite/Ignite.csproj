@@ -220,6 +220,7 @@
     <Compile Include="Areas\Admin\ViewModels\GridRequestViewModel.cs" />
     <Compile Include="Areas\Admin\ViewModels\ImageViewModel.cs" />
     <Compile Include="Areas\Admin\ViewModels\ManageUserViewModel.cs" />
+    <Compile Include="Areas\Admin\ViewModels\OverdueCourse.cs" />
     <Compile Include="Areas\Admin\ViewModels\RulesViewModel.cs" />
     <Compile Include="Areas\Admin\ViewModels\statistics\AssignmentViewModel.cs" />
     <Compile Include="Areas\Admin\ViewModels\UploadJsonModel.cs" />
@@ -547,6 +548,7 @@
     <Content Include="Views\UserCourse\DisplayingCourseSlides.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\QuizQuestion.cshtml" />
     <Content Include="Views\TestQuiz\_VisualizeTestResult.cshtml" />
+    <Content Include="Views\TestQuiz\_TestForm.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

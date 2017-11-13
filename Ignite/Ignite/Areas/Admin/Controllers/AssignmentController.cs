@@ -57,6 +57,7 @@ namespace Ignite.Areas.Admin.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult AssignTo(CourseNameViewModel model)
         {
             assignmentService.CreateAssignment(model.DueDate, model.Type, model.State, model.CourseId, model.UserId);

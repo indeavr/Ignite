@@ -180,8 +180,22 @@
     height: 300px;
 }
 
-#file-drag{
+#file-drag {
     height: 70%;
     padding: 12%;
     margin-top: 50px;
+    padding-top: 8%;
+}
+
+.heading h2 {
+    margin: inherit auto;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.uploader .btn-info {
+    background: #5bc0de;
+}
+
+.uploader .btn-info:hover {
+    background: #269abc;
 }

@@ -2,7 +2,7 @@
 	"Name": "Programming",
 	"Description": "Mnogo qk",
 	"DateCreated":"\/Date(1330848000000-0800)\/",
-	"RequiredScore" : "5.50",
+	"RequiredScore" : "65",
 	"Questions" : [{
 	    "Statement": "Which one is a Scripting Language ?",
 		"CorrectAnswer": "C",
@@ -14,11 +14,20 @@
 		},
 		{
 		"Statement": "Which one is a Scripting Language ?",
-		"CorrectAnswer": "C",
+		"CorrectAnswer": "B",
 		"Answers": [
 			{"Text": "C#", "Letter": "A" },
-			{"Text":"Java", "Letter": "B"},
-			{"Text": "Python", "Letter": "C"},
+			{"Text": "Python", "Letter": "B"},
+			{"Text":"Java", "Letter": "C"},
+			{"Text":"C++", "Letter": "D"}]
+		},
+		{
+		"Statement": "Which one is a Scripting Language ?",
+		"CorrectAnswer": "B",
+		"Answers": [
+			{"Text": "C#", "Letter": "A" },
+			{"Text": "Python", "Letter": "B"},
+			{"Text":"Java", "Letter": "C"},
 			{"Text":"C++", "Letter": "D"}]
 		}
 		]
