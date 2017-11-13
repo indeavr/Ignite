@@ -58,7 +58,7 @@ namespace Ignite.Areas.Admin.Services
             switch (propertyName)
             {
                 case "Username":
-                    result.AddRange(users.Where(x => x.UserName == inputField).ToList());
+                    result.AddRange(users.Where(x => x.UserName.Contains(inputField)).ToList());
 
                     break;
                 case "State":

@@ -1,10 +1,67 @@
 ﻿@model Ignite.ViewModels.Quiz
 
-@using (Html.BeginForm("SubmitTest", "TestQuiz", FormMethod.Post, new { id = "test-form" }))
-{
-    @Html.HiddenFor(m => m.AssignmentId)
+@section styles{
+    @Styles.Render("~/Content/quiz.css");    
+}
 
-    @Html.EditorFor(m => m.Questions)
-    <input type="submit" value="See Result" />
+@using (Ajax.BeginForm("SubmitTest", "TestQuiz", new { }, new AjaxOptions { OnSuccess = "onSuccess" }, new { id = "test-form" }))
+@*{*@
+    Html.RenderPartial("", Model)
+    <div id="test-form">
+        <h3 id="test-heading">
+            Course Test
+        </h3>
+        <hr />
+        @Html.HiddenFor(m => m.AssignmentId)
+
+        @Html.EditorFor(m => m.Questions)
+        @Html.ValidationMessageFor(m => )
+        <div id="btn-test-wrap">
+            <input type="submit" value="Submit Test" id="test-btn" />
+        </div>
+
+        <div id="result-popup" class="modal" hidden>
+            <!-- Modal content -->
+            <div class="modal-content" id="myModalContent">
+
+            </div>
+        </div>
+    </div>
+@*}*@
+
+@section scripts{
+    <script>
+        var URL = "@(Url.Action("SubmitTest", "TestQuiz"))";
+        var model = @Html.Raw(Json.Encode(Model));
+
+        $(function () {
+            $("#test-btn").click(function () {
+                debugger;
+                var $buttonClicked = $(this);
+                $.ajax({
+                    type: "POST",
+                    url: URL,
+                    contentType: "application/json; charset=utf-8",
+                    data: "{ 'model':" + JSON.stringify(model) + "}",
+                    datatype: "text.json",
+                    success: function (data) {
+                        debugger;
+                            $('#myModalContent').html(data);
+                            $('#result-popup').show();
+                    },
+                    error: function () {
+                        alert("Fail !");
+                    }
+                });
+            });
+            //$("#closebtn").on('click',function(){
+            //    $('#myModal').modal('hide');
+
+            //$("#closbtn").click(function () {
+            //    $('#myModal').modal('hide');
+            //});
+        });
+
+</script>  
 }
 

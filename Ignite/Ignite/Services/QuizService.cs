@@ -24,7 +24,7 @@ namespace Ignite.Services
 
         public Quiz GetTest(int? courseId)
         {
-            courseId = 4;
+            courseId = 1;
 
             var questions = this.context.Courses.First(c => c.Id == courseId).Questions.ToList();
 
@@ -55,7 +55,7 @@ namespace Ignite.Services
             return quiz;
         }
 
-        public double SubmitTest(Quiz quiz)
+        public QuizResultViewModel SubmitTest(Quiz quiz)
         {
             var questionsCount = quiz.Questions.Count;
             var correctAnswerCount = 0;
@@ -74,26 +74,39 @@ namespace Ignite.Services
                 }
             }
 
-            double requiredScore = this.context.Assignments
-                .First(a => a.Id == quiz.AssignmentId)
-                .Course
-                .RequiredScore;
+            //double requiredScore = this.context.Assignments
+            //    .First(a => a.Id == quiz.AssignmentId)
+            //    .Course
+            //    .RequiredScore;
 
-            double score = (correctAnswerCount / questionsCount) * 100;
+            double requiredScore = 40;
+
+            double score = (correctAnswerCount / (double)questionsCount) * 100;
+
+
+            var quizResult = new QuizResultViewModel();
+            quizResult.Passed = "Failed";
 
             if (score >= requiredScore)
             {
                 this.context.Assignments
                     .First(a => a.Id == quiz.AssignmentId)
                     .State = AssignmentState.Completed;
+
+                quizResult.Passed = "Passed";
             }
 
+            // this should only change if the score is higher then the previous
             this.context.Assignments
                 .First(a => a.Id == quiz.AssignmentId)
                 .TestResult = score;
 
 
-            return score;
+            quizResult.Score = score;
+            quizResult.CorrectAnswers = correctAnswerCount;
+            quizResult.RequiredScore = requiredScore;
+
+            return quizResult;
         }
     }
 }

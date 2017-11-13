@@ -1,5 +1,5 @@
 ﻿@model Ignite.ViewModels.QuizQuestion
-<div>
+<div id="test-question">
     @Html.HiddenFor(x => x.Id)
     @Html.HiddenFor(m => m.CorrectAnswer)
     <h3> @Model.Statement </h3>
@@ -7,8 +7,11 @@
     @foreach (var answer in Model.Answers)
     {
         <p>
-            @Html.RadioButtonFor(b => b.ChosenAnswer, answer.Letter)  @answer.Text
+            @Html.RadioButtonFor(b => b.ChosenAnswer, answer.Letter)
+            <label for="@answer.Letter">@answer.Text</label>
         </p>
     }
-    @Html.ValidationMessageFor(m => m.ChosenAnswer, "Please Select An Answer !")
+    <div id = "validation-test">
+        @Html.ValidationMessageFor(m => m.ChosenAnswer, null, new { id ="validation-test-span" })
+    </div>
 </div>

@@ -9,8 +9,8 @@
 
 <div class="row">
     <div class="col s12">
-        <ul class="tabs">
-            <li class="tab col s3">
+        <ul class="nav nav-tabs nav-justified">
+            <li class="tab-table">
                 @Ajax.ActionLink("Users", "ChangeViewStatistic", new { type = "user" },
                 new AjaxOptions
                 {
@@ -19,7 +19,7 @@
                     OnSuccess = "onGridLoaded"
                 })
             </li>
-            <li class="tab col s3">
+            <li class="tab-table">
                 @Ajax.ActionLink("Courses", "ChangeViewStatistic", new { type = "course" },
                      new AjaxOptions
                      {

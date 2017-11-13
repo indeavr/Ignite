@@ -13,6 +13,11 @@ namespace Ignite.Controllers
     {
         public IQuizService quizService;
 
+        public TestQuizController()
+        {
+
+        }
+
         public TestQuizController(IQuizService quizService)
         {
             Guard.WhenArgument(quizService, "quizService").IsNull().Throw();
@@ -32,14 +37,26 @@ namespace Ignite.Controllers
         [HttpPost]
         public ActionResult SubmitTest(Quiz model)
         {
-            if (ModelState.IsValid)
-            {
-                var score =  this.quizService.SubmitTest(model);
+            // return json with HTML and State indicating if it passed or not
 
-                return this.RedirectToAction("VisualizeTestResult");
-            }
+            //foreach (var quest in model.Questions)
+            //{ 
+            //    if (quest.ChosenAnswer == null)
+            //    {
+            //        ModelState.AddModelError("quizQuestion", "Please select an Answer !");
+            //    }
+            //}
 
-            return this.View("StartTest", model);
+            //if (ModelState.IsValid)
+            //{
+                var quizResult =  this.quizService.SubmitTest(model);
+                Guard.WhenArgument(quizResult, "quizResult").IsNull().Throw();
+
+                return this.PartialView("_VisualizeTestResult", quizResult);
+            //}
+
+            //return this.View("StartTest", model);
         }
+
     }
 }

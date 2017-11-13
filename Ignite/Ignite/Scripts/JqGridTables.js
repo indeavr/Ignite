@@ -25,7 +25,7 @@
             page: 'page',
             total: 'total'
         },
-        pager: "#plist485",
+        pager: "#pager",
         viewrecords: true,
         sortname: 'Username',
         grouping: true,
@@ -38,7 +38,7 @@
         },
         caption: "Information about all users"
     });
-    jQuery("#grid-user").jqGrid('navGrid', 
+    jQuery("#grid-user").jqGrid('navGrid', '#pager',
         { edit: false, add: false, del: false },
         {},
         {},

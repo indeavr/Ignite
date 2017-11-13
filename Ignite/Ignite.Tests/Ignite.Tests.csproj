@@ -118,11 +118,11 @@
     <Compile Include="Admin\Services\UploadCourseServiceTests\ImageToByteArray_Should.cs" />
     <Compile Include="Admin\Services\UploadCourseServiceTests\SaveCourse_Should.cs" />
     <Compile Include="Admin\Services\UploadCourseServiceTests\SaveSlidesToCourse_Should.cs" />
-    <Compile Include="Controllers\UserCourseControllerTests\Constructor_Should.cs" />
-    <Compile Include="Controllers\UserCourseControllerTests\UserCourseControllerTest.cs" />
-    <Compile Include="Controllers\UserCourseControllerTests\Mocks\MockedUserCourseController.cs" />
+    <Compile Include="Controllers\TestQuizControllerTests\StartTestGet_Should.cs" />
+    <Compile Include="Controllers\TestQuizControllerTests\StartTestPost_Should.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Controllers\HomeControllerTest.cs" />
+    <Compile Include="Services\QuizServiceTests\GetTest_Should.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App.config" />

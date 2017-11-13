@@ -7,6 +7,11 @@ namespace Ignite.ViewModels
 {
     public class AnsweViewModel
     {
+        public AnsweViewModel()
+        {
+
+        }
+
         public AnsweViewModel(string text, string letter)
         {
             this.Text = text;

@@ -79,6 +79,11 @@ namespace Ignite
             bundles.Add(new ScriptBundle("~/bundles/myCourses").Include(
                      "~/Scripts/myCourses.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/quizTest.js").Include(
+             "~/Scripts/quizTest.js"));
+
+            bundles.Add(new StyleBundle("~/Content/quiz.css").Include(
+              "~/Content/quiz.css"));
 
             bundles.Add(new ScriptBundle("~/bundles/myCourses").Include(
                      "~/Scripts/myCourses.js"));

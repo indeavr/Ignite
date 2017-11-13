@@ -11,7 +11,6 @@ namespace Ignite.ViewModels
         public QuizQuestion()
         {
             this.Answers = new List<AnsweViewModel>();
-            this.ChosenAnswer = "NotChosen";
         }
 
         public int Id { get; set; }
@@ -21,7 +20,7 @@ namespace Ignite.ViewModels
         public List<AnsweViewModel> Answers { get; set; }
 
         [Required]
-        [AnswerChosen]
+        [Display(Name = "Answer")]
         public string ChosenAnswer { get; set; }
 
         public string CorrectAnswer { get; set; }

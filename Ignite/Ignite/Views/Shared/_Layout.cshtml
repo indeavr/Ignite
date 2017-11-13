@@ -33,6 +33,7 @@
                      <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, null)</li>
                     <li>@Html.ActionLink("About", "About", "Home", new { area = "" }, null)</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home", new { area = "" }, null)</li>
+<<<<<<< Updated upstream
                     
                     @if (this.User.Identity.IsAuthenticated)
 
@@ -46,6 +47,8 @@
                         <li>@Html.ActionLink("My Courses", "Home", "UserCourse", new { area = "" }, null)</li>
                     }
 
+=======
+>>>>>>> Stashed changes
                     @if (this.User.IsInRole("Admin"))
                         {
                             <li>@Html.ActionLink("Admin", "Home", "Admin", new { area = "Admin" }, null)</li>
@@ -71,9 +74,12 @@
     @Scripts.Render("~/bundles/jqueryval")
     @Scripts.Render("~/bundles/ajax")
     @Scripts.Render("~/bundles/modernizr")
+<<<<<<< Updated upstream
     
     @Scripts.Render("~/bundles/myCourses")
 
+=======
+>>>>>>> Stashed changes
     @RenderSection("scripts", required: false)
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>

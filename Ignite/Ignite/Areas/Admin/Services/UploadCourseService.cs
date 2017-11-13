@@ -92,7 +92,7 @@ namespace Ignite.Admin.Services
 
         public void SaveSlidesToCourse(int courseId, List<ImageViewModel> imagesView)
         {
-           // var course = this.context.Courses.First(c => c.Id == courseId);
+            // var course = this.context.Courses.First(c => c.Id == courseId);
 
             foreach (var imageView in imagesView)
             {
@@ -100,8 +100,6 @@ namespace Ignite.Admin.Services
                 image.CourseId = courseId;
                 this.context.Images.Add(image);
             }
-
-
             this.context.SaveChanges();
         }
     }
