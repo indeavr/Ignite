@@ -14,19 +14,34 @@
     {
         @Html.AntiForgeryToken()
 
-        @Html.Label("User")
-        @Html.DropDownListFor(u => u.UserId, Model.Users.Select(x => new SelectListItem { Text = x.UserName, Value = x.Id }))
-        @Html.HiddenFor(c => c.CourseId)
+        @Html.Label("Users")
         <br />
-        @Html.Label("Mandatory")
-        @Html.CheckBoxFor(t => t.Type)
-        <br />
-        @*@Html.Label("State")
-        @Html.EnumDropDownListFor(s => s.State)
-        <br />*@
-        @Html.Label("Duedate")
-        @Html.TextBoxFor(d => d.DueDate, new { id = "datepicker" })
-        <br />
+        foreach (var user in Model.Users)
+        {
+            @user.UserName
+            <br />
+            @Html.Label("Assign")
+            @Html.CheckBoxFor(c => c.Checked)
+            @Html.HiddenFor(c => c.CourseId)
+            <br />
+            @Html.Label("Mandatory")
+            @Html.CheckBoxFor(t => t.Type)
+            <br />
+            @Html.Label("Duedate")
+            @Html.TextBoxFor(d => d.DueDate, new { id = "datepicker" })
+            <br />
+        }
+
+
+        @*@Html.Label("User")
+            @Html.DropDownListFor(u => u.UserId, Model.Users.Select(x => new SelectListItem { Text = x.UserName, Value = x.Id }))
+            @Html.HiddenFor(c => c.CourseId)
+            <br />
+            @Html.Label("Mandatory")
+            @Html.CheckBoxFor(t => t.Type)
+            <br />
+            @Html.Label("Duedate")
+            @Html.TextBoxFor(d => d.DueDate, new { id = "datepicker" })*@
         <input type="submit" />
     }
 </div>
@@ -39,7 +54,7 @@
     <script>
         $(document).ready(function () {
 
-            $('.datepicker').datetimepicker({
+            $('#datepicker').datepicker({
                 format: 'dd/mm/yyyy'
             });
         });

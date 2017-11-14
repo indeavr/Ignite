@@ -64,16 +64,16 @@ namespace Ignite.Areas.Admin.Services
             return null;
         }
 
-        //public IEnumerable<Assignment> GetAllAssignments()
-        //{
-        //    var dbAssignments = this.context.Assignments.ToList();
+        public IEnumerable<Assignment> GetAllAssignments()
+        {
+            var dbAssignments = this.context.Assignments.ToList();
 
-        //    return dbAssignments;
-        //}
+            return dbAssignments;
+        }
 
-        //public Assignment RemoveAssignment(int assignmentId)
-        //{
-        //    return null;
-        //}
+        public Assignment RemoveAssignment(int assignmentId)
+        {
+            return null;
+        }
     }
 }

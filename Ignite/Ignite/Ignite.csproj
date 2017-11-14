@@ -429,6 +429,8 @@
     <Content Include="Areas\Admin\Views\ManageUser\ListUsers.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_EditUser.cshtml" />
     <Content Include="Areas\Admin\Views\Assignment\RemoveAssignment.cshtml" />
+    <Content Include="Areas\Admin\Views\Assignment\ManageAssignments.cshtml" />
+    <Content Include="Areas\Admin\Views\ManageUser\CreateCustomUser.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\dropzone\basic.css" />
     <Content Include="Scripts\dropzone\basic.min.css" />

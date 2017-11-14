@@ -26,7 +26,7 @@ namespace Ignite.Areas.Admin.Controllers
         }
         
         // GET: Admin/Assignment
-        public ActionResult Home()
+        public ActionResult ManageAssignments()
         {
             return this.View();
         }
@@ -49,7 +49,6 @@ namespace Ignite.Areas.Admin.Controllers
             var model = new CourseNameViewModel();
 
             var allUsers = this.userManager.Users.ToList();
-            //model.DueDate = DateTime.Now;
             model.Users = allUsers;
             model.Name = chosenCourse.Name;
             model.Type = true;
@@ -65,14 +64,14 @@ namespace Ignite.Areas.Admin.Controllers
             return this.RedirectToAction("Home", "Admin");
         }
 
-        //public ActionResult RemoveAssignment()
-        //{
-        //    var allAssignments = assignmentService.GetAllAssignments();
-        //    var model = new Assignment2ViewModel();
+        public ActionResult RemoveAssignment()
+        {
+            var allAssignments = assignmentService.GetAllAssignments();
+            var model = new Assignment2ViewModel();
 
-        //    model.Assignments = allAssignments;
+            model.Assignments = allAssignments;
 
-        //    return this.View(model);
-        //}
+            return this.View(model);
+        }
     }
 }

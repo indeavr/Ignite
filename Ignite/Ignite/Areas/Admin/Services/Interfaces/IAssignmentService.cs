@@ -17,8 +17,8 @@ namespace Ignite.Areas.Admin.Services.Interfaces
 
         Assignment CreateAssignment(DateTime dueDate, bool type, AssignmentState state, int courseId, string userId);
 
-        //IEnumerable<Assignment> GetAllAssignments();
+        IEnumerable<Assignment> GetAllAssignments();
 
-        //Assignment RemoveAssignment(int assignmentId);
+        Assignment RemoveAssignment(int assignmentId);
     }
 }

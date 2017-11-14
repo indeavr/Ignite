@@ -80,9 +80,9 @@
   <ItemGroup>
     <Compile Include="ApplicationDbContext.cs" />
     <Compile Include="Enums\AssignmentState.cs" />
-    <Compile Include="Migrations\201711131819190_Initial-DB.cs" />
-    <Compile Include="Migrations\201711131819190_Initial-DB.Designer.cs">
-      <DependentUpon>201711131819190_Initial-DB.cs</DependentUpon>
+    <Compile Include="Migrations\201711140925288_Initial.cs" />
+    <Compile Include="Migrations\201711140925288_Initial.Designer.cs">
+      <DependentUpon>201711140925288_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Answer.cs" />
@@ -98,8 +98,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201711131819190_Initial-DB.resx">
-      <DependentUpon>201711131819190_Initial-DB.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201711140925288_Initial.resx">
+      <DependentUpon>201711140925288_Initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

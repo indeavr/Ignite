@@ -9,6 +9,11 @@ namespace Ignite.Areas.Admin.ViewModels
 {
     public class CourseNameViewModel
     {
+        public CourseNameViewModel()
+        {
+            this.Users = new List<ApplicationUser>();
+        }
+
         public string Name { get; set; }
 
         public DateTime DueDate { get; set; }
@@ -22,5 +27,7 @@ namespace Ignite.Areas.Admin.ViewModels
         public IEnumerable<ApplicationUser> Users { get; set; }
 
         public int CourseId { get; set; }
+
+        public bool Checked { get; set; }
     }
 }
