@@ -29,15 +29,15 @@ namespace Ignite.Services
             {
                 if (assignment.State == AssignmentState.Started)
                 {
-                    allAssignments.Started.Enqueue(assignment);
+                    allAssignments.Started.Add(assignment);
                 }
                 else if (assignment.State == AssignmentState.Pending)
                 {
-                    allAssignments.Pending.Enqueue(assignment);
+                    allAssignments.Pending.Add(assignment);
                 }
                 else if (assignment.State == AssignmentState.Completed)
                 {
-                    allAssignments.Completed.Enqueue(assignment);
+                    allAssignments.Completed.Add(assignment);
                 }
             }
             

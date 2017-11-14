@@ -1,8 +1,9 @@
-﻿@{ 
+﻿@model Ignite.ViewModels.AllAssignmentsPerUserViewModels
+
+@{ 
     ViewBag.Title = "Welcome";
 }
 
-<<<<<<< Updated upstream
 <div class="container">
     <div class="row">
         <div class="col-md-12">
@@ -47,7 +48,7 @@
                 <div class="panel-body">
                     <div class="tab-content">
                         <div class="tab-pane fade in active" id="tabsuccess">
-                            @Html.Partial("_CompletedCourses", Model.Completed)
+                            @Html.Partial("_CompletedCourses", Model.Started)
                         </div>
                     </div>
                 </div>
@@ -58,9 +59,3 @@
 
 </div>
 <br />
-
-
-
-
-=======
->>>>>>> Stashed changes

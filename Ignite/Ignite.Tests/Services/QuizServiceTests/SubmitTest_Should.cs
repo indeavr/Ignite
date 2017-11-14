@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,13 @@ using System.Threading.Tasks;
 
 namespace Ignite.Tests.Services.QuizServiceTests
 {
-    class SubmitTest_Should
+    [TestClass]
+    public class SubmitTest_Should
     {
+        [TestMethod]
+        public void ReturnCorrectQuizResults_WhenSubmittedQuizIsCorrect()
+        {
+
+        }
     }
 }

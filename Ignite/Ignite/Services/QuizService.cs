@@ -72,6 +72,7 @@ namespace Ignite.Services
 
             foreach (var question in quiz.Questions)
             {
+                Guard.WhenArgument(question.ChosenAnswer, "ChosenAnswer").IsNull().Throw();
                 if (question.CorrectAnswer == question.ChosenAnswer)
                 {
                     correctAnswerCount++;
@@ -109,6 +110,8 @@ namespace Ignite.Services
             quizResult.Score = score;
             quizResult.CorrectAnswers = correctAnswerCount;
             quizResult.RequiredScore = requiredScore;
+
+            this.context.SaveChanges();
 
             return quizResult;
         }

@@ -4,45 +4,55 @@
     ViewBag.Title = "LaunchCourse";
 }
 
-    <div class="panel-heading"><label>CourseName: @Model.CourseName</label> <button id="#LaunchCourseButton" enabled>Take Test</button></div>
+@section styles{
+    @Styles.Render("~/Content/swiper.css");
+}
 
-    <div id="myCarousel" class="carousel slide" data-ride="carousel" >
-        <div class="carousel-inner" role="listbox">
-            @{ var counter = 0;}
-            @foreach (var image in Model.Images)
-            {
-                if (counter == 0)
-                {
-                    <div class="item active">
-                        <img class="d-block img-fluid" src="@Url.Action("RenderImage", new { imgId = image.Id })">
-                    </div>
-                }
-                else
-                {
-                    <div class="item">
-                        <img class="d-block img-fluid" src="@Url.Action("RenderImage", new { imgId = image.Id })">
-                    </div>
-                }
+<div class="panel-heading"><label>CourseName: @Model.CourseName</label> <button class="btn btn-info disabled" id="LaunchCourseButton">Take Test</button></div>
 
-                //if (counter == Model.Images.Count - 1)
+<div class="swiper-container">
+    <div class="swiper-wrapper">
 
-                counter++;
+        @foreach (var image in Model.Images)
+        {
+            <div class="swiper-slide">
+                <img id="slide-img" src="@Url.Action("RenderImage", new { imgId = image.Id })" alt="firstSlide">
+            </div>
+        }
 
-            }
-            <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev" >
-                <span class="glyphicon glyphicon-chevron-left carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-            </a>
-
-            <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next" >
-                <span class="glyphicon glyphicon-chevron-right carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-            </a>
- 
-        </div>
     </div>
+    <div class="swiper-pagination"></div>
+
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+</div>
 
 
+@section scripts{
+    @Scripts.Render("~/bundles/swiper.js");
+
+    <script>
+        var swiper = new Swiper('.swiper-container', {
+            pagination: {
+                el: '.swiper-pagination',
+                type: 'progressbar',
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            on: {
+                init: function () {
+                    console.log('swiper initialized');
+                },
+                reachEnd: function () {
+                    debugger;
+                    $('#LaunchCourseButton').removeClass("disabled")
+                }
+            }
+        });
+    </script>
+}
 
 
 

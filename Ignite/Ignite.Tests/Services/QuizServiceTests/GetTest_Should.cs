@@ -96,5 +96,7 @@ namespace Ignite.Tests.Services.QuizServiceTests
             Assert.AreEqual(questionsExpected.First().Answers.First().Letter, result.Questions.First().Answers.First().Letter);
             Assert.AreEqual(questionsExpected.First().Answers.First().Text, result.Questions.First().Answers.First().Text);
         }
+
+
     }
 }

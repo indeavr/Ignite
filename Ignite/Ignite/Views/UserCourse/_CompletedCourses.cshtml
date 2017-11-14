@@ -1,11 +1,11 @@
-﻿@model List<Ignite.ViewModels.AssignmentViewModel>
+﻿@model List<Ignite.Data.Models.Assignment>
 
 @{
     ViewBag.Title = "_CompletedCourses";
 }
 
 <div class="row">
-    @foreach (var assignment in Model)
+    @foreach (var assignment in Model) 
     {
         <div class="card card-inverse container col-md-3 col-sm-4 col-xs-6">
             <img class="img-responsive card-img" src="~/Content/img.jpg" alt="Card image cap" />
@@ -23,7 +23,3 @@
         </div>
     }
 </div>
-
-
-<h2>_CompletedCourses</h2>
-

@@ -35,6 +35,15 @@ namespace Ignite.Controllers
             
         }
 
+        //public ActionResult Home()
+        //{
+        //    //var username = this.User.Identity.Name;
+
+        //    //var allAssignments = this.userCourseService.GetAllAssignmentsPerUser(username);
+
+        //    //return this.View(allAssignments);
+        //}
+
         // GET: UserCourse
         public ActionResult Home(string state)
         {

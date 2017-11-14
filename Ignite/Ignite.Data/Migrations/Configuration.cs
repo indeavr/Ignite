@@ -24,17 +24,17 @@ namespace Ignite.Data.Migrations
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method
             //  to avoid creating duplicate seed data.
 
-            var assignment = new Assignment()
-            {
-                CourseId = 1,
-                DateOfAssignment = DateTime.Now,
-                DueDate = DateTime.Now,
-                State = AssignmentState.Started,
-                Type = "Mandatory",
-                UserId = context.Users.First(u => u.UserName == "goshkata@go.go").Id
-            };
+            //var assignment = new Assignment()
+            //{
+            //    CourseId = 1,
+            //    DateOfAssignment = DateTime.Now,
+            //    DueDate = DateTime.Now,
+            //    State = AssignmentState.Started,
+            //    Type = "Mandatory",
+            //    UserId = context.Users.First(u => u.UserName == "goshkata@go.go").Id
+            //};
 
-            context.Assignments.Add(assignment);
+            //context.Assignments.Add(assignment);
 
 
             //var ans = new HashSet<Answer>();
@@ -44,7 +44,7 @@ namespace Ignite.Data.Migrations
 
             //context.Questions.Add(new Question() { Id = 15, Answers = ans, Statement = "1 + 1 = ?", CorrectAnswer = "A", CourseId = 1 });
 
-            context.SaveChanges();
+            //context.SaveChanges();
 
             if (!context.Roles.Any())
             {   
