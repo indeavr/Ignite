@@ -8,7 +8,7 @@
         rowList: [10, 20, 30, 50, 100],
         colNames: ['Index', 'Username', 'CourseName', 'AssignementDate', 'DueDate', 'State', 'Type'],
         colModel: [
-            { name: 'Index', key: true, index: 'Index', width: 30, formatter: "integer", search: false },
+            { name: 'Id', key: true, index: 'Id', width: 30, formatter: "integer", search: false },
             { name: 'Username', index: 'Username', width: 120, searchoptions: { sopt: ['eq'] } },
             { name: 'CourseName', index: 'CourseName', width: 120, align: "left", searchoptions: { sopt: ['eq'] } },
             { name: 'DateOfAssignment', index: 'DateOfAssignment', width: 70, align: "left", formatter: "date", search: false },

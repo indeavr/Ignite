@@ -46,7 +46,7 @@
                             <tr class="filters">
                                 <th style="width: 4.1%; width:50px;">
                                     <div class="checkbox radio-margin">
-                                        <label>
+                                        <label  id="check-all">
                                             <input type="checkbox" value="">
                                             <span class="cr"><i class="cr-icon glyphicon glyphicon-ok"></i></span>
                                         </label>
@@ -112,7 +112,7 @@
 
     <script>
         $(document).ready(function () {
-            $('.check-label').click(function () {
+            $('.check-label').click(function () { 
                // debugger;
                 let $checkbox = $(this).find('.checkbox-input');
                 let isChecked = $checkbox.prop('checked');
@@ -124,6 +124,17 @@
                     $checkbox.prop('checked', true);
                     $checkbox.val('true');
                 }
+            })
+
+            $('#check-all').on('click', function (e, data) {
+                debugger; 
+                let $checkboxes = $('.check-label')
+                let value = data.value
+                $checkboxes.each(function (index) {
+                    debugger; 
+                    $(this).bootstrapSwitch('setState', value);
+                });
+                
             })
 
             //$('#datepicker').datepicker({

@@ -50,28 +50,33 @@ namespace Ignite.Areas.Admin.Services
         {
             var assignmentsViewModel = new List<AssignmentViewModel>();
 
-            var assignments = this.context.Assignments.ToList();
+            var users = this.context.Users.ToList();
 
-            for (int i = 0; i < assignments.Count; i++)
+            for (int i = 0; i < users.Count; i++)
             {
-                var courseName = assignments[i].Course.Name;
-                var username = assignments[i].User.UserName;
+                var assignments = users[i].Assignments;
 
-                if (assignments[i].DueDate < DateTime.Now)
-                    assignments[i].State = AssignmentState.Overdue;
-
-                assignmentsViewModel.Add(new AssignmentViewModel()
+                var counter = 1;
+                foreach (var assignment in assignments)
                 {
-                    Id = i,
-                    Username = username,
-                    CourseName = courseName,
-                    DueDate = assignments[i].DueDate,
-                    DateOfAssignment = assignments[i].DateOfAssignment,
-                    Type = assignments[i].Type,
-                    State = assignments[i].State.ToString()
-                });
+                    var courseName = assignment.Course.Name;
+                    var username = assignment.User.UserName;
+                    if (assignment.DueDate < DateTime.Now)
+                        assignment.State = AssignmentState.Overdue;
+
+                    assignmentsViewModel.Add(new AssignmentViewModel()
+                    {
+                        Id = counter,
+                        Username = username,
+                        CourseName = courseName,
+                        DueDate = assignment.DueDate,
+                        DateOfAssignment = assignment.DateOfAssignment,
+                        Type = assignment.Type,
+                        State = assignment.State.ToString()
+                    });
+                    counter++;
+                }
             }
-            assignmentsViewModel.Add(new AssignmentViewModel() { Username = "pesho" });
 
             return assignmentsViewModel;
         }
