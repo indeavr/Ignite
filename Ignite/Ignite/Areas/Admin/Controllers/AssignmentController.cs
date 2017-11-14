@@ -59,15 +59,16 @@ namespace Ignite.Areas.Admin.Controllers
 
             model.Users = allUsers;
             model.Name = chosenCourse.Name;
-            model.Type = true;
+            model.Type = false;
+            
             return this.View(model);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult AssignTo(CourseNameViewModel model)
+        public ActionResult AssignTo(CourseNameViewModel courseModel)
         {
-            // assignmentService.CreateAssignment(model.DueDate, model.Type, model.CourseId);
+            assignmentService.CreateAssignment(courseModel);
 
             return this.RedirectToAction("Home", "Admin");
         }
