@@ -92,6 +92,12 @@ namespace Ignite
                 "~/Scripts/slider/swiper.js",
                 "~/Scripts/slider/swiper.esm.js",
                 "~/Scripts/slider/swiper.esm.bundle.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/assignmentTable.js").Include(
+               "~/Scripts/assignmentTable.js"));
+
+            bundles.Add(new StyleBundle("~/Content/assignmentTable.css").Include(
+               "~/Content/assignmentTable.css"));
         }
     }
 }

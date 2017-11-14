@@ -11,7 +11,7 @@ namespace Ignite.Areas.Admin.ViewModels
     {
         public CourseNameViewModel()
         {
-            this.Users = new List<ApplicationUser>();
+            this.Users = new List<UserAssignedViewModel>();
         }
 
         public string Name { get; set; }
@@ -20,14 +20,9 @@ namespace Ignite.Areas.Admin.ViewModels
 
         public bool Type { get; set; }
 
-        public AssignmentState State { get; set; }
-
-        public string UserId { get; set; }
-
-        public IEnumerable<ApplicationUser> Users { get; set; }
+        public List<UserAssignedViewModel> Users { get; set; }
 
         public int CourseId { get; set; }
 
-        public bool Checked { get; set; }
     }
 }

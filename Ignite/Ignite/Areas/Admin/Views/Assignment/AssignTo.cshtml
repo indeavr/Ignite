@@ -1,20 +1,20 @@
 ﻿@model Ignite.Areas.Admin.ViewModels.CourseNameViewModel
 
-@{
-    ViewBag.Title = "AssignTo";
+@section styles{
+    @Styles.Render("~/Content/assignmentTable.css")
 }
 
 <div class="heading">
     <h2>Assign To</h2>
 </div>
-<div>
-    @Model.Name
-    <br />
-    @using (Html.BeginForm("AssignTo", "Assignment", FormMethod.Post))
-    {
-        @Html.AntiForgeryToken()
+@Model.Name
+<br />
+@using (Html.BeginForm("AssignTo", "Assignment", FormMethod.Post))
+{
+    @Html.HiddenFor(c => c.CourseId)
+    @Html.AntiForgeryToken()
 
-        @Html.Label("Users")
+       @*@Html.Label("Users")
         <br />
         foreach (var user in Model.Users)
         {
@@ -29,33 +29,107 @@
             <br />
             @Html.Label("Duedate")
             @Html.TextBoxFor(d => d.DueDate, new { id = "datepicker" })
-            <br />
-        }
+            <br />*@
+    <div class="creatediv1 marginTop30">
 
+        <div class="row margin-top-50">
+            <div class="col-md-12">
+                <div class="panel panel-primary filterable">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Cost Centers<span style="color: white; font-weight: bold;"> *</span></h3>
+                        <div class="pull-right">
+                            <button type="button" class="btn btn-default btn-xs btn-filter"><span class="glyphicon glyphicon-filter"></span> Filter</button>
+                        </div>
+                    </div>
+                    <table class="span12">
+                        <table>
+                            <tr class="filters">
+                                <th style="width: 4.1%; width:50px;">
+                                    <div class="checkbox radio-margin">
+                                        <label>
+                                            <input type="checkbox" value="">
+                                            <span class="cr"><i class="cr-icon glyphicon glyphicon-ok"></i></span>
+                                        </label>
+                                    </div>
+                                </th>
+                                <th style="width: 48%">
+                                    <input type="text" class="form-control" placeholder="Cost Center Name" disabled>
+                                </th>
+                                <th style="width: 48%">
+                                    <input type="text" class="form-control" placeholder="Cost Center ID" disabled>
+                                </th>
+                            </tr>
+                        </table>
+                        <div class="bg tablescroll">
+                            <table class="table table-bordered table-striped">
 
-        @*@Html.Label("User")
-            @Html.DropDownListFor(u => u.UserId, Model.Users.Select(x => new SelectListItem { Text = x.UserName, Value = x.Id }))
-            @Html.HiddenFor(c => c.CourseId)
-            <br />
-            @Html.Label("Mandatory")
-            @Html.CheckBoxFor(t => t.Type)
-            <br />
-            @Html.Label("Duedate")
-            @Html.TextBoxFor(d => d.DueDate, new { id = "datepicker" })*@
+                                @for (int i = 0; i < Model.Users.Count; i++)
+                                {
+                                    @Html.HiddenFor(m => Model.Users[i].UserId)
+                                    <tr>
+                                        <td style="width: 4.1%; width:50px;">
+                                            <div class="checkbox radio-margin">
+                                                <label class="check-label">
+                                                    <input type="checkbox" value= "false"  name="@($"Users[{i}].Checked")" class="checkbox-input">
+                                                    @*@Html.CheckBoxFor(m => Model.Users[i].Checked)*@
+                                                    <span class="cr" ><i class="cr-icon glyphicon glyphicon-ok"></i></span>
+                                                </label>
+                                            </div>
+                                        </td>
+                                        <td style="width: 48%">@Model.Users[i].Username</td>
+                                        <td style="width: 48%">854785412563</td>
+                                    </tr>
+
+                                }
+
+                            </table>
+                        </div>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
         <input type="submit" />
-    }
-</div>
+}
 
 
 
 
+@*@Html.Label("User")
+    @Html.DropDownListFor(u => u.UserId, Model.Users.Select(x => new SelectListItem { Text = x.UserName, Value = x.Id }))
+    @Html.HiddenFor(c => c.CourseId)
+    <br />
+    @Html.Label("Mandatory")
+    @Html.CheckBoxFor(t => t.Type)
+    <br />
+    @Html.Label("Duedate")
+    @Html.TextBoxFor(d => d.DueDate, new { id = "datepicker" })*@
 
-@*@section scripts{
+
+@section scripts{
+    @Scripts.Render("~/bundles/assignmentTable.js")
+
     <script>
         $(document).ready(function () {
+            $('.check-label').click(function () {
+               // debugger;
+                let $checkbox = $(this).find('.checkbox-input');
+                let isChecked = $checkbox.prop('checked');
+                if (isChecked) {
+                    $checkbox.prop('checked', false);
+                    $checkbox.val('false');
+                }
+                else {
+                    $checkbox.prop('checked', true);
+                    $checkbox.val('true');
+                }
+            })
 
-            $('#datepicker').datepicker({
-                format: 'dd/mm/yyyy'
-            });
+            //$('#datepicker').datepicker({
+            //    format: 'dd/mm/yyyy'
+            //});
         });
-    </script>}*@
+    </script>
+}
+

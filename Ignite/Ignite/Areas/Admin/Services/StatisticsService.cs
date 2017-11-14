@@ -24,15 +24,14 @@ namespace Ignite.Areas.Admin.Services
         public List<OverdueCourse> GetAllOverdue()
         {
             var users = this.context.Users
-                .Where(u => u.Assignments.Select(a => a.State).Contains(AssignmentState.Overdue))
+                .Where(u => u.Assignments.Any(a => a.State == AssignmentState.Overdue))
                 .ToList();
 
             var allOverdue = new List<OverdueCourse>();
             foreach (var user in users)
             {
                 var assignmentOverdue = user.Assignments
-                    .Where(a => a.State == AssignmentState.Overdue)
-                    .ToList();
+                    .Where(a => a.State == AssignmentState.Overdue);
 
                 foreach (var assignOverdue in assignmentOverdue)
                 {

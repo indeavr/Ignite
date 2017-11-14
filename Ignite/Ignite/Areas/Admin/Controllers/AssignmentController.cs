@@ -24,7 +24,7 @@ namespace Ignite.Areas.Admin.Controllers
             this.userManager = userManager;
             this.assignmentService = assignmentService;
         }
-        
+
         // GET: Admin/Assignment
         public ActionResult ManageAssignments()
         {
@@ -48,7 +48,15 @@ namespace Ignite.Areas.Admin.Controllers
 
             var model = new CourseNameViewModel();
 
-            var allUsers = this.userManager.Users.ToList();
+            var allUsers = this.userManager.Users
+                .Select(u => new UserAssignedViewModel()
+                {
+                    Username = u.UserName,
+                    UserId = u.Id,
+                    Checked = false
+                })
+                .ToList();
+
             model.Users = allUsers;
             model.Name = chosenCourse.Name;
             model.Type = true;
@@ -59,7 +67,7 @@ namespace Ignite.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult AssignTo(CourseNameViewModel model)
         {
-            assignmentService.CreateAssignment(model.DueDate, model.Type, model.State, model.CourseId, model.UserId);
+            // assignmentService.CreateAssignment(model.DueDate, model.Type, model.CourseId);
 
             return this.RedirectToAction("Home", "Admin");
         }

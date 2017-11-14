@@ -224,6 +224,7 @@
     <Compile Include="Areas\Admin\ViewModels\RulesViewModel.cs" />
     <Compile Include="Areas\Admin\ViewModels\statistics\AssignmentViewModel.cs" />
     <Compile Include="Areas\Admin\ViewModels\UploadJsonModel.cs" />
+    <Compile Include="Areas\Admin\ViewModels\UserAssignedViewModel.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -250,6 +251,7 @@
     <Compile Include="ViewModels\QuizResultViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\assignmentTable.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\ErrorPages\BadRequest.html" />
@@ -334,6 +336,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Scripts\assignmentTable.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
