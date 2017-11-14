@@ -36,38 +36,28 @@ namespace Ignite.Areas.Admin.Services
 
         public void CreateAssignment(CourseNameViewModel courseModel)
         {
-            var assignment = new Assignment();
-
-            assignment.DateOfAssignment = DateTime.Now;
-
-            assignment.State = AssignmentState.Pending;
-
-            assignment.DueDate = courseModel.DueDate;
-
-            assignment.CourseId = courseModel.CourseId;
-
-
-            foreach (var user in courseModel.Users)
+            foreach (var user in courseModel.Users.Where(u => u.Checked))
             {
-                if (user.Checked)
+                var assignment = new Assignment();
+                assignment.DateOfAssignment = DateTime.Now;
+                assignment.State = AssignmentState.Pending;
+                assignment.DueDate = courseModel.DueDate;
+                assignment.CourseId = courseModel.CourseId;
+                assignment.UserId = user.UserId;
+
+                if (courseModel.Type == false)
                 {
-                    if (courseModel.Type == false)
-                    {
-                        assignment.Type = "Optional";
-                    }
-                    else
-                    {
-                        assignment.Type = "Mandatory";
-                    }
-
-                    assignment.UserId = user.UserId;
-
-                    context.Assignments.Add(assignment);
-
-                    context.SaveChanges();
+                    assignment.Type = "Optional";
                 }
+                else
+                {
+                    assignment.Type = "Mandatory";
+                }
+
+                context.Assignments.Add(assignment);
             }
-            //context.SaveChanges();
+
+            context.SaveChanges();
         }
 
         public IEnumerable<Assignment> GetAllAssignments()
