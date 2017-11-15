@@ -4,22 +4,39 @@
     ViewBag.Title = "_CompletedCourses";
 }
 
+
+
 <div class="row">
-    @foreach (var assignment in Model) 
+    @foreach (var assignment in Model)
     {
         <div class="card card-inverse container col-md-3 col-sm-4 col-xs-6">
-            <img class="img-responsive card-img" src="~/Content/img.jpg" alt="Card image cap" />
+
+            <div class="img-container">
+                <img class="img-responsive card-img image-course" src="~/Content/img/course-cover.jpg" alt="Card image cap" id="" />
+                <a href= "@Url.Action("DisplayingCourseSlides", new { courseId = assignment.CourseId  })" class="icon-play"><i class="fa fa-play-circle-o iconka" aria-hidden="true"></i></a>
+            </div>
+          
+          
             <div class="top-right text-right">
-                @Html.ActionLink(assignment.Type, "DisplayingCourseSlides", new { courseId = assignment.CourseId })
             </div>
 
             <div class="card-block">
-                <h4 class="card-title">@assignment.Course.Name</h4>
-                <p class="card-text">@assignment.DateOfAssignment</p>
-                <p class="card-text">@assignment.DateOfCompletion</p>
-                <p class="card-text">@assignment.DueDate</p>
-
+                @Html.ActionLink(assignment.Course.Name, "DisplayingCourseSlides",
+                        new { courseId = assignment.CourseId }, new { @class = "course-title card-title" })
+                <p class="card-text">Due Date: @assignment.DueDate.ToLocalTime()</p>
+                @if (@assignment.Type == "Mandatory")
+                {
+                    <p class="card-text assType-red"><span>Type:</span> @assignment.Type</p>
+                }
+                else
+                {
+                    <p class="card-text assType-green"><span>Type:</span>@assignment.Type</p>
+                }
             </div>
         </div>
     }
 </div>
+
+@section scripts{
+  
+}

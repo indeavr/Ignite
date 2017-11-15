@@ -21,8 +21,10 @@ namespace Ignite.Tests.Admin.Services.UploadCourseServiceTests
             var images = new List<Image>()
             {
                 new Image()
+                
             };
             var dbSetImages = new Mock<DbSet<Image>>().SetupData(images);
+
             dbMock.SetupGet(m => m.Images).Returns(dbSetImages.Object);
 
             var listOfImages = new List<ImageViewModel>()

@@ -12,7 +12,7 @@ namespace Ignite
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
-         
+
 
             routes.MapRoute(
                 name: "Default",
@@ -21,10 +21,10 @@ namespace Ignite
             );
 
             routes.MapRoute(
-             name: "Upload",
-             url: "admin/{controller}/{action}/{courseId}",
-             defaults: new { controller = "admin", action = "home", courseId = UrlParameter.Optional }
-             );
+                name: "Upload",
+                url: "admin/{controller}/{action}/{courseId}",
+                defaults: new { controller = "admin", action = "home", courseId = UrlParameter.Optional }
+            );
 
             routes.LowercaseUrls = true;
         }

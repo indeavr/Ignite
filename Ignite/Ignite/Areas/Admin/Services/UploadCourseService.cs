@@ -93,6 +93,7 @@ namespace Ignite.Admin.Services
         public void SaveSlidesToCourse(int courseId, List<ImageViewModel> imagesView)
         {
             // var course = this.context.Courses.First(c => c.Id == courseId);
+            Guard.WhenArgument(imagesView, "imagesView").IsNull().Throw();
 
             foreach (var imageView in imagesView)
             {

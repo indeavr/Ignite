@@ -21,10 +21,26 @@ namespace Ignite.Areas.Admin.Services
             this.context = context;
         }
 
+        public void CheckForOverdueAndUpdate()
+        {
+            var assignments = this.context.Assignments.ToList();
+
+            foreach (var assignment in assignments)
+            {
+                if (assignment.DueDate < DateTime.Now)
+                {
+                    assignment.State = AssignmentState.Overdue;
+                    int id = assignment.Id;
+                    this.context.Assignments.First(a => a.Id == id).State = AssignmentState.Overdue;
+                    this.context.SaveChanges();
+                }
+            }
+        }
+
         public List<OverdueCourse> GetAllOverdue()
         {
             var users = this.context.Users
-                .Where(u => u.Assignments.Any(a => a.State == AssignmentState.Overdue))
+                .Where(u => u.Assignments.Where(a => a.State == AssignmentState.Overdue).Count() > 0)
                 .ToList();
 
             var allOverdue = new List<OverdueCourse>();
@@ -38,7 +54,7 @@ namespace Ignite.Areas.Admin.Services
                     var overdueCourse = new OverdueCourse();
                     overdueCourse.Username = user.UserName;
                     overdueCourse.CourseName = assignOverdue.Course.Name;
-                    overdueCourse.OverdueWith = DateTime.Now -  assignOverdue.DueDate;
+                    overdueCourse.OverdueWith = DateTime.Now - assignOverdue.DueDate;
                     allOverdue.Add(overdueCourse);
                 }
             }
@@ -46,37 +62,49 @@ namespace Ignite.Areas.Admin.Services
             return allOverdue;
         }
 
-        public List<AssignmentViewModel> GetDataFromServer()
+        public Object GetDataFromServer(int rows, int page)
         {
             var assignmentsViewModel = new List<AssignmentViewModel>();
 
-            var assignments = this.context.Assignments.ToList();
+            var users = this.context.Users.ToList();
 
-            for (int i = 0; i < assignments.Count; i++)
+            for (int i = 0; i < users.Count; i++)
             {
-                var courseName = assignments[i].Course.Name;
-                var username = assignments[i].User.UserName;
+                var assignments = users[i].Assignments;
 
-                if (assignments[i].DueDate < DateTime.Now)
-                    assignments[i].State = AssignmentState.Overdue;
-
-                assignmentsViewModel.Add(new AssignmentViewModel()
+                var counter = 1;
+                foreach (var assignment in assignments)
                 {
-                    Id = i,
-                    Username = username,
-                    CourseName = courseName,
-                    DueDate = assignments[i].DueDate,
-                    DateOfAssignment = assignments[i].DateOfAssignment,
-                    Type = assignments[i].Type,
-                    State = assignments[i].State.ToString()
-                });
-            }
-            assignmentsViewModel.Add(new AssignmentViewModel() { Username = "pesho" });
+                    var courseName = assignment.Course.Name;
+                    var username = users[i].UserName;
 
-            return assignmentsViewModel;
+
+                    assignmentsViewModel.Add(new AssignmentViewModel()
+                    {
+                        Id = counter,
+                        Username = username,
+                        CourseName = courseName,
+                        DueDate = assignment.DueDate,
+                        DateOfAssignment = assignment.DateOfAssignment,
+                        Type = assignment.Type,
+                        State = assignment.State.ToString()
+                    });
+                    counter++;
+                }
+            }
+
+            var result = new
+            {
+                total = assignmentsViewModel.Count / rows + 1,
+                page = page,
+                records = assignmentsViewModel.Count,
+                rows = assignmentsViewModel.Skip((page - 1) * rows).Take(rows).ToList()
+            };
+
+            return result;
         }
 
-        private IList<ApplicationUser> Filtrator(string propertyName, string shortOp, string inputField, IList<ApplicationUser> users)
+        public IList<ApplicationUser> Filtrator(string propertyName, string shortOp, string inputField, IList<ApplicationUser> users)
         {
             var result = new List<ApplicationUser>();
 
@@ -89,9 +117,9 @@ namespace Ignite.Areas.Admin.Services
                 case "State":
                     var state = (AssignmentState)Enum.Parse(typeof(AssignmentState), inputField);
                     result.AddRange(users.Where(u => u.Assignments.Select(a => a.State).Contains(state)));
-
                     break;
-                case "Coursename":
+
+                case "CourseName":
                     result.AddRange(users.Where(x => x.Assignments.Select(y => y.Course.Name).Contains(inputField)));
                     break;
             }

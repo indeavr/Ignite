@@ -1,4 +1,5 @@
-﻿using Ignite.Areas.Admin.Services.Interfaces;
+﻿using Bytes2you.Validation;
+using Ignite.Areas.Admin.Services.Interfaces;
 using Ignite.Areas.Admin.ViewModels;
 using Ignite.Areas.Admin.ViewModels.statistics;
 using Ignite.Data;
@@ -17,12 +18,11 @@ namespace Ignite.Areas.Admin.Controllers
     {
         private readonly IStatisticsService statService;
 
-        private readonly ApplicationDbContext context;
-
-        public StatisticsController(IStatisticsService statService, ApplicationDbContext context)
+        public StatisticsController(IStatisticsService statService)
         {
+            Guard.WhenArgument(statService, "statService").IsNull().Throw();
+
             this.statService = statService;
-            this.context = context;
         }
 
         public StatisticsController()
@@ -33,6 +33,7 @@ namespace Ignite.Areas.Admin.Controllers
         // GET: Admin/Statistics
         public ActionResult Home()
         {
+            this.statService.CheckForOverdueAndUpdate();
             var overdueUsers = this.statService.GetAllOverdue();
 
             return View(overdueUsers);
@@ -55,17 +56,9 @@ namespace Ignite.Areas.Admin.Controllers
         {
             if (_search == false)
             {
-                var assignments = this.statService.GetDataFromServer();
+                var assignments = this.statService.GetDataFromServer(rows, page);
 
-                var result = new
-                {
-                    total = assignments.Count / rows + 1,
-                    page = page,
-                    records = assignments.Count,
-                    rows = assignments.Skip((page - 1) * rows).Take(rows).ToList()
-                };
-
-                return Json(result, JsonRequestBehavior.AllowGet);
+                return Json(assignments, JsonRequestBehavior.AllowGet);
             }
             else
             {

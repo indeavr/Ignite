@@ -22,25 +22,23 @@
                @* @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })*@
             </div>
             <div class="navbar-collapse collapse" id="navBar">
-                <ul class="nav navbar-nav">
-                     <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, null)</li>
-                    <li>@Html.ActionLink("About", "About", "Home", new { area = "" }, null)</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home", new { area = "" }, null)</li>
+                <ul class="nav navbar-nav" id="navbar-a">
+                     <li>@Html.ActionLink("IGNITE", "Index", "Home", new { area = "" },  new { @class = "navbar-links" })</li>
                     @if (this.User.Identity.IsAuthenticated)
 
                     {
-                        <li>@Html.ActionLink("My Courses", "Home", "UserCourse", new { area = "" }, null)</li>
+                        <li>@Html.ActionLink("My Courses", "Home", "UserCourse", new { area = "" }, new { @class = "navbar-links" })</li>
                     }
 
                     @if (this.User.IsInRole("Admin"))
 
                     {
-                        <li>@Html.ActionLink("My Courses", "Home", "UserCourse", new { area = "" }, null)</li>
+                        <li>@Html.ActionLink("My Courses", "Home", "UserCourse", new { area = "" }, new { @class = "navbar-links" })</li>
                     }
 
                     @if (this.User.IsInRole("Admin"))
                         {
-                            <li>@Html.ActionLink("Admin", "Home", "Admin", new { area = "Admin" }, null)</li>
+                            <li>@Html.ActionLink("Admin", "Home", "Admin", new { area = "Admin" }, new { @class = "navbar-links" })</li>
                         }
                 </ul>
                 @Html.Partial("_LoginPartial")

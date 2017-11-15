@@ -1,10 +1,14 @@
 ﻿@model Ignite.ViewModels.QuizResultViewModel
 
+@{ 
+    TempData["passed"] = Model.Passed;
+}
+
 <!-- Modal content -->
 <div class="modal-content" id="myModalContent">
     <div class="modal-header">
         @*<span class="close">&times;</span>*@
-        <h2>@Model.Passed</h2>
+        <h2 id="passed">@Model.Passed</h2>
     </div>
     <div class="modal-body">
         <h4>
@@ -18,26 +22,24 @@
         </h6>
     </div>
     <div class="modal-footer">
-        <button class="btn btn-info" onclick="@Url.Action("")">Re-Take Course</button>
-        <button class="btn btn-danger" id="return-btn" onclick="@Url.Action("Home","UserCourse")">
+        <a class="btn btn-info" href="@Url.Action("")">Re-Take Course</a>
+        <a class="btn btn-danger" id="return-btn" href = "@Url.Action("Home","UserCourse")">
             Return
             @* @Html.ActionLink("Return", "Home", "UserCourse", new { area = ""})*@
-        </button>
+        </a>
     </div>
 </div>
 
 
 @section scrips{
     <script>
-        debugger;
-
-        $(function () {
-             debugger;
-             if (@Model.Passed == "Failed") {
-                 $('.modal-header').css("background-color", "red")
-             }
-        })
-
+        (function switchPanel() {
+            debugger;
+            var result = $.parseJSON("TempData[\"passed\"]");
+            if (result === "Failed") {
+                $('.modal-header').css("background-color", "red")
+            }
+        }())
     </script>
     @*<script>
             // Get the modal

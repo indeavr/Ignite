@@ -18,8 +18,6 @@ namespace Ignite.ViewModels
             this.Letter = letter;
         }
 
-        public int Id { get; set; }
-
         public string Text { get; set; }
 
         public string Letter { get; set; }

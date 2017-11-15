@@ -2,14 +2,17 @@
 using Ignite.Data.Models;
 using Ignite.Services;
 using Ignite.ViewModels;
+using Microsoft.AspNet.Identity;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace Ignite.Tests.Services.QuizServiceTests
 {
@@ -24,6 +27,7 @@ namespace Ignite.Tests.Services.QuizServiceTests
 
             var courseId = 1;
             var assignmentId = 1;
+            var username = "goshkata";
 
             var statement = "Statement";
             var correctAnswer = "A";
@@ -31,6 +35,19 @@ namespace Ignite.Tests.Services.QuizServiceTests
             var answerTextA = "answerA";
             var answerLetterA = "A";
 
+
+            var httpContext = new Mock<HttpContextBase>();
+            var mockIdentity = new Mock<IIdentity>();
+            httpContext.SetupGet(x => x.User.Identity).Returns(mockIdentity.Object);
+            mockIdentity.Setup(x => x.Name).Returns(username);
+
+            var userStore = new Mock<IUserStore<ApplicationUser>>();
+            var userManager = new ApplicationUserManager(userStore.Object);
+
+            var user = new ApplicationUser()
+            {
+                UserName = username
+            };
 
             var answers = new List<Answer>()
             {
@@ -49,7 +66,7 @@ namespace Ignite.Tests.Services.QuizServiceTests
 
             var assignments = new List<Assignment>()
             {
-                new Assignment() {  CourseId = courseId, Id= assignmentId }
+                new Assignment() {  CourseId = courseId, Id= assignmentId, User = user }
             };
 
 
@@ -73,7 +90,6 @@ namespace Ignite.Tests.Services.QuizServiceTests
             var questionsExpected = new List<QuizQuestion>();
             questionsExpected.Add(new QuizQuestion()
             {
-                CorrectAnswer = correctAnswer,
                 Statement = statement,
                 Answers = answersExpected
             });
@@ -87,16 +103,13 @@ namespace Ignite.Tests.Services.QuizServiceTests
             var service = new QuizService(contextMock.Object);
 
             // Act
-            var result = service.GetTest(courseId);
+            var result = service.GetTest(courseId, username);
 
             // Assert
             Assert.AreEqual(quizExpected.AssignmentId, result.AssignmentId);
-            Assert.AreEqual(questionsExpected.First().CorrectAnswer, result.Questions.First().CorrectAnswer);
             Assert.AreEqual(questionsExpected.First().Statement, result.Questions.First().Statement);
             Assert.AreEqual(questionsExpected.First().Answers.First().Letter, result.Questions.First().Answers.First().Letter);
             Assert.AreEqual(questionsExpected.First().Answers.First().Text, result.Questions.First().Answers.First().Text);
         }
-
-
     }
 }

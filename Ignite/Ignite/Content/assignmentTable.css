@@ -37,7 +37,7 @@
 }
 
 .table-widthA {
-    width: 49.8%;
+    width: 48%;
 }
 
 .bg {
@@ -47,18 +47,8 @@
 .tablescroll {
     overflow-y: auto;
     overflow-x: hidden;
-    height: 189px;
+    height: 400px;
     margin-right: 1px;
-}
-
-.marginTop30 {
-    margin-top: 30px;
-}
-
-.radio,
-.checkbox {
-    margin-top: 0px;
-    margin-bottom: 0px;
 }
 
 .checkbox, .radio {
@@ -71,13 +61,8 @@
     margin-top: 7px;
 }
 
-.radio-margin {
-    margin-left: -13px;
-    margin-top: 7px;
-}
-
 .EU_DataTable td, th {
-    padding: 6px;
+    /*padding: 6px;*/
     border: 1px solid #ccc;
     text-align: left;
     height: 50px;
@@ -148,4 +133,65 @@ th {
 
 .checkbox label {
     display: inline-block
+}
+
+
+
+/*MAGIC*/
+
+.custom-checkbox {
+    min-height: 1rem;
+    padding-left: 0;
+    margin-right: 0;
+    cursor: pointer;
+}
+
+    .custom-checkbox .custom-control-indicator {
+        content: "";
+        display: inline-block;
+        position: relative;
+        width: 30px;
+        height: 10px;
+        background-color: #818181;
+        border-radius: 15px;
+        margin-right: 10px;
+        -webkit-transition: background .3s ease;
+        transition: background .3s ease;
+        vertical-align: middle;
+        margin: 0 16px;
+        box-shadow: none;
+    }
+
+        .custom-checkbox .custom-control-indicator:after {
+            content: "";
+            position: absolute;
+            display: inline-block;
+            width: 18px;
+            height: 18px;
+            background-color: #f1f1f1;
+            border-radius: 21px;
+            box-shadow: 0 1px 3px 1px rgba(0, 0, 0, 0.4);
+            left: -2px;
+            top: -4px;
+            -webkit-transition: left .3s ease, background .3s ease, box-shadow .1s ease;
+            transition: left .3s ease, background .3s ease, box-shadow .1s ease;
+        }
+
+    .custom-checkbox .custom-control-input:checked ~ .custom-control-indicator {
+        background-color: #84c7c1;
+        background-image: none;
+        box-shadow: none !important;
+    }
+
+        .custom-checkbox .custom-control-input:checked ~ .custom-control-indicator:after {
+            background-color: #84c7c1;
+            left: 15px;
+        }
+
+    .custom-checkbox .custom-control-input:focus ~ .custom-control-indicator {
+        box-shadow: none !important;
+    }
+
+#hidethischeckbox {
+    display: none
 }

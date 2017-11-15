@@ -24,6 +24,8 @@ namespace Ignite
             ViewEngines.Engines.Add(new RazorViewEngine());
 
             Database.SetInitializer(new MigrateDatabaseToLatestVersion<ApplicationDbContext, Configuration>());
+
+            OverdueChecker.Start();
         }
     }
 }

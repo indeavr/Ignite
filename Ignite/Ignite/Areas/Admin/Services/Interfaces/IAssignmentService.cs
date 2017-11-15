@@ -15,7 +15,7 @@ namespace Ignite.Areas.Admin.Services.Interfaces
 
         Course GetById(int id);
 
-        Assignment CreateAssignment(DateTime dueDate, bool type, AssignmentState state, int courseId, string userId);
+        void CreateAssignment(CourseNameViewModel courseModel);
 
         IEnumerable<Assignment> GetAllAssignments();
 

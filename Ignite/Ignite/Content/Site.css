@@ -66,7 +66,13 @@ textarea {
 
     .navbar-fixed-left .navbar-nav > li {
         float: none; /* Cancel default li float: left */
+        width: 102.2%;
     }
+
+        .navbar-fixed-left .navbar-nav > li:not(:first-child):hover {
+            background-color: #a90000;
+            transition: background-color 0.4s ease;
+        }
 
         .navbar-fixed-left .navbar-nav > li > a {
             height: 70px;
@@ -96,6 +102,8 @@ textarea {
     left: 0;
 }
 
+.navbar-fixed-left:hover #ignite-logo {
+}
 
 .spanche {
     position: relative;
@@ -131,12 +139,13 @@ textarea {
     bottom: -4px;
 }
 
-.fa{
+.fa {
     font-size: 26px;
 }
 
-#ignite-logo{
-    margin-left:30%;
+#ignite-logo {
+    margin-left: 30%;
+    bottom: -10px;
 }
 
 #main {
@@ -148,6 +157,47 @@ textarea {
 }
 
 .navbar-fixed-left:hover #igniteLogo {
-    top: 8px;
+    top: 3px;
     left: 5px;
 }
+
+#navBar #navbar-a .navbar-links {
+    padding-bottom: 0;
+    margin-bottom: 10px;
+    border-bottom: 2px solid transparent;
+    border-radius: 4px;
+    vertical-align: middle;
+    -webkit-transform: perspective(1px) translateZ(0);
+    transform: perspective(1px) translateZ(0);
+    box-shadow: 0 0 1px transparent;
+    position: relative;
+    overflow: hidden;
+}
+
+    #navBar #navbar-a .navbar-links:hover {
+        //border-bottom: 2px solid #a90000;
+    }
+
+    #navBar #navbar-a .navbar-links:before {
+        content: "";
+        position: absolute;
+        z-index: -1;
+        left: 50%;
+        right: 50%;
+        bottom: 0;
+        background: #a90000;
+        height: 2px;
+        -webkit-transition-property: left, right;
+        transition-property: left, right;
+        -webkit-transition-duration: 0.25s;
+        transition-duration: 0.25s;
+        -webkit-transition-timing-function: ease-out;
+        transition-timing-function: ease-out;
+    }
+
+    #navBar #navbar-a .navbar-links:hover:before,
+    #navBar #navbar-a .navbar-links:focus:before,
+    #navBar #navbar-a .navbar-links:active:before {
+        left: 0;
+        right: 0;
+    }

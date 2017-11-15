@@ -61,7 +61,6 @@ namespace Ignite.Services
                     allAssignments.Overdue.Add(assignment);
                 }
             }
-            
             return allAssignments;
             
         }

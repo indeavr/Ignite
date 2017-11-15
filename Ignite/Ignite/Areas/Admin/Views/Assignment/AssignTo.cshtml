@@ -11,10 +11,10 @@
 <br />
 @using (Html.BeginForm("AssignTo", "Assignment", FormMethod.Post))
 {
-    @Html.HiddenFor(c => c.CourseId)
+
     @Html.AntiForgeryToken()
 
-       @*@Html.Label("Users")
+    @*@Html.Label("Users")
         <br />
         foreach (var user in Model.Users)
         {
@@ -30,13 +30,23 @@
             @Html.Label("Duedate")
             @Html.TextBoxFor(d => d.DueDate, new { id = "datepicker" })
             <br />*@
+
+    @Html.HiddenFor(c => c.CourseId)
+    <br />
+    @*@Html.Label("Mandatory")
+        @Html.CheckBoxFor(t => t.Type)
+        <br />*@
+    @*@Html.Label("Duedate")
+        @Html.TextBoxFor(d => d.DueDate)*@
+
+
     <div class="creatediv1 marginTop30">
 
         <div class="row margin-top-50">
             <div class="col-md-12">
                 <div class="panel panel-primary filterable">
                     <div class="panel-heading">
-                        <h3 class="panel-title">Cost Centers<span style="color: white; font-weight: bold;"> *</span></h3>
+                        <h3 class="panel-title">Users<span style="color: white; font-weight: bold;"> *</span></h3>
                         <div class="pull-right">
                             <button type="button" class="btn btn-default btn-xs btn-filter"><span class="glyphicon glyphicon-filter"></span> Filter</button>
                         </div>
@@ -46,17 +56,20 @@
                             <tr class="filters">
                                 <th style="width: 4.1%; width:50px;">
                                     <div class="checkbox radio-margin">
-                                        <label>
+                                        <label id="check-all">
                                             <input type="checkbox" value="">
                                             <span class="cr"><i class="cr-icon glyphicon glyphicon-ok"></i></span>
                                         </label>
                                     </div>
                                 </th>
-                                <th style="width: 48%">
-                                    <input type="text" class="form-control" placeholder="Cost Center Name" disabled>
+                                <th style="width: 33%">
+                                    <input type="text" class="form-control" placeholder="Username" disabled>
                                 </th>
-                                <th style="width: 48%">
-                                    <input type="text" class="form-control" placeholder="Cost Center ID" disabled>
+                                <th style="width: 33%">
+                                    <input type="text" class="form-control" placeholder="Type" disabled>
+                                </th>
+                                <th style="width: 33%">
+                                    <input type="text" class="form-control" placeholder="Due Date" disabled>
                                 </th>
                             </tr>
                         </table>
@@ -70,14 +83,35 @@
                                         <td style="width: 4.1%; width:50px;">
                                             <div class="checkbox radio-margin">
                                                 <label class="check-label">
-                                                    <input type="checkbox" value= "false"  name="@($"Users[{i}].Checked")" class="checkbox-input">
+                                                    <input type="checkbox" value="false" name="@($"Users[{i}].Checked")" class="checkbox-input">
                                                     @*@Html.CheckBoxFor(m => Model.Users[i].Checked)*@
-                                                    <span class="cr" ><i class="cr-icon glyphicon glyphicon-ok"></i></span>
+                                                    <span class="cr"><i class="cr-icon glyphicon glyphicon-ok"></i></span>
                                                 </label>
                                             </div>
                                         </td>
-                                        <td style="width: 48%">@Model.Users[i].Username</td>
-                                        <td style="width: 48%">854785412563</td>
+                                        <td style="width: 33%">@Model.Users[i].Username</td>
+                                        <td id="plzwork" style="width: 33%">
+
+                                            <label class="custom-control custom-checkbox">
+                                                @Html.CheckBoxFor(t => t.Type, new { @class = "custom-control-input", id = "hidethischeckbox" })
+                                                <span class="custom-control-indicator"></span>
+                                            </label>
+
+                                        </td>
+                                        <td style="width: 33%">
+                                            <div class="row">
+                                                <div class='col-sm-6'>
+                                                    <div class="form-group">
+                                                        <div class='input-group date' id='datetimepicker5'>
+                                                            @Html.TextBoxFor(d => d.DueDate, new { @class = "form-control" })
+                                                            <span class="input-group-addon">
+                                                                <span class="glyphicon glyphicon-calendar"></span>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
                                     </tr>
 
                                 }
@@ -90,7 +124,7 @@
         </div>
     </div>
 
-        <input type="submit" />
+    <input type="submit" />
 }
 
 
@@ -113,7 +147,7 @@
     <script>
         $(document).ready(function () {
             $('.check-label').click(function () {
-               // debugger;
+                // debugger;
                 let $checkbox = $(this).find('.checkbox-input');
                 let isChecked = $checkbox.prop('checked');
                 if (isChecked) {
@@ -126,6 +160,27 @@
                 }
             })
 
+            $('#check-all').on('click', function (e, data) {
+                debugger;
+                let $checkboxes = $('.check-label')
+                let value = data.value
+                $checkboxes.each(function (index) {
+                    debugger;
+                    $(this).bootstrapSwitch('setState', value);
+                });
+
+            })
+
+            $(function () {
+                $('#datetimepicker5').datetimepicker({
+                    defaultDate: "11/1/2013",
+                    disabledDates: [
+                        moment("12/25/2013"),
+                        new Date(2013, 11 - 1, 21),
+                        "11/22/2013 00:53"
+                    ]
+                });
+            });
             //$('#datepicker').datepicker({
             //    format: 'dd/mm/yyyy'
             //});
