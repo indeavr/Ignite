@@ -34,17 +34,9 @@ namespace Ignite.Controllers
             this.userManager = userManager;
             
         }
-
-        //public ActionResult Home()
-        //{
-        //    //var username = this.User.Identity.Name;
-
-        //    //var allAssignments = this.userCourseService.GetAllAssignmentsPerUser(username);
-
-        //    //return this.View(allAssignments);
-        //}
-
+ 
         // GET: UserCourse
+
         public ActionResult Home(string state)
         {
             var username = this.User.Identity.Name;
@@ -59,6 +51,8 @@ namespace Ignite.Controllers
                     return this.PartialView("_CompletedCourses", allAssignments.Pending);
                 case "started":
                     return this.PartialView("_CompletedCourses", allAssignments.Started);
+                case "overdue":
+                    return this.PartialView("_CompletedCourses", allAssignments.Started);
                 default:
                     return this.View(allAssignments);
                     //return this.View("_CompletedCourses", allAssignments.Completed);
@@ -67,49 +61,24 @@ namespace Ignite.Controllers
 
         public ActionResult DisplayingCourseSlides(int courseId)
         {
-            ApplicationDbContext context = new ApplicationDbContext();
+            var slides = this.userCourseService.DisplayingCoursesSlides(courseId);
 
-            // var listOfImages = context.Courses.First(c => c.Id == courseId).Images.ToList();
-
-            var listOfImages = context.Images.ToList();
-
-            var imageViewModel = new ImagesToCourosel();
-            foreach (var image in listOfImages)
-            {
-                imageViewModel.Images.Add(image);
-            }
-
-            // imageViewModel.CourseName = imageViewModel.Images[0].Course.Name;
-
-            imageViewModel.CourseName = context.Courses.First(c => c.Id == 1).Name;
-            return this.View(imageViewModel);
-
-            //LaunchTestViewModel course = new LaunchTestViewModel();
-            //course.Course = new Course() { Name = "Pesho" };
-            //var courseId = course.CourseId;
-        //    //Call service => LaunchTestViewmodel pulen s img
-        //    var slides = this.launchCourseService.GetImages(courseId);
-
-
-           //return View(course);
+            var username = this.User.Identity.Name;
+            //add username
+            this.userCourseService.CheckStateChange(courseId,username);
+            
+            return this.View(slides);
         }
 
-        public async Task<ActionResult> RenderImage(int imgId)
+        public ActionResult RenderImage(int imgId)
         {
-            ApplicationDbContext context = new ApplicationDbContext();
+            var imgService = this.userCourseService.RenderImg(imgId);
 
-            Image image = await context.Images.FindAsync(imgId);
+            Image image = new Image();
+            image.Content = imgService;
 
             return File(image.Content, "image/png");
         }
-
-        //public ActionResult ShowCoursesByState()
-        //{
-        //    if (Request.IsAjaxRequest())
-        //    {
-        //        return Partial
-        //    }
-        //}
 
     }
 }

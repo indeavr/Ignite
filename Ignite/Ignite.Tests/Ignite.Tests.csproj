@@ -52,6 +52,12 @@
     <Reference Include="EntityFramework.Testing.Moq, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFrameworkTesting.Moq.1.2.1\lib\net45\EntityFramework.Testing.Moq.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.8.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
@@ -125,10 +131,16 @@
     <Compile Include="Admin\Services\UploadCourseServiceTests\SaveSlidesToCourse_Should.cs" />
     <Compile Include="Controllers\TestQuizControllerTests\StartTestGet_Should.cs" />
     <Compile Include="Controllers\TestQuizControllerTests\StartTestPost_Should.cs" />
+    <Compile Include="Controllers\UserCourseControllerTests\Home_Should.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Controllers\HomeControllerTest.cs" />
     <Compile Include="Services\QuizServiceTests\GetTest_Should.cs" />
     <Compile Include="Services\QuizServiceTests\SubmitTest_Should.cs" />
+    <Compile Include="Services\UserCoursesServiceTests\GetAllAssignmentsPerUser_Should.cs" />
+    <Compile Include="Services\UserCoursesServiceTests\RenderImage_Should.cs" />
+    <Compile Include="Services\UserCoursesServiceTests\CheckStateChange_Should.cs" />
+    <Compile Include="Services\UserCoursesServiceTests\DisplayingCoursesSlides_Should.cs" />
+    <Compile Include="Services\UserCoursesServiceTests\Ctor_Should.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App.config" />

@@ -13,11 +13,13 @@ namespace Ignite.ViewModels
             this.Pending = new List<Assignment>();
             this.Started = new List<Assignment>();
             this.Completed = new List<Assignment>();
+            this.Overdue = new List<Assignment>();
         }
 
         public List<Assignment> Pending { get; set; }
         public List<Assignment> Started { get; set; }
         public List<Assignment> Completed { get; set; }
+        public List<Assignment> Overdue { get; set; }
 
     }
 }
