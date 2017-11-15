@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -14,6 +15,7 @@ namespace Ignite.ViewModels
 
         public List<QuizQuestion> Questions { get; set; }
 
+        [Required(ErrorMessage = "AssignmentId is Required")]
         public int AssignmentId { get; set; }
     }
 }

@@ -5,7 +5,9 @@ using Ignite.Services.Contracts;
 using Ignite.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace Ignite.Services
 {
@@ -52,7 +54,7 @@ namespace Ignite.Services
             return quiz;
         }
 
-        public QuizResultViewModel SubmitTest(Quiz quiz)
+        public async Task<QuizResultViewModel> SubmitTest(Quiz quiz)
         {
             var shouldSaveChanges = false;
 
@@ -77,7 +79,6 @@ namespace Ignite.Services
                 this.context.Assignments
                     .First(a => a.Id == quiz.AssignmentId)
                     .State = AssignmentState.Completed;
-
             }
 
             var assignment = this.context.Assignments
@@ -98,7 +99,7 @@ namespace Ignite.Services
 
             if (shouldSaveChanges)
             {
-                this.context.SaveChanges();
+                await SaveToDb();
             }
 
             return quizResult;
@@ -129,6 +130,11 @@ namespace Ignite.Services
             }
 
             return correctAnswerCount;
+        }
+
+        private async Task SaveToDb()
+        {
+            await this.context.SaveChangesAsync();
         }
     }
 }

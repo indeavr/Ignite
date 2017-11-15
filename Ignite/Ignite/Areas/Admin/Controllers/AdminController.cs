@@ -2,6 +2,7 @@
 using Ignite.Admin.Services.Interfaces;
 using Ignite.Areas.Admin.ViewModels;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
@@ -39,7 +40,7 @@ namespace Ignite.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult UploadCourse(UploadJsonModel file)
+        public async Task<ActionResult> UploadCourse(UploadJsonModel file)
         {
             if (ModelState.IsValid)
             {
@@ -49,7 +50,7 @@ namespace Ignite.Areas.Admin.Controllers
                     this.uploadService.ValidateJson(file.Json);
 
                     // make it async
-                    this.uploadService.SaveCourse(file.Json);
+                    await this.uploadService.SaveCourse(file.Json);
 
                     return this.RedirectToAction("UploadSlides", new { courseId = this.uploadService.GetCourseId() });
                 }
@@ -67,7 +68,7 @@ namespace Ignite.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult UploadSlidesToDb(int courseId)
+        public async Task<ActionResult> UploadSlidesToDb(int courseId)
         {
             var images = new List<ImageViewModel>();
 
@@ -89,7 +90,7 @@ namespace Ignite.Areas.Admin.Controllers
                 }
             }
 
-            this.uploadService.SaveSlidesToCourse(courseId, images);
+            await this.uploadService.SaveSlidesToCourse(courseId, images);
 
             return this.RedirectToAction("Home");
         }

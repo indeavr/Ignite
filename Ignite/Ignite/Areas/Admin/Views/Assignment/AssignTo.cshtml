@@ -103,7 +103,8 @@
                                                 <div class='col-sm-6'>
                                                     <div class="form-group">
                                                         <div class='input-group date' id='datetimepicker5'>
-                                                            @Html.TextBoxFor(d => d.DueDate, new { @class = "form-control" })
+                                                            @Html.EditorFor(d => d.DueDate, new { @class = "form-control" })
+                                                            @Html.ValidationMessageFor(d => d.DueDate)
                                                             <span class="input-group-addon">
                                                                 <span class="glyphicon glyphicon-calendar"></span>
                                                             </span>
@@ -171,16 +172,16 @@
 
             })
 
-            $(function () {
-                $('#datetimepicker5').datetimepicker({
-                    defaultDate: "11/1/2013",
-                    disabledDates: [
-                        moment("12/25/2013"),
-                        new Date(2013, 11 - 1, 21),
-                        "11/22/2013 00:53"
-                    ]
-                });
-            });
+            //$(function () {
+            //    $('#datetimepicker5').datetimepicker({
+            //        defaultDate: "11/1/2013",
+            //        disabledDates: [
+            //            moment("12/25/2013"),
+            //            new Date(2013, 11 - 1, 21),
+            //            "11/22/2013 00:53"
+            //        ]
+            //    });
+            //});
             //$('#datepicker').datepicker({
             //    format: 'dd/mm/yyyy'
             //});

@@ -102,9 +102,9 @@
     <Compile Include="ApplicationDbContext.cs" />
     <Compile Include="Enums\AssignmentState.cs" />
     <Compile Include="Listener.cs" />
-    <Compile Include="Migrations\201711150830037_Initial.cs" />
-    <Compile Include="Migrations\201711150830037_Initial.Designer.cs">
-      <DependentUpon>201711150830037_Initial.cs</DependentUpon>
+    <Compile Include="Migrations\201711151313383_Initial.cs" />
+    <Compile Include="Migrations\201711151313383_Initial.Designer.cs">
+      <DependentUpon>201711151313383_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Answer.cs" />
@@ -130,11 +130,6 @@
     <None Include="Scripts\jquery-1.9.0.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201711150830037_Initial.resx">
-      <DependentUpon>201711150830037_Initial.cs</DependentUpon>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -150,6 +145,11 @@
     <Content Include="Scripts\moment.js" />
     <Content Include="Scripts\moment.min.js" />
     <Content Include="Scripts\npm.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201711151313383_Initial.resx">
+      <DependentUpon>201711151313383_Initial.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

@@ -5,6 +5,7 @@ using Ignite.Areas.Admin.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
@@ -42,9 +43,9 @@ namespace Ignite.Areas.Admin.Controllers
         }
 
         [HttpGet]
-        public ActionResult AssignTo(int courseId)
+        public async Task<ActionResult> AssignTo(int courseId)
         {
-            var chosenCourse = assignmentService.GetById(courseId);
+            var chosenCourse = await assignmentService.GetById(courseId);
 
             var model = new CourseNameViewModel();
 
@@ -66,11 +67,16 @@ namespace Ignite.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult AssignTo(CourseNameViewModel courseModel)
+        public async Task<ActionResult> AssignTo(CourseNameViewModel courseModel)
         {
-            assignmentService.CreateAssignment(courseModel);
+            if (this.ModelState.IsValid)
+            {
+                await assignmentService.CreateAssignment(courseModel);
 
-            return this.RedirectToAction("Home", "Admin");
+                return this.RedirectToAction("Home", "Admin");
+            }
+
+            return this.View(courseModel);
         }
 
         public ActionResult RemoveAssignment()

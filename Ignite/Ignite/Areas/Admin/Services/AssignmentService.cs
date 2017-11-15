@@ -7,6 +7,7 @@ using Ignite.Data.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 
 namespace Ignite.Areas.Admin.Services
@@ -29,12 +30,12 @@ namespace Ignite.Areas.Admin.Services
             return dbCourses;
         }
 
-        public Course GetById(int id)
+        public async Task<Course> GetById(int id)
         {
-            return this.context.Courses.Find(id);
+            return await this.context.Courses.FindAsync(id);
         }
 
-        public void CreateAssignment(CourseNameViewModel courseModel)
+        public async Task CreateAssignment(CourseNameViewModel courseModel)
         {
             foreach (var user in courseModel.Users.Where(u => u.Checked))
             {
@@ -54,10 +55,10 @@ namespace Ignite.Areas.Admin.Services
                     assignment.Type = "Mandatory";
                 }
 
-                context.Assignments.Add(assignment);
+                this.context.Assignments.Add(assignment);
             }
-
-            context.SaveChanges();
+            
+           await SaveToDb();
         }
 
         public IEnumerable<Assignment> GetAllAssignments()
@@ -70,6 +71,11 @@ namespace Ignite.Areas.Admin.Services
         public Assignment RemoveAssignment(int assignmentId)
         {
             return null;
+        }
+
+        private async Task SaveToDb()
+        {
+            await this.context.SaveChangesAsync();
         }
     }
 }

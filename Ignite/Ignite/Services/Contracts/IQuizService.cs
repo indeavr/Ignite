@@ -12,6 +12,6 @@ namespace Ignite.Services.Contracts
     {
         Quiz GetTest(int courseId, string username);
 
-        QuizResultViewModel SubmitTest(Quiz quiz);
+        Task<QuizResultViewModel> SubmitTest(Quiz quiz);
     }
 }

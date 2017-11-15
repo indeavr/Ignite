@@ -1,5 +1,6 @@
 ﻿using Ignite.Areas.Admin.ViewModels;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using System.Web;
 
 namespace Ignite.Admin.Services.Interfaces
@@ -10,10 +11,10 @@ namespace Ignite.Admin.Services.Interfaces
 
         bool ValidateJson(HttpPostedFileBase json);
 
-        void SaveCourse(HttpPostedFileBase json);
+        Task SaveCourse(HttpPostedFileBase json);
 
         byte[] ImageToByteArray(HttpPostedFileBase image);
 
-        void SaveSlidesToCourse(int courseId, List<ImageViewModel> imagesView);
+        Task SaveSlidesToCourse(int courseId, List<ImageViewModel> imagesView);
     }
 }

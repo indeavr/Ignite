@@ -10,16 +10,16 @@ namespace Ignite.ViewModels
     {
         public AllAssignmentsPerUserViewModels()
         {
-            this.Pending = new List<Assignment>();
-            this.Started = new List<Assignment>();
-            this.Completed = new List<Assignment>();
-            this.Overdue = new List<Assignment>();
+            this.Pending = new List<DisplayAssignmentsViewModel>();
+            this.Started = new List<DisplayAssignmentsViewModel>();
+            this.Completed = new List<DisplayAssignmentsViewModel>();
+            this.Overdue = new List<DisplayAssignmentsViewModel>();
         }
 
-        public List<Assignment> Pending { get; set; }
-        public List<Assignment> Started { get; set; }
-        public List<Assignment> Completed { get; set; }
-        public List<Assignment> Overdue { get; set; }
+        public List<DisplayAssignmentsViewModel> Pending { get; set; }
+        public List<DisplayAssignmentsViewModel> Started { get; set; }
+        public List<DisplayAssignmentsViewModel> Completed { get; set; }
+        public List<DisplayAssignmentsViewModel> Overdue { get; set; }
 
     }
 }

@@ -13,9 +13,9 @@ namespace Ignite.Areas.Admin.Services.Interfaces
     {
         IEnumerable<Course> GetAllCourses();
 
-        Course GetById(int id);
+        Task<Course> GetById(int id);
 
-        void CreateAssignment(CourseNameViewModel courseModel);
+        Task CreateAssignment(CourseNameViewModel courseModel);
 
         IEnumerable<Assignment> GetAllAssignments();
 

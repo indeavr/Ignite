@@ -13,12 +13,8 @@ namespace Ignite.Controllers
 {
     public class TestQuizController : Controller
     {
-        public IQuizService quizService;
-
-        public TestQuizController()
-        {
-        }
-
+        private readonly IQuizService quizService;
+        
         public TestQuizController(IQuizService quizService)
         {
             Guard.WhenArgument(quizService, "quizService").IsNull().Throw();
@@ -63,7 +59,7 @@ namespace Ignite.Controllers
             return Json(new { error = true, partialView = RenderViewToString("_TestForm", model) });
         }
 
-        private string RenderViewToString(string viewName, object model)
+        protected virtual string RenderViewToString(string viewName, object model)
         {
             ViewData.Model = model;
             using (var sw = new StringWriter())
@@ -76,6 +72,22 @@ namespace Ignite.Controllers
                 viewResult.ViewEngine.ReleaseView(ControllerContext, viewResult.View);
                 return sw.GetStringBuilder().ToString();
             }
+        }
+    }
+
+    public class TestQuizControllerMock : TestQuizController
+    {
+        private readonly string viewString;
+
+        public TestQuizControllerMock(IQuizService quizService, string viewString) 
+            : base(quizService)
+        {
+            this.viewString = viewString;
+        }
+
+        protected override string RenderViewToString(string viewName, object model)
+        {
+            return this.viewString;
         }
     }
 }

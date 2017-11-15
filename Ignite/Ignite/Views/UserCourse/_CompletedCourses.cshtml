@@ -1,10 +1,8 @@
-﻿@model List<Ignite.Data.Models.Assignment>
+﻿@model List<Ignite.ViewModels.DisplayAssignmentsViewModel>
 
 @{
     ViewBag.Title = "_CompletedCourses";
 }
-
-
 
 <div class="row">
     @foreach (var assignment in Model)
@@ -21,7 +19,7 @@
             </div>
 
             <div class="card-block">
-                @Html.ActionLink(assignment.Course.Name, "DisplayingCourseSlides",
+                @Html.ActionLink(assignment.CourseName, "DisplayingCourseSlides",
                         new { courseId = assignment.CourseId }, new { @class = "course-title card-title" })
                 <p class="card-text">Due Date: @assignment.DueDate.ToLocalTime()</p>
                 @if (@assignment.Type == "Mandatory")

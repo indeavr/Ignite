@@ -24,7 +24,12 @@ namespace Ignite.Areas.Admin.Controllers
         // GET: Admin/ManageUser
         public ActionResult ListUsers()
         {
-            var manageUsersViewModel = this.userManager.Users.Select(u => new ManageUserViewModel { Username = u.UserName }).ToList();
+            var manageUsersViewModel = this.userManager.Users
+            .Select(u => new ManageUserViewModel
+            {
+                Username = u.UserName
+            })
+            .ToList();
 
             return View(manageUsersViewModel);
         }

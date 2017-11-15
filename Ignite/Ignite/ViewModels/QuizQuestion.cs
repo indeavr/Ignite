@@ -19,7 +19,7 @@ namespace Ignite.ViewModels
 
         public List<AnsweViewModel> Answers { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Please Choose an Answer!")]
         [Display(Name = "Answer")]
         public string ChosenAnswer { get; set; }
     }

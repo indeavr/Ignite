@@ -7,6 +7,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Threading.Tasks;
 using System.Web;
 
 namespace Ignite.Admin.Services
@@ -27,7 +28,7 @@ namespace Ignite.Admin.Services
             this.context = context;
         }
 
-        public void SaveCourse(HttpPostedFileBase json)
+        public async Task SaveCourse(HttpPostedFileBase json)
         {
             if (json.InputStream.CanRead)
             {
@@ -43,7 +44,7 @@ namespace Ignite.Admin.Services
 
                 try
                 {
-                    context.SaveChanges();
+                    await SaveToDB();
                 }
                 catch (System.Data.Entity.Validation.DbEntityValidationException dbEx)
                 {
@@ -90,7 +91,7 @@ namespace Ignite.Admin.Services
             }
         }
 
-        public void SaveSlidesToCourse(int courseId, List<ImageViewModel> imagesView)
+        public async Task SaveSlidesToCourse(int courseId, List<ImageViewModel> imagesView)
         {
             // var course = this.context.Courses.First(c => c.Id == courseId);
             Guard.WhenArgument(imagesView, "imagesView").IsNull().Throw();
@@ -101,7 +102,14 @@ namespace Ignite.Admin.Services
                 image.CourseId = courseId;
                 this.context.Images.Add(image);
             }
-            this.context.SaveChanges();
+            await SaveToDB();
+        }
+
+        private async Task SaveToDB()
+        {
+            await this.context.SaveChangesAsync();
         }
     }
+
+
 }

@@ -238,6 +238,7 @@
     <Compile Include="Services\UserCoursesService.cs" />
     <Compile Include="ViewModels\AccountViewModels.cs" />
     <Compile Include="ViewModels\AllAssignmentsPerUserViewModels.cs" />
+    <Compile Include="ViewModels\DisplayAssignmentsViewModel.cs" />
     <Compile Include="ViewModels\ImagesToCourosel.cs" />
     <Compile Include="ViewModels\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -478,7 +479,9 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\uploadCourse.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>

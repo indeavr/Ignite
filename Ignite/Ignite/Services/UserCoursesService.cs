@@ -8,6 +8,7 @@ using System.Linq;
 using System.Web;
 using Ignite.Data.Enums;
 using Bytes2you.Validation;
+using System.Threading.Tasks;
 
 namespace Ignite.Services
 {
@@ -44,25 +45,30 @@ namespace Ignite.Services
 
             foreach (var assignment in dbAssignments)
             {
+                var assignmentViewModel = new DisplayAssignmentsViewModel();
+                assignmentViewModel.CourseId = assignment.CourseId;
+                assignmentViewModel.CourseName = assignment.Course.Name;
+                assignmentViewModel.DueDate = assignment.DueDate;
+                assignmentViewModel.Type = assignment.Type;
+
                 if (assignment.State == AssignmentState.Started)
                 {
-                    allAssignments.Started.Add(assignment);
+                    allAssignments.Started.Add(assignmentViewModel);
                 }
                 else if (assignment.State == AssignmentState.Pending)
                 {
-                    allAssignments.Pending.Add(assignment);
+                    allAssignments.Pending.Add(assignmentViewModel);
                 }
                 else if (assignment.State == AssignmentState.Completed)
                 {
-                    allAssignments.Completed.Add(assignment);
+                    allAssignments.Completed.Add(assignmentViewModel);
                 }
                 else if (assignment.State == AssignmentState.Overdue)
                 {
-                    allAssignments.Overdue.Add(assignment);
+                    allAssignments.Overdue.Add(assignmentViewModel);
                 }
             }
             return allAssignments;
-            
         }
 
         public byte[] RenderImg(int imgId)
@@ -71,14 +77,20 @@ namespace Ignite.Services
             return image.Content;
         }
      
-        public void CheckStateChange(int courseId, string username)
+        public async Task CheckStateChange(int courseId, string username)
         { 
             var assignment = this.context.Assignments.First(a => a.CourseId == courseId && a.User.UserName == username);
 
             if (assignment.State == AssignmentState.Pending)
             {
                 assignment.State = AssignmentState.Started;
+                await SaveToDb();
             }
+        }
+
+        private async Task SaveToDb()
+        {
+            await this.context.SaveChangesAsync();
         }
 
     }

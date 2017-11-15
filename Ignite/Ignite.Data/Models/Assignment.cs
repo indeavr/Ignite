@@ -32,6 +32,7 @@ namespace Ignite.Data.Models
         public virtual Course Course { get; set; }
 
         [Required]
+        [DataType(DataType.Date)]
         public DateTime DueDate { get; set; }
 
         [Required]

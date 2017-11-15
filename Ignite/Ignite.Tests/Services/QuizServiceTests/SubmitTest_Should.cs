@@ -120,7 +120,7 @@ namespace Ignite.Tests.Services.QuizServiceTests
             var quizService = new QuizService(contextMock.Object);
 
             // Act
-            var actualResult = quizService.SubmitTest(quizView);
+            var actualResult = quizService.SubmitTest(quizView).Result;
 
             // Assert
             Assert.AreEqual("Passed", actualResult.Passed);
@@ -340,7 +340,7 @@ namespace Ignite.Tests.Services.QuizServiceTests
         }
 
         [TestMethod]
-        public void ChangeTestResultOfAssignment_IfScoreIsMoreThanPreviousOfAssignment()
+        public async Task ChangeTestResultOfAssignment_IfScoreIsMoreThanPreviousOfAssignment()
         {
             // Arange
             var contextMock = new Mock<ApplicationDbContext>();
@@ -441,7 +441,7 @@ namespace Ignite.Tests.Services.QuizServiceTests
             var quizService = new QuizService(contextMock.Object);
 
             // Act
-            quizService.SubmitTest(quizView);
+            await quizService.SubmitTest(quizView);
 
             // Assert
             Assert.AreNotEqual(testResult, contextMock.Object.Assignments.First().TestResult);
@@ -542,7 +542,7 @@ namespace Ignite.Tests.Services.QuizServiceTests
             var quizService = new QuizService(contextMock.Object);
 
             // Act
-            var actualResult = quizService.SubmitTest(quizView);
+            var actualResult = quizService.SubmitTest(quizView).Result;
 
             // Assert
             Assert.AreEqual("Failed", actualResult.Passed);
@@ -655,7 +655,7 @@ namespace Ignite.Tests.Services.QuizServiceTests
             var actualResult = quizService.SubmitTest(quizView);
 
             // Assert
-            contextMock.Verify(m => m.SaveChanges(), Times.Once);
+            contextMock.Verify(m => m.SaveChangesAsync(), Times.Once);
         }
 
         [TestMethod]
@@ -763,7 +763,7 @@ namespace Ignite.Tests.Services.QuizServiceTests
             quizService.SubmitTest(quizView);
 
             // Assert
-            contextMock.Verify(m => m.SaveChanges(), Times.Once);
+            contextMock.Verify(m => m.SaveChangesAsync(), Times.Once);
         }
     }
 }

@@ -8,7 +8,6 @@ namespace Ignite.Areas.Admin.ViewModels
 {
     public class Assignment2ViewModel
     {
-
         public Assignment2ViewModel()
         {
             this.Courses = new List<Course>();

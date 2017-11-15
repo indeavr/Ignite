@@ -4,13 +4,14 @@ using Ignite.Data.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 
 namespace Ignite.Areas.Admin.Services.Interfaces
 {
     public interface IStatisticsService
     {
-        void CheckForOverdueAndUpdate();
+        Task CheckForOverdueAndUpdate();
 
         List<OverdueCourse> GetAllOverdue();
 

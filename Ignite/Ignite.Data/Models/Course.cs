@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,10 +19,11 @@ namespace Ignite.Data.Models
 
         public int Id { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Course Name is required !")]
+       // [Index(IsUnique = true)]
         public string Name { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Course Description is required !")]
         public string Description { get; set; }
 
         [Required]

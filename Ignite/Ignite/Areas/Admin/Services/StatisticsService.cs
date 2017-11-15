@@ -9,6 +9,7 @@ using Ignite.Data.Models;
 using Ignite.Data.Enums;
 using Newtonsoft.Json;
 using Ignite.Areas.Admin.ViewModels;
+using System.Threading.Tasks;
 
 namespace Ignite.Areas.Admin.Services
 {
@@ -21,7 +22,7 @@ namespace Ignite.Areas.Admin.Services
             this.context = context;
         }
 
-        public void CheckForOverdueAndUpdate()
+        public async Task CheckForOverdueAndUpdate()
         {
             var assignments = this.context.Assignments.ToList();
 
@@ -32,7 +33,7 @@ namespace Ignite.Areas.Admin.Services
                     assignment.State = AssignmentState.Overdue;
                     int id = assignment.Id;
                     this.context.Assignments.First(a => a.Id == id).State = AssignmentState.Overdue;
-                    this.context.SaveChanges();
+                    await SaveToDb();
                 }
             }
         }
@@ -104,7 +105,8 @@ namespace Ignite.Areas.Admin.Services
             return result;
         }
 
-        public IList<ApplicationUser> Filtrator(string propertyName, string shortOp, string inputField, IList<ApplicationUser> users)
+        public IList<ApplicationUser> Filtrator(string propertyName, string shortOp, string inputField,
+                    IList<ApplicationUser> users)
         {
             var result = new List<ApplicationUser>();
 
@@ -163,6 +165,11 @@ namespace Ignite.Areas.Admin.Services
             var needed = new { total = 1, page = 1, records = result.Count, rows = result };
 
             return needed;
+        }
+
+        private async Task SaveToDb()
+        {
+            await this.context.SaveChangesAsync();
         }
     }
 }

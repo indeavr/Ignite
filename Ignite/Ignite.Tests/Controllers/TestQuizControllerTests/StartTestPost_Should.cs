@@ -35,7 +35,7 @@ namespace Ignite.Tests.Controllers.TestQuizControllerTests
             var quizMock = new Quiz();
             var quizResult = new QuizResultViewModel();
 
-            quizServiceMock.Setup(m => m.SubmitTest(quizMock)).Returns(quizResult);
+            quizServiceMock.Setup(m => m.SubmitTest(quizMock).Result).Returns(quizResult);
 
             var controller = new TestQuizController(quizServiceMock.Object);
 
@@ -54,9 +54,9 @@ namespace Ignite.Tests.Controllers.TestQuizControllerTests
             var quizMock = new Quiz();
             QuizResultViewModel quizResult = null;
 
-            quizServiceMock.Setup(m => m.SubmitTest(quizMock)).Returns(quizResult);
+            quizServiceMock.Setup(m => m.SubmitTest(quizMock).Result).Returns(quizResult);
 
-            var controller = new TestQuizController(quizServiceMock.Object);
+            var controller = new TestQuizControllerMock(quizServiceMock.Object, "view string");
 
             // Act && Assert
             Assert

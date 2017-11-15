@@ -8,6 +8,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
@@ -31,9 +32,9 @@ namespace Ignite.Areas.Admin.Controllers
         }
 
         // GET: Admin/Statistics
-        public ActionResult Home()
+        public async Task<ActionResult> Home()
         {
-            this.statService.CheckForOverdueAndUpdate();
+            await this.statService.CheckForOverdueAndUpdate();
             var overdueUsers = this.statService.GetAllOverdue();
 
             return View(overdueUsers);
