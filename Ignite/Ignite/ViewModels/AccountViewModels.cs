@@ -59,7 +59,7 @@ namespace Ignite.Models
         public string Password { get; set; }
 
         [Display(Name = "Department")]
-        public bool Department { get; set; }
+        public string Department { get; set; }
 
         [Display(Name = "Remember me?")]
         public bool RememberMe { get; set; }
