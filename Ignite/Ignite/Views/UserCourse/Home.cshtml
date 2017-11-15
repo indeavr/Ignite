@@ -14,18 +14,7 @@
             @*@ajax link => ajax action method sochat kum acton method provera
                 <li class="active"><a href="#tab1success" data-toggle="tab">Success 1</a></li>*@
             <li class="nav-item">
-                @Ajax.ActionLink("Completed",
-                                            "Home",
-                                            new { state = "completed" },
-                                    new AjaxOptions
-                                    {
-                                        InsertionMode = InsertionMode.Replace,
-                                        UpdateTargetId = "tabsuccess",
-                                    }, new { @class = "nav-link" })
-            </li>
-            <li class="nav-item">
-                @Ajax.ActionLink("Pending",
-                                            "Home",
+                @Ajax.ActionLink("Pending", "ReturnCollectionPartialView",
                                              new { state = "pending" },
                                     new AjaxOptions
                                     {
@@ -34,8 +23,7 @@
                                     }, new { @class = "nav-link" })
             </li>
             <li class="nav-item">
-                @Ajax.ActionLink("Started",
-                                            "Home",
+                @Ajax.ActionLink("Started", "ReturnCollectionPartialView",
                                              new { state = "started" },
                                     new AjaxOptions
                                     {
@@ -44,8 +32,16 @@
                                     }, new { @class = "nav-link" })
             </li>
             <li class="nav-item">
-                @Ajax.ActionLink("Overdue",
-                                            "Home",
+                @Ajax.ActionLink("Completed", "ReturnCollectionPartialView",
+                                            new { state = "completed" },
+                                    new AjaxOptions
+                                    {
+                                        InsertionMode = InsertionMode.Replace,
+                                        UpdateTargetId = "tabsuccess",
+                                    }, new { @class = "nav-link" })
+            </li>
+            <li class="nav-item">
+                @Ajax.ActionLink("Overdue", "ReturnCollectionPartialView",
                                              new { state = "overdue" },
                                     new AjaxOptions
                                     {

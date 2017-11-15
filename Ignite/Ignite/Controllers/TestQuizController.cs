@@ -1,12 +1,8 @@
 ﻿using Bytes2you.Validation;
 using Ignite.Services.Contracts;
 using Ignite.ViewModels;
-using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Threading.Tasks;
-using System.Web;
 using System.Web.Mvc;
 
 namespace Ignite.Controllers
@@ -23,7 +19,6 @@ namespace Ignite.Controllers
         }
 
         // GET: TestQuiz
-        [Authorize]
         public ActionResult StartTest(int courseId)
         {
             var userName = this.User.Identity.Name;
@@ -34,9 +29,8 @@ namespace Ignite.Controllers
         }
 
         [HttpPost]
-        [Authorize]
         [ValidateAntiForgeryToken]
-        public ActionResult SubmitTest(Quiz model)
+        public async Task<ActionResult> SubmitTest(Quiz model)
         {
             // return json with HTML and State indicating if it passed or not
 
@@ -50,7 +44,7 @@ namespace Ignite.Controllers
 
             if (ModelState.IsValid)
             {
-                var quizResult =  this.quizService.SubmitTest(model);
+                var quizResult = await this.quizService.SubmitTest(model);
                 Guard.WhenArgument(quizResult, "quizResult").IsNull().Throw();
 
                 return Json(new { error = false, partialView = RenderViewToString("_VisualizeTestResult", quizResult) });

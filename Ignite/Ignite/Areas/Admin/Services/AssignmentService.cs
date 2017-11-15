@@ -37,8 +37,20 @@ namespace Ignite.Areas.Admin.Services
 
         public async Task CreateAssignment(CourseNameViewModel courseModel)
         {
+
+
             foreach (var user in courseModel.Users.Where(u => u.Checked))
             {
+                var userAlreadyHasAssignment = this.context.Users
+                .First(u => u.Id == user.UserId)
+                .Assignments
+                .Any(c => c.CourseId == courseModel.CourseId);
+
+                if (!userAlreadyHasAssignment)
+                {
+                    continue;
+                }
+
                 var assignment = new Assignment();
                 assignment.DateOfAssignment = DateTime.Now;
                 assignment.State = AssignmentState.Pending;
@@ -57,8 +69,8 @@ namespace Ignite.Areas.Admin.Services
 
                 this.context.Assignments.Add(assignment);
             }
-            
-           await SaveToDb();
+
+            await SaveToDb();
         }
 
         public IEnumerable<Assignment> GetAllAssignments()

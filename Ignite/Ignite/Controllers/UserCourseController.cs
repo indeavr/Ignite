@@ -1,14 +1,7 @@
 ﻿using Bytes2you.Validation;
-using Ignite.Data;
 using Ignite.Data.Models;
-using Ignite.Services;
 using Ignite.Services.Contracts;
-using Ignite.ViewModels;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
-using System.Web;
 using System.Web.Mvc;
 
 namespace Ignite.Controllers
@@ -36,9 +29,18 @@ namespace Ignite.Controllers
             
         }
  
-        // GET: UserCourse
+        public ActionResult Home()
+        {
+            var username = this.User.Identity.Name;
+            var allAssignments = this.userCourseService.GetAllAssignmentsPerUser(username);
 
-        public ActionResult Home(string state)
+            return this.View(allAssignments);
+        }
+
+        // GET: UserCourse
+        [OutputCache(Duration = 180)]
+        [ChildActionOnly]
+        public ActionResult ReturnCollectionPartialView(string state)
         {
             var username = this.User.Identity.Name;
 
@@ -53,11 +55,11 @@ namespace Ignite.Controllers
                 case "started":
                     return this.PartialView("_CompletedCourses", allAssignments.Started);
                 case "overdue":
-                    return this.PartialView("_CompletedCourses", allAssignments.Started);
+                    return this.PartialView("_CompletedCourses", allAssignments.Overdue);
                 default:
-                    return this.View(allAssignments);
-                    //return this.View("_CompletedCourses", allAssignments.Completed);
-            }          
+                    return this.View("Home", allAssignments);
+
+            }
         }
 
         public async Task<ActionResult> DisplayingCourseSlides(int courseId)
@@ -67,7 +69,8 @@ namespace Ignite.Controllers
             var username = this.User.Identity.Name;
             //add username
             await this.userCourseService.CheckStateChange(courseId,username);
-            
+            slides.CourseId = courseId;
+
             return this.View(slides);
         }
 

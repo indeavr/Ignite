@@ -1,4 +1,4 @@
-﻿using Ignite.Admin.Services;
+﻿ using Ignite.Admin.Services;
 using Ignite.Areas.Admin.ViewModels;
 using Ignite.Data;
 using Ignite.Data.Models;

@@ -53,7 +53,7 @@ namespace Ignite.Tests.Controllers.UserCourseControllerTests
             var controller = new UserCourseController();
 
             //Assert
-            controller.WithCallTo(c => c.Home(state)).
+            controller.WithCallTo(c => c.Home()).
                 ShouldRenderDefaultView().
                 WithModel<AllAssignmentsPerUserViewModels>();
         }

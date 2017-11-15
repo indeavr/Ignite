@@ -23,7 +23,7 @@ namespace Ignite.Tests.Admin.Services.UploadCourseServiceTests
             fileBaseMock.Setup(m => m.InputStream).Returns(stream);
 
             byte[] rightByteArray;
-            using (MemoryStream ms = new MemoryStream())
+            using (MemoryStream ms = new MemoryStream()) 
             {
                 fileBaseMock.Object.InputStream.Seek(0, SeekOrigin.Begin);
                 fileBaseMock.Object.InputStream.CopyTo(ms);
