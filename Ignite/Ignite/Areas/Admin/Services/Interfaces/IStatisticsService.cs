@@ -10,9 +10,11 @@ namespace Ignite.Areas.Admin.Services.Interfaces
 {
     public interface IStatisticsService
     {
+        void CheckForOverdueAndUpdate();
+
         List<OverdueCourse> GetAllOverdue();
 
-        List<AssignmentViewModel> GetDataFromServer();
+        Object GetDataFromServer(int rows, int page);
 
         object SearchAndGetData(string filters);
     }

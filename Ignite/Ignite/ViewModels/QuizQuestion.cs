@@ -22,8 +22,6 @@ namespace Ignite.ViewModels
         [Required]
         [Display(Name = "Answer")]
         public string ChosenAnswer { get; set; }
-
-        public string CorrectAnswer { get; set; }
     }
 
     public class AnswerChosenAttribute : ValidationAttribute

@@ -17,7 +17,6 @@ namespace Ignite.Controllers
 
         public TestQuizController()
         {
-
         }
 
         public TestQuizController(IQuizService quizService)
@@ -28,15 +27,18 @@ namespace Ignite.Controllers
         }
 
         // GET: TestQuiz
-        public ActionResult StartTest(int? courseId)
+        [Authorize]
+        public ActionResult StartTest(int courseId)
         {
-            var model = this.quizService.GetTest(courseId);
+            var userName = this.User.Identity.Name;
+            var model = this.quizService.GetTest(courseId, userName);
             Guard.WhenArgument(model, "quiz").IsNull().Throw();
 
             return View(model);
         }
 
         [HttpPost]
+        [Authorize]
         [ValidateAntiForgeryToken]
         public ActionResult SubmitTest(Quiz model)
         {
@@ -56,7 +58,6 @@ namespace Ignite.Controllers
                 Guard.WhenArgument(quizResult, "quizResult").IsNull().Throw();
 
                 return Json(new { error = false, partialView = RenderViewToString("_VisualizeTestResult", quizResult) });
-
             }
 
             return Json(new { error = true, partialView = RenderViewToString("_TestForm", model) });

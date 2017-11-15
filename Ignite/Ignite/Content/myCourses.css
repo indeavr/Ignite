@@ -1,0 +1,110 @@
+﻿/*.image-course:hover{
+    background-o
+}*/
+
+.course-title{
+    font-size: 21px;
+    text-decoration: none;
+}
+
+/*.img-container:hover img .img-container a {
+    z-index: 0;
+}
+
+.img-container:hover {
+    -moz-transition: all .2s ease-in;
+    -o-transition: all .2s ease-in;
+    -webkit-transition: all .2s ease-in;
+    transition: all .2s ease-in;
+    background: rgba(16, 16, 16, 0.65);
+    z-index: 1;
+}
+
+
+.icon-play i {
+    position: relative;
+    bottom: 105px;
+    left: 90px;
+}
+
+.img-container:hover .icon-play a {
+}
+
+.icon-play i {
+    font-size: 70px;
+    color: #ffffff;
+}*/
+.img-container {
+    position: relative;
+    background-color:#808080;
+}
+
+.image-course {
+    opacity: 1;
+    display: block;
+    /*width: 100%;
+    height: auto;*/
+    transition: .5s ease;
+    backface-visibility: hidden;
+}
+
+.icon-play {
+    transition: .5s ease;
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%)
+}
+
+.img-container:hover .image-course {
+    opacity: 0.3;
+}
+
+.img-container:hover .icon-play {
+    opacity: 1;
+}
+
+.iconka {
+    /*/background-color: #4CAF50;*/
+    color: white;
+    font-size: 70px;
+    padding: 16px 32px;
+}
+
+.iconka:hover{
+    color: #c62003
+}
+
+.card-text {
+    color: black;
+}
+
+.assType-red {
+    color: #c62003;
+    font-weight: 700;
+    font-size: 16px;
+}
+
+.assType-green {
+    color: #00ff21;
+    font-weight: 700;
+    font-size: 16px;
+}
+
+.card-block span{
+    color: #000000;
+    
+}
+
+#course-tabs .tab-content {
+    color: white;
+    background-color: white;
+    padding: 5px 15px;
+}
+
+#course-tabs .nav-pills > li > a {
+    border-radius: 0;
+}
+

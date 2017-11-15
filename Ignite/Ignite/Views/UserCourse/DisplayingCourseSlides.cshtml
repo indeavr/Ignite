@@ -8,7 +8,12 @@
     @Styles.Render("~/Content/swiper.css");
 }
 
-<div class="panel-heading"><label>CourseName: @Model.CourseName</label> <button class="btn btn-info disabled" id="LaunchCourseButton">Take Test</button></div>
+<div class="panel-heading">
+    <label>CourseName: @Model.CourseName</label>
+    <button class="btn btn-info disabled" id="LaunchCourseButton">
+        Take Test
+    </button>
+</div>
 
 <div class="swiper-container">
     <div class="swiper-wrapper">
@@ -32,6 +37,10 @@
     @Scripts.Render("~/bundles/swiper.js");
 
     <script>
+        $('#LaunchCourseButton').click(function () {
+                document.location = '@Url.Action("StartTest", "TestQuiz", new { courseId = Model.CourseId })';
+            });
+
         var swiper = new Swiper('.swiper-container', {
             pagination: {
                 el: '.swiper-pagination',

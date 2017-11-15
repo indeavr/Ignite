@@ -13,6 +13,7 @@ using System.Web.Mvc;
 
 namespace Ignite.Controllers
 {
+    [Authorize]
     public class UserCourseController : Controller
     {
         private readonly ApplicationUserManager userManager;
@@ -78,6 +79,7 @@ namespace Ignite.Controllers
             {
                 imageViewModel.Images.Add(image);
             }
+            imageViewModel.CourseId = courseId;
 
             // imageViewModel.CourseName = imageViewModel.Images[0].Course.Name;
 

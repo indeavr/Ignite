@@ -1,7 +1,6 @@
 ﻿@model Ignite.ViewModels.QuizQuestion
 <div id="test-question">
     @Html.HiddenFor(x => x.Id)
-    @Html.HiddenFor(m => m.CorrectAnswer)
     <h3> @Model.Statement </h3>
 
     @foreach (var answer in Model.Answers)

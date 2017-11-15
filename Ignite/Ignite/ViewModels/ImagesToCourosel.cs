@@ -14,6 +14,8 @@ namespace Ignite.ViewModels
             this.Images = new List<Image>();
         }
 
+        public int CourseId { get; set; }
+
         public string CourseName { get; set; }
 
         public List<Image> Images { get; set; }

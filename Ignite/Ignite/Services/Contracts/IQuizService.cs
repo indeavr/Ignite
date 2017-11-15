@@ -10,7 +10,7 @@ namespace Ignite.Services.Contracts
 {
     public interface IQuizService
     {
-        Quiz GetTest(int? courseId);
+        Quiz GetTest(int courseId, string username);
 
         QuizResultViewModel SubmitTest(Quiz quiz);
     }

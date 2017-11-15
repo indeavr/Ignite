@@ -12,3 +12,12 @@
 #overdue-heading{
     text-align:center;
 }
+
+#pager-buttons {
+    height: 30px;
+    top: -21px;
+}
+
+.icon-page{
+    font-size: 10px;
+}

@@ -5,12 +5,12 @@
 }
 
 @using (Ajax.BeginForm("SubmitTest", "TestQuiz",
-                            new { }, new AjaxOptions
-                            {
-                                HttpMethod = "POST",
-                                OnSuccess = "onSuccess(data)"
-                            },
-                            new { id = "test-form" }))
+                                        new { }, new AjaxOptions
+                                        {
+                                            HttpMethod = "POST",
+                                            OnSuccess = "onSuccess(data)"
+                                        },
+                                        new { id = "test-form" }))
 {
     @Html.AntiForgeryToken()
 
@@ -26,6 +26,13 @@
 
 @section scripts{
     <script>
+          function switchPanel() {
+            debugger;
+            var result = $.parseJSON("TempData[\"passed\"]");
+            if (result === "Failed") {
+                $('.modal-header').css("background-color", "red")
+            }
+        }
         function onSuccess(data) {
             debugger;
             if (data.error) {
@@ -35,8 +42,11 @@
                 debugger;
                 $('#result-popup').html(data.partialView)
                 $('#result-popup').show()
+                switchPanel()
             }
         }
+
+
 
         @*var URL = "@(Url.Action("SubmitTest", "TestQuiz"))";
         var model = @Html.Raw(Json.Encode(Model));

@@ -25,6 +25,7 @@ namespace Ignite.Services
         {
             var allAssignments = new AllAssignmentsPerUserViewModels();
             var dbAssignments = this.context.Users.FirstOrDefault(u => u.UserName == username).Assignments.ToList();
+
             foreach (var assignment in dbAssignments)
             {
                 if (assignment.State == AssignmentState.Started)
@@ -40,7 +41,6 @@ namespace Ignite.Services
                     allAssignments.Completed.Add(assignment);
                 }
             }
-            
             return allAssignments;
         }
     }

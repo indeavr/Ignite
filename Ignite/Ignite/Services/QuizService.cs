@@ -1,13 +1,11 @@
 ﻿using Bytes2you.Validation;
 using Ignite.Data;
 using Ignite.Data.Enums;
-using Ignite.Data.Models;
 using Ignite.Services.Contracts;
 using Ignite.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 
 namespace Ignite.Services
 {
@@ -22,98 +20,115 @@ namespace Ignite.Services
             this.context = context;
         }
 
-        public Quiz GetTest(int? courseId)
+        public Quiz GetTest(int courseId, string username)
         {
-            courseId = 1;
-
-            //Guard.WhenArgument(courseId, "courseId").IsNull().Throw();
-
-            var questions = this.context.Courses.First(c => c.Id == courseId).Questions.ToList();
+            var questions = this.context.Courses
+                .First(c => c.Id == courseId)
+                .Questions
+                .ToList();
 
             var quizQuestions = new List<QuizQuestion>();
-            var counter = 1;
-
 
             foreach (var question in questions)
             {
                 var currentQ = new QuizQuestion();
                 currentQ.Statement = question.Statement;
-                currentQ.CorrectAnswer = question.CorrectAnswer;
                 foreach (var answer in question.Answers)
                 {
                     var answerView = new AnsweViewModel(answer.Text, answer.Letter);
 
-                    answerView.Id = counter;
                     currentQ.Answers.Add(answerView);
-                    counter++;
                 }
                 quizQuestions.Add(currentQ);
             }
 
             var quiz = new Quiz();
             quiz.Questions = quizQuestions;
-            //quiz.AssignmentId = this.context.Assignments.First(a => a.CourseId == courseId).Id;
 
-            quiz.AssignmentId = 1;
+            quiz.AssignmentId = this.context.Assignments
+                .First(a => a.CourseId == courseId && a.User.UserName == username)
+                .Id;
 
             return quiz;
         }
 
         public QuizResultViewModel SubmitTest(Quiz quiz)
         {
+            var shouldSaveChanges = false;
+
             var questionsCount = quiz.Questions.Count;
+            var correctAnswersCount = CountCorrectAnswers(quiz);
+
+            double score = Math.Round((correctAnswersCount / (double)questionsCount) * 100, 2);
+
+            var quizResult = new QuizResultViewModel();
+
+            double requiredScore = this.context.Assignments
+                .First(a => a.Id == quiz.AssignmentId)
+                .Course
+                .RequiredScore;
+
+            quizResult.Passed = "Failed";
+            if (score >= requiredScore)
+            {
+                quizResult.Passed = "Passed";
+
+                shouldSaveChanges = true;
+                this.context.Assignments
+                    .First(a => a.Id == quiz.AssignmentId)
+                    .State = AssignmentState.Completed;
+
+            }
+
+            var assignment = this.context.Assignments
+                .First(a => a.Id == quiz.AssignmentId);
+
+            if (assignment.TestResult < score && assignment.State != AssignmentState.Completed)
+            {
+                shouldSaveChanges = true;
+
+                this.context.Assignments
+                    .First(a => a.Id == quiz.AssignmentId)
+                    .TestResult = score;
+            }
+
+            quizResult.Score = score;
+            quizResult.CorrectAnswers = correctAnswersCount;
+            quizResult.RequiredScore = requiredScore;
+
+            if (shouldSaveChanges)
+            {
+                this.context.SaveChanges();
+            }
+
+            return quizResult;
+        }
+
+        private int CountCorrectAnswers(Quiz quiz)
+        {
             var correctAnswerCount = 0;
 
-            // Fix correct Answer not to show 
-            //var questions = this.context.Courses
-            //    .First(c => c.Id == this.context.Assignments.First(a => a.Id == quiz.AssignmentId).Id)
-            //    .Questions
-            //    .ToList();
+            var courseId = this.context.Assignments
+                .First(a => a.Id == quiz.AssignmentId)
+                .CourseId;
 
-            foreach (var question in quiz.Questions)
+            var questionsInDb = this.context.Courses
+                .First(c => c.Id == courseId)
+                .Questions
+                .ToList();
+
+            for (int i = 0; i < quiz.Questions.Count; i++)
             {
+                var question = quiz.Questions[i];
                 Guard.WhenArgument(question.ChosenAnswer, "ChosenAnswer").IsNull().Throw();
-                if (question.CorrectAnswer == question.ChosenAnswer)
+
+                if (questionsInDb[i].CorrectAnswer == question.ChosenAnswer)
                 {
                     correctAnswerCount++;
                 }
             }
 
-            //double requiredScore = this.context.Assignments
-            //    .First(a => a.Id == quiz.AssignmentId)
-            //    .Course
-            //    .RequiredScore;
-
-            double requiredScore = 40;
-
-            double score = (correctAnswerCount / (double)questionsCount) * 100;
-
-
-            var quizResult = new QuizResultViewModel();
-            quizResult.Passed = "Failed";
-
-            if (score >= requiredScore)
-            {
-                this.context.Assignments
-                    .First(a => a.Id == quiz.AssignmentId)
-                    .State = AssignmentState.Completed;
-
-                quizResult.Passed = "Passed";
-            }
-
-            // this should only change if the score is higher then the previous
-            this.context.Assignments
-                .First(a => a.Id == quiz.AssignmentId)
-                .TestResult = score;
-
-
-            quizResult.Score = score;
-            quizResult.CorrectAnswers = correctAnswerCount;
-            quizResult.RequiredScore = requiredScore;
-
-            this.context.SaveChanges();
-
-            return quizResult;
+            return correctAnswerCount;
         }
     }
 }

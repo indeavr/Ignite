@@ -58,6 +58,9 @@ namespace Ignite.Models
         [Display(Name = "Password")]
         public string Password { get; set; }
 
+        [Display(Name = "Department")]
+        public bool Department { get; set; }
+
         [Display(Name = "Remember me?")]
         public bool RememberMe { get; set; }
     }

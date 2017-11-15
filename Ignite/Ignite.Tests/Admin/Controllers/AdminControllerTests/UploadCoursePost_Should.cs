@@ -109,7 +109,7 @@ namespace Ignite.Tests.Admin.Controllers.AdminControllerTests
             var controller = new AdminController(uploadServiceMock.Object);
 
             var stream = new FileStream(Path.Combine(AppDomain.CurrentDomain.BaseDirectory,
-               @"files\wrongFileExtension.css"), FileMode.Open);
+               @"files\Course.json"), FileMode.Open);
 
             var fileBaseMock = new Mock<HttpPostedFileBase>();
             fileBaseMock.Setup(m => m.InputStream).Returns(stream);

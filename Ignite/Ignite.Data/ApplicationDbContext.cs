@@ -30,5 +30,21 @@ namespace Ignite.Data
         public virtual DbSet<Image> Images { get; set; }
 
         public virtual DbSet<Answer> Answer { get; set; }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            //modelBuilder.Entity<Assignment>()
+            //    .HasOptional(x => x.Course)
+            //    .WithMany(c => c.Assignments)
+            //    .WillCascadeOnDelete(false);
+
+            //modelBuilder.Entity<Assignment>()
+            //   .HasOptional(x => x.User)
+            //   .WithMany(c => c.Assignments)
+            //   .WillCascadeOnDelete(false);
+
+
+            base.OnModelCreating(modelBuilder);
+        }
     }
 }
