@@ -18,7 +18,7 @@ namespace Ignite.Data.Models
             this.Assignments = new HashSet<Assignment>();
         }
 
-        [Required]
+        //[Required]
         public string Department { get; set; }
 
         public virtual ICollection<Assignment> Assignments { get; set; }

@@ -93,9 +93,7 @@ namespace Ignite
              "~/Content/slider/Slides.css"));
 
             bundles.Add(new ScriptBundle("~/bundles/swiper.js").Include(
-                "~/Scripts/slider/swiper.js",
-                "~/Scripts/slider/swiper.esm.js",
-                "~/Scripts/slider/swiper.esm.bundle.js"));
+                "~/Scripts/slider/swiper.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/assignmentTable.js").Include(
                "~/Scripts/assignmentTable.js"));
@@ -108,6 +106,16 @@ namespace Ignite
 
             bundles.Add(new StyleBundle("~/Content/login.css").Include(
               "~/Content/login.css"));
+
+            bundles.Add(new ScriptBundle("~/bundles/datetimepicker.js").Include(
+                "~/Scripts/moment.js",
+              "~/Scripts/en-gb-moment.js",
+              "~/Scripts/bootstrap-datetimepicker.js"));
+
+            bundles.Add(new StyleBundle("~/Content/bootstrap-datetimepicker.css").Include(
+              "~/Content/bootstrap-datetimepicker.css"));
+
+
         }
     }
 }
