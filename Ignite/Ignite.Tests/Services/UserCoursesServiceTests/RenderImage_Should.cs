@@ -14,14 +14,14 @@ namespace Ignite.Tests.Services.UserCoursesServiceTests
         [TestMethod]
         public void RenderImageWithPassedParameter()
         {
-            int imgId = 1;
-            var context = new Mock<ApplicationDbContext>();
+            //int imgId = 1;
+            //var context = new Mock<ApplicationDbContext>();
 
-            var image = new Image();
+            //var image = new Image(context.Object);
 
-            var listOfImages = new List<Image>();
+            //var listOfImages = new List<Image>();
 
-            var userDbSetMock = new Mock<DbSet<Image>>().SetupData();
+            //var userDbSetMock = new Mock<DbSet<Image>>().SetupData();
 
 
         }

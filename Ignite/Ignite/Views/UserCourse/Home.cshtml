@@ -1,55 +1,64 @@
 ﻿@model Ignite.ViewModels.AllAssignmentsPerUserViewModels
 
-@{ 
+@{
     ViewBag.Title = "Welcome";
 }
 
-<div class="container">
+@section styles{
+    @Styles.Render("~/Content/myCourses.css")
+
+}
+<div class="container" id="course-tabs">
     <div class="row">
-        <div class="col-md-12">
-            <div class="panel with-nav-tabs panel-success">
-                <div class="panel-heading">
-                    <ul class="nav nav-tabs">
-                        @*@ajax link => ajax action method sochat kum acton method provera
-                            <li class="active"><a href="#tab1success" data-toggle="tab">Success 1</a></li>*@
-                        <li class="active state-tabs">
-                            @Ajax.ActionLink("Completed",
+        <ul class="nav nav-tabs nav-justified indigo">
+            @*@ajax link => ajax action method sochat kum acton method provera
+                <li class="active"><a href="#tab1success" data-toggle="tab">Success 1</a></li>*@
+            <li class="nav-item">
+                @Ajax.ActionLink("Completed",
                                             "Home",
                                             new { state = "completed" },
                                     new AjaxOptions
                                     {
                                         InsertionMode = InsertionMode.Replace,
                                         UpdateTargetId = "tabsuccess",
-                                    })
-                        </li>
-                        <li class="state-tabs">
-                            @Ajax.ActionLink("Pending",
+                                    }, new { @class = "nav-link" })
+            </li>
+            <li class="nav-item">
+                @Ajax.ActionLink("Pending",
                                             "Home",
                                              new { state = "pending" },
                                     new AjaxOptions
                                     {
                                         InsertionMode = InsertionMode.Replace,
                                         UpdateTargetId = "tabsuccess",
-                                    })
-                        </li>
-                        <li class="state-tabs">
-                            @Ajax.ActionLink("Started",
+                                    }, new { @class = "nav-link" })
+            </li>
+            <li class="nav-item">
+                @Ajax.ActionLink("Started",
                                             "Home",
                                              new { state = "started" },
                                     new AjaxOptions
                                     {
                                         InsertionMode = InsertionMode.Replace,
                                         UpdateTargetId = "tabsuccess",
+<<<<<<< HEAD
                                     })
                         </li>
                         <li class="state-tabs">
                             @Ajax.ActionLink("Overdue",
+=======
+                                    }, new { @class = "nav-link" })
+            </li>
+            <li class="nav-item">
+                @Ajax.ActionLink("Overdue",
+>>>>>>> 6c9760c4c285bee34ed56a5fd2634a0215326a36
                                             "Home",
                                              new { state = "overdue" },
                                     new AjaxOptions
                                     {
                                         InsertionMode = InsertionMode.Replace,
                                         UpdateTargetId = "tabsuccess",
+<<<<<<< HEAD
                                     })
                         </li>
                     </ul>
@@ -62,10 +71,19 @@
                         </div>
                     </div>
                 </div>
+=======
+                                    }, new { @class = "nav-link" })
+            </li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane fade in active" id="tabsuccess">
+                @Html.Partial("_CompletedCourses", Model.Started)
+>>>>>>> 6c9760c4c285bee34ed56a5fd2634a0215326a36
             </div>
         </div>
-
     </div>
-
 </div>
 <br />
+
+@section scripts{
+}

@@ -13,6 +13,7 @@ using System.Web.Mvc;
 
 namespace Ignite.Controllers
 {
+    [Authorize]
     public class UserCourseController : Controller
     {
         private readonly ApplicationUserManager userManager;
@@ -63,11 +64,36 @@ namespace Ignite.Controllers
         {
             var slides = this.userCourseService.DisplayingCoursesSlides(courseId);
 
+<<<<<<< HEAD
             var username = this.User.Identity.Name;
             //add username
             this.userCourseService.CheckStateChange(courseId,username);
             
             return this.View(slides);
+=======
+            var listOfImages = context.Images.ToList();
+
+            var imageViewModel = new ImagesToCourosel();
+            foreach (var image in listOfImages)
+            {
+                imageViewModel.Images.Add(image);
+            }
+            imageViewModel.CourseId = courseId;
+
+            // imageViewModel.CourseName = imageViewModel.Images[0].Course.Name;
+
+            imageViewModel.CourseName = context.Courses.First(c => c.Id == 1).Name;
+            return this.View(imageViewModel);
+
+            //LaunchTestViewModel course = new LaunchTestViewModel();
+            //course.Course = new Course() { Name = "Pesho" };
+            //var courseId = course.CourseId;
+        //    //Call service => LaunchTestViewmodel pulen s img
+        //    var slides = this.launchCourseService.GetImages(courseId);
+
+
+           //return View(course);
+>>>>>>> 6c9760c4c285bee34ed56a5fd2634a0215326a36
         }
 
         public ActionResult RenderImage(int imgId)
