@@ -39,7 +39,6 @@ namespace Ignite.Controllers
 
         // GET: UserCourse
         [OutputCache(Duration = 180)]
-        [ChildActionOnly]
         public ActionResult ReturnCollectionPartialView(string state)
         {
             var username = this.User.Identity.Name;

@@ -108,3 +108,11 @@
     border-radius: 0;
 }
 
+.nav-link:focus {
+    background: #a70000
+}
+
+.nav-link:hover {
+    background: #a70000
+}
+

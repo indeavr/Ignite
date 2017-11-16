@@ -115,6 +115,9 @@ namespace Ignite
             bundles.Add(new StyleBundle("~/Content/bootstrap-datetimepicker.css").Include(
               "~/Content/bootstrap-datetimepicker.css"));
 
+            bundles.Add(new ScriptBundle("~/bundles/particles.js").Include(
+              "~/Scripts/particles.js"));
+
 
         }
     }
