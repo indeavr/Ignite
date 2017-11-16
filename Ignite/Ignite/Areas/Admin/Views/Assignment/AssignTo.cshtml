@@ -14,32 +14,8 @@
 
     @Html.AntiForgeryToken()
 
-    @*@Html.Label("Users")
-        <br />
-        foreach (var user in Model.Users)
-        {
-            @user.UserName
-            <br />
-            @Html.Label("Assign")
-            @Html.CheckBoxFor(c => c.Checked)
-            @Html.HiddenFor(c => c.CourseId)
-            <br />
-            @Html.Label("Mandatory")
-            @Html.CheckBoxFor(t => t.Type)
-            <br />
-            @Html.Label("Duedate")
-            @Html.TextBoxFor(d => d.DueDate, new { id = "datepicker" })
-            <br />*@
-
     @Html.HiddenFor(c => c.CourseId)
-    <br />
-    @*@Html.Label("Mandatory")
-        @Html.CheckBoxFor(t => t.Type)
-        <br />*@
-    @*@Html.Label("Duedate")
-        @Html.TextBoxFor(d => d.DueDate)*@
-
-
+    
     <div class="creatediv1 marginTop30">
 
         <div class="row margin-top-50">
@@ -89,11 +65,13 @@
                                                 </label>
                                             </div>
                                         </td>
-                                        <td style="width: 33%">@Model.Users[i].Username</td>
+                                        <td style="width: 33%">@Model.Users[i].Username
+                                        @Html.HiddenFor(u => u.Users[i].Username)</td>
                                         <td id="plzwork" style="width: 33%">
+                                        <td style="width: 7%">
 
                                             <label class="custom-control custom-checkbox">
-                                                @Html.CheckBoxFor(t => t.Type, new { @class = "custom-control-input", id = "hidethischeckbox" })
+                                                @Html.CheckBoxFor(t => t.Users[i].Type, new { @class = "custom-control-input", id = "hidethischeckbox" })
                                                 <span class="custom-control-indicator"></span>
                                             </label>
 
@@ -103,8 +81,8 @@
                                                 <div class='col-sm-6'>
                                                     <div class="form-group">
                                                         <div class='input-group date' id='datetimepicker5'>
-                                                            @Html.EditorFor(d => d.DueDate, new { @class = "form-control" })
-                                                            @Html.ValidationMessageFor(d => d.DueDate)
+                                                            @Html.EditorFor(d => d.Users[i].DueDate, new { @class = "form-control" })
+                                                            @Html.ValidationMessageFor(d => d.Users[i].DueDate)
                                                             <span class="input-group-addon">
                                                                 <span class="glyphicon glyphicon-calendar"></span>
                                                             </span>
@@ -113,6 +91,8 @@
                                                 </div>
                                             </div>
                                         </td>
+                                            
+                                        <td style="width: 26%" id="dunno"></td>
                                     </tr>
 
                                 }
@@ -171,17 +151,18 @@
                 });
 
             })
+            //$('#hidethischeckbox').click(function () {
+            //    // debugger;
+            //    let $checkbox = $(this).find('#hidethischeckbox');
+            //    let isChecked = $checkbox.prop('checked');
+            //    if (isChecked) {
+            //        $('#dunno').append("<div id='mandatory'>" + "Mandatory")
+            //    }
+            //    else {
+            //        $('#dunno').append("<div id='optional'>" + "Optional")
+            //    }
+            //})
 
-            //$(function () {
-            //    $('#datetimepicker5').datetimepicker({
-            //        defaultDate: "11/1/2013",
-            //        disabledDates: [
-            //            moment("12/25/2013"),
-            //            new Date(2013, 11 - 1, 21),
-            //            "11/22/2013 00:53"
-            //        ]
-            //    });
-            //});
             //$('#datepicker').datepicker({
             //    format: 'dd/mm/yyyy'
             //});
