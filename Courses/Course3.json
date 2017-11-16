@@ -1,0 +1,34 @@
+{
+	"Name": "Drinking in the Hut",
+	"Description": "Course about ORM's",
+	"DateCreated":"\/Date(1330848000000-0800)\/",
+	"RequiredScore" : "65",
+	"Questions" : [{
+	    "Statement": "Will you drink ?",
+		"CorrectAnswer": "A",
+		"Answers": [
+			{"Text": "Yes", "Letter": "A" },
+			{"Text":"No", "Letter": "B"},
+			{"Text": "I dont drink", "Letter": "C"},
+			{"Text":"Maybe", "Letter": "D"}]
+		},
+		{
+		"Statement": "Which one is a Scripting Language ?",
+		"CorrectAnswer": "B",
+		"Answers": [
+			{"Text": "Yes", "Letter": "A" },
+			{"Text":"No", "Letter": "B"},
+			{"Text": "I dont drink", "Letter": "C"},
+			{"Text":"Maybe", "Letter": "D"}]
+		},
+		{
+		"Statement": "Which one is a Scripting Language ?",
+		"CorrectAnswer": "B",
+		"Answers": [
+			{"Text": "Yes", "Letter": "A" },
+			{"Text":"No", "Letter": "B"},
+			{"Text": "I dont drink", "Letter": "C"},
+			{"Text":"Maybe", "Letter": "D"}]
+		}
+		]
+} 

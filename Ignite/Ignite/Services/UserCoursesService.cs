@@ -20,15 +20,17 @@ namespace Ignite.Services
             this.context = context;
         }
 
-        public ImagesToCourosel DisplayingCoursesSlides(int courseId)
+        public ImagesToCourosel DisplayingCoursesSlides(int courseId , string username)
         {
-            var listOfImages = context.Images.ToList();
+            var listOfImages = this.context.Courses.First(c => c.Id == courseId).Images;
 
             var imageViewModel = new ImagesToCourosel();
             foreach (var image in listOfImages)
             {
                 imageViewModel.Images.Add(image);
             }
+
+            //this.context.Assignments.First(c => c.CourseId == courseId).State
 
             imageViewModel.CourseName = context.Courses.First(c => c.Id == 1).Name;
 

@@ -1,0 +1,34 @@
+{
+	"Name": "Demo",
+	"Description": "Demo",
+	"DateCreated":"\/Date(1330848000000-0800)\/",
+	"RequiredScore" : "65",
+	"Questions" : [{
+	    "Statement": "Demo",
+		"CorrectAnswer": "A",
+		"Answers": [
+			{"Text": "Demo", "Letter": "A" },
+			{"Text":"Demo", "Letter": "B"},
+			{"Text": "Demo", "Letter": "C"},
+			{"Text":"Demo", "Letter": "D"}]
+		},
+		{
+		"Statement": "Which one is a Scripting Language ?",
+		"CorrectAnswer": "B",
+		"Answers": [
+			{"Text": "Yes", "Letter": "A" },
+			{"Text":"No", "Letter": "B"},
+			{"Text": "I dont drink", "Letter": "C"},
+			{"Text":"Maybe", "Letter": "D"}]
+		},
+		{
+		"Statement": "Which one is a Scripting Language ?",
+		"CorrectAnswer": "B",
+		"Answers": [
+			{"Text": "Yes", "Letter": "A" },
+			{"Text":"No", "Letter": "B"},
+			{"Text": "I dont drink", "Letter": "C"},
+			{"Text":"Maybe", "Letter": "D"}]
+		}
+		]
+} 

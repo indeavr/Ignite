@@ -38,8 +38,6 @@ namespace Ignite.Areas.Admin.Services
 
         public async Task CreateAssignment(CourseNameViewModel courseModel)
         {
-
-
             foreach (var user in courseModel.Users.Where(u => u.Checked))
             {
                 var userAlreadyHasAssignment = this.context.Users
@@ -47,7 +45,7 @@ namespace Ignite.Areas.Admin.Services
                 .Assignments
                 .Any(c => c.CourseId == courseModel.CourseId);
 
-                if (!userAlreadyHasAssignment)
+                if (userAlreadyHasAssignment)
                 {
                     continue;
                 }

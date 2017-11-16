@@ -12,7 +12,7 @@ namespace Ignite.Services.Contracts
     {
         byte[] RenderImg(int imgId);
         AllAssignmentsPerUserViewModels GetAllAssignmentsPerUser(string user);
-        ImagesToCourosel DisplayingCoursesSlides(int courseId);
+        ImagesToCourosel DisplayingCoursesSlides(int courseId, string username);
         Task CheckStateChange(int courseId, string username);
     }
 }
