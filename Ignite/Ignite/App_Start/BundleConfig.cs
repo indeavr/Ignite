@@ -118,6 +118,9 @@ namespace Ignite
             bundles.Add(new ScriptBundle("~/bundles/particles.js").Include(
               "~/Scripts/particles.js"));
 
+            bundles.Add(new StyleBundle("~/Content/landingPage.css").Include(
+             "~/Content/landingPage.css"));
+
 
         }
     }
