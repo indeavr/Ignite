@@ -10,6 +10,7 @@ using Ignite.Data.Enums;
 using Ignite.Services.Contracts;
 using Ignite.Services;
 using System.Linq;
+using Ignite.Areas.Admin.ViewModels.statistics;
 
 namespace Ignite.Tests.Services.UserCoursesServiceTests
 {
@@ -28,10 +29,12 @@ namespace Ignite.Tests.Services.UserCoursesServiceTests
 
             var assignments = new List<Assignment>();
 
-            assignments.Add(new Assignment() { State = AssignmentState.Started });
-            assignments.Add(new Assignment() { State = AssignmentState.Pending });
-            assignments.Add(new Assignment() { State = AssignmentState.Completed });
-            assignments.Add(new Assignment() { State = AssignmentState.Overdue });
+            var courseName = new Course() { Name = username };
+
+            assignments.Add(new Assignment() { State = AssignmentState.Started, Course = courseName });
+            assignments.Add(new Assignment() { State = AssignmentState.Pending, Course = courseName });
+            assignments.Add(new Assignment() { State = AssignmentState.Completed, Course = courseName });
+            assignments.Add(new Assignment() { State = AssignmentState.Overdue, Course = courseName });
 
             var user = new ApplicationUser() { UserName = username, Assignments = assignments};
 
@@ -39,7 +42,6 @@ namespace Ignite.Tests.Services.UserCoursesServiceTests
 
             var userDbSetMock = new Mock<DbSet<ApplicationUser>>().SetupData(usersCollection);
             context.SetupGet(u => u.Users).Returns(userDbSetMock.Object);
-
 
             var userCourseService = new UserCoursesService(context.Object);
 
@@ -52,10 +54,6 @@ namespace Ignite.Tests.Services.UserCoursesServiceTests
             Assert.AreEqual(1, actualResult.Completed.Count);
             Assert.AreEqual(1, actualResult.Overdue.Count);
 
-            //Assert.AreEqual(AssignmentState.Started, actualResult.Started.First().State);
-            //Assert.AreEqual(AssignmentState.Pending, actualResult.Pending.First().State);
-            //Assert.AreEqual(AssignmentState.Completed, actualResult.Completed.First().State);
-            //Assert.AreEqual(AssignmentState.Overdue, actualResult.Overdue.First().State);
         }
     }
 }

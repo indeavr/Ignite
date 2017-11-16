@@ -12,6 +12,7 @@ namespace Ignite.Tests.Services.UserCoursesServiceTests
         [TestMethod]
         public void ThrowNullException_WhenContextIsNull()
         {
+            //Arrange
             var context = new ApplicationDbContext();
             //var context2 = new Mock<ApplicationDbContext>();
             context = null;

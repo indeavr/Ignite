@@ -25,6 +25,8 @@ namespace Ignite.Tests.Services.UserCoursesServiceTests
 
             var userDbSetMock = new Mock<DbSet<Assignment>>();
 
+
+
             //var assignment = this.context.Assignments.First(a => a.CourseId == courseId && a.User.UserName == username);
 
             //if (assignment.State == AssignmentState.Pending)
