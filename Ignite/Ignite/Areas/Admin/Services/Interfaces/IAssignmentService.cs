@@ -19,6 +19,6 @@ namespace Ignite.Areas.Admin.Services.Interfaces
 
         IEnumerable<Assignment> GetAllAssignments();
 
-        Assignment RemoveAssignment(int assignmentId);
+        void RemoveAssignment(int assignmentId);
     }
 }

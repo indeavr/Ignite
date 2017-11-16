@@ -202,7 +202,7 @@
     <Compile Include="Areas\Admin\Controllers\ManageUserController.cs" />
     <Compile Include="Areas\Admin\Services\AssignmentService.cs" />
     <Compile Include="Areas\Admin\Services\Interfaces\IAssignmentService.cs" />
-    <Compile Include="Areas\Admin\ViewModels\Assignment2ViewModel.cs" />
+    <Compile Include="Areas\Admin\ViewModels\ListAssignmentViewModel.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
@@ -266,6 +266,7 @@
     <Content Include="Content\img\flame-logo-png-30.png" />
     <Content Include="Content\jquery.jqGrid\ellipsis-xbl.xml" />
     <Content Include="Content\jquery.jqGrid\ui.jqgrid.css" />
+    <Content Include="Content\landingPage.css" />
     <Content Include="Content\login.css" />
     <Content Include="Content\myCourses.css" />
     <Content Include="Content\quiz.css" />
@@ -365,7 +366,7 @@
     <Content Include="Content\fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Areas\Admin\Views\ManageUser\ListUsers.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_EditUser.cshtml" />
-    <Content Include="Areas\Admin\Views\Assignment\RemoveAssignment.cshtml" />
+    <Content Include="Areas\Admin\Views\Assignment\ListAssignments.cshtml" />
     <Content Include="Areas\Admin\Views\Assignment\ManageAssignments.cshtml" />
     <Content Include="Areas\Admin\Views\ManageUser\CreateCustomUser.cshtml" />
     <Content Include="fonts\roboto\Roboto-Bold.eot" />
@@ -469,6 +470,8 @@
     <Content Include="Scripts\moment.js" />
     <Content Include="Scripts\moment.min.js" />
     <Content Include="Scripts\npm.js" />
+    <Content Include="Scripts\particles.js" />
+    <Content Include="Scripts\particles.min.js" />
     <Content Include="Scripts\slider\slick.min.js" />
     <Content Include="Scripts\slider\swiper.esm.bundle.js" />
     <Content Include="Scripts\slider\swiper.esm.js" />
@@ -479,9 +482,7 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\uploadCourse.js" />
-    <Content Include="Web.config">
-      <SubType>Designer</SubType>
-    </Content>
+    <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>

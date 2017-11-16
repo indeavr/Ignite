@@ -102,9 +102,9 @@
     <Compile Include="ApplicationDbContext.cs" />
     <Compile Include="Enums\AssignmentState.cs" />
     <Compile Include="Listener.cs" />
-    <Compile Include="Migrations\201711151313383_Initial.cs" />
-    <Compile Include="Migrations\201711151313383_Initial.Designer.cs">
-      <DependentUpon>201711151313383_Initial.cs</DependentUpon>
+    <Compile Include="Migrations\201711151230417_Initial.cs" />
+    <Compile Include="Migrations\201711151230417_Initial.Designer.cs">
+      <DependentUpon>201711151230417_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Answer.cs" />

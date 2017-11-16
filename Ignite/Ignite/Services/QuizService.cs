@@ -5,7 +5,6 @@ using Ignite.Services.Contracts;
 using Ignite.ViewModels;
 using System;
 using System.Collections.Generic;
-using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
 

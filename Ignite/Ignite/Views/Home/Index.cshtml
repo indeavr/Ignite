@@ -1,13 +1,154 @@
 ﻿@section styles{
-    @Styles.Render("~/Content/homePage")
+    @Styles.Render("~/Content/landingPage")
     @Styles.Render("~/Content/slider.css")
 }
+<section id="sparlky-red">
+    <section id="particles-js"></section>
+    <section class="landing">
+        <div class="h-100 d-inline-block" id="central-sign">
+            <div id="cental-wrap">
+                <h2>
+                    Ignite Learning System
+                </h2>
+                <h6>
+                    Courses
+                </h6>
+                <button>
+                    Register
+                </button>
+            </div>
+
+        </div>
+    </section>
+</section>
+
 
 @section scripts{
-    @Scripts.Render("~/bundles/VisualSettings")    
+@Scripts.Render("~/bundles/VisualSettings")
+    @Scripts.Render("~/bundles/particles.js")    
+<script>
+    jQuery(document).ready(function ($) {
+//    particlesJS.load('particles-js', 'particles.json', function() {
+//        console.log('particles.js loaded - callback');
+//    });
+        particlesJS("particles-js", {
+            "particles": {
+                "number": {
+                    "value": 96,
+                    "density": {
+                        "enable": false,
+                        "value_area": 800
+                    }
+                },
+                "color": {
+                    "value": "#ffffff"
+                },
+                "shape": {
+                    "type": "circle",
+                    "stroke": {
+                        "width": 0,
+                        "color": "#000000"
+                    },
+                    "polygon": {
+                        "nb_sides": 5
+                    },
+                    "image": {
+                        "src": "img/github.svg",
+                        "width": 100,
+                        "height": 100
+                    }
+                },
+                "opacity": {
+                    "value": 0.5,
+                    "random": false,
+                    "anim": {
+                        "enable": false,
+                        "speed": 1,
+                        "opacity_min": 0.1,
+                        "sync": false
+                    }
+                },
+                "size": {
+                    "value": 3,
+                    "random": true,
+                    "anim": {
+                        "enable": false,
+                        "speed": 40,
+                        "size_min": 0.1,
+                        "sync": false
+                    }
+                },
+                "line_linked": {
+                    "enable": true,
+                    "distance": 150,
+                    "color": "#ffffff",
+                    "opacity": 0.4,
+                    "width": 1
+                },
+                "move": {
+                    "enable": true,
+                    "speed": 6,
+                    "direction": "none",
+                    "random": false,
+                    "straight": false,
+                    "out_mode": "out",
+                    "bounce": false,
+                    "attract": {
+                        "enable": false,
+                        "rotateX": 600,
+                        "rotateY": 1200
+                    }
+                }
+            },
+            "interactivity": {
+                "detect_on": "canvas",
+                "events": {
+                    "onhover": {
+                        "enable": true,
+                        "mode": "grab"
+                    },
+                    "onclick": {
+                        "enable": true,
+                        "mode": "push"
+                    },
+                    "resize": true
+                },
+                "modes": {
+                    "grab": {
+                        "distance": 191.80819180819182,
+                        "line_linked": {
+                            "opacity": 1
+                        }
+                    },
+                    "bubble": {
+                        "distance": 1500,
+                        "size": 3.9960039960039966,
+                        "duration": 2,
+                        "opacity": 0.8311688311688312,
+                        "speed": 3
+                    },
+                    "repulse": {
+                        "distance": 200,
+                        "duration": 0.4
+                    },
+                    "push": {
+                        "particles_nb": 4
+                    },
+                    "remove": {
+                        "particles_nb": 2
+                    }
+                }
+            },
+            "retina_detect": true
+
+        });
+    });
+</script>
 }
 
-<section class="recipe-recommend">
+
+
+@*<section class="recipe-recommend">
     <div class="wrapper-scroller-menu slide">
 
         <article class="recipe" index="0">
@@ -113,5 +254,5 @@
         </article>
     </div>
 
-</section>
+</section>*@
 

@@ -26,13 +26,13 @@
 
 @section scripts{
     <script>
-          function switchPanel() {
-            debugger;
-            var result = $.parseJSON("TempData[\"passed\"]");
-            if (result === "Failed") {
-                $('.modal-header').css("background-color", "red")
-            }
-        }
+        //  function switchPanel() {
+        //    debugger;
+        //    var result = $.parseJSON("TempData[\"passed\"]");
+        //    if (result === "Failed") {
+        //        $('.modal-header').css("background-color", "red")
+        //    }
+        //}
         function onSuccess(data) {
             debugger;
             if (data.error) {
@@ -42,7 +42,6 @@
                 debugger;
                 $('#result-popup').html(data.partialView)
                 $('#result-popup').show()
-                switchPanel()
             }
         }
 

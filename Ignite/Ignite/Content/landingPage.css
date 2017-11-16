@@ -1,0 +1,54 @@
+﻿#sparlky-red {
+    height: 500px;
+    background: rgba(148,25,0,0.9);
+    background: -webkit-linear-gradient(left, rgba(100,18,0,0.9), rgba(148,25,0,0.9));
+    background: -o-linear-gradient(right, rgba(100,18,0,0.9), rgba(148,25,0,0.9));
+    background: -moz-linear-gradient(right, rgba(100,18,0,0.9), rgba(148,25,0,0.9));
+    background: linear-gradient(to right, rgba(100,18,0,0.9), rgba(148,25,0,0.9));
+}
+
+.landing {
+    padding: 50px 0;
+    z-index: 1;
+}
+
+canvas {
+    display: block;
+    position: fixed;
+    z-index: 0;
+}
+
+#central-sign {
+    height: 100%;
+    padding: 7% 18%;
+}
+
+#cental-wrap {
+    height: 100%;
+    width: 100%;
+    text-align: center;
+}
+
+
+    #cental-wrap > h2 {
+        display: block;
+        margin-bottom: 3%;
+        color: #FFFFFF;
+    }
+
+    #cental-wrap > h6 {
+        display: block;
+        margin-bottom: 10%;
+        color: #FFFFFF;
+    }
+
+
+    #cental-wrap > button {
+        display: inline-block;
+    }
+
+
+#particles-js {
+    position: absolute;
+    height: 100%;
+}

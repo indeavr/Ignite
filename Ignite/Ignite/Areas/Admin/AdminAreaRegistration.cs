@@ -17,7 +17,7 @@ namespace Ignite.Areas.Admin
             context.MapRoute(
                 "Admin_default",
                 "Admin/{controller}/{action}/{id}",
-                new { action = "Index", id = UrlParameter.Optional }
+                new { action = "Home",controller = "Admin", id = UrlParameter.Optional }
             );
         }
     }

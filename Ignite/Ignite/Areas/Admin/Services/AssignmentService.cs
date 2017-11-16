@@ -6,6 +6,7 @@ using Ignite.Data.Enums;
 using Ignite.Data.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
@@ -37,16 +38,28 @@ namespace Ignite.Areas.Admin.Services
 
         public async Task CreateAssignment(CourseNameViewModel courseModel)
         {
+
+
             foreach (var user in courseModel.Users.Where(u => u.Checked))
             {
+                var userAlreadyHasAssignment = this.context.Users
+                .First(u => u.Id == user.UserId)
+                .Assignments
+                .Any(c => c.CourseId == courseModel.CourseId);
+
+                if (!userAlreadyHasAssignment)
+                {
+                    continue;
+                }
+
                 var assignment = new Assignment();
                 assignment.DateOfAssignment = DateTime.Now;
                 assignment.State = AssignmentState.Pending;
-                assignment.DueDate = courseModel.DueDate;
+                assignment.DueDate = user.DueDate;
                 assignment.CourseId = courseModel.CourseId;
                 assignment.UserId = user.UserId;
 
-                if (courseModel.Type == false)
+                if (user.Type == false)
                 {
                     assignment.Type = "Optional";
                 }
@@ -57,8 +70,8 @@ namespace Ignite.Areas.Admin.Services
 
                 this.context.Assignments.Add(assignment);
             }
-            
-           await SaveToDb();
+
+            await SaveToDb();
         }
 
         public IEnumerable<Assignment> GetAllAssignments()
@@ -68,9 +81,13 @@ namespace Ignite.Areas.Admin.Services
             return dbAssignments;
         }
 
-        public Assignment RemoveAssignment(int assignmentId)
+        public void RemoveAssignment(int assignmentId)
         {
-            return null;
+            var assignmentToRemove = context.Assignments.Find(assignmentId);
+
+            context.Entry(assignmentToRemove).State = EntityState.Deleted;
+
+            context.SaveChanges();
         }
 
         private async Task SaveToDb()

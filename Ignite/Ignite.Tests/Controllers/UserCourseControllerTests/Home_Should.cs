@@ -60,9 +60,15 @@ namespace Ignite.Tests.Controllers.UserCourseControllerTests
             //var controller = new UserCourseController();
 
             //Assert
+<<<<<<< HEAD
             //controller.WithCallTo(c => c.Home(state)).
             //    ShouldRenderPartialView().
             //    WithModel<AllAssignmentsPerUserViewModels>();
+=======
+            controller.WithCallTo(c => c.Home()).
+                ShouldRenderDefaultView().
+                WithModel<AllAssignmentsPerUserViewModels>();
+>>>>>>> 65c118282a70587e6a97e6719ce8dbc856d3438c
         }
     }
 }

@@ -1,13 +1,10 @@
-﻿using Ignite.Data;
+﻿using Bytes2you.Validation;
+using Ignite.Data;
+using Ignite.Data.Enums;
 using Ignite.Data.Models;
 using Ignite.Services.Contracts;
 using Ignite.ViewModels;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
-using Ignite.Data.Enums;
-using Bytes2you.Validation;
 using System.Threading.Tasks;
 
 namespace Ignite.Services
@@ -47,7 +44,7 @@ namespace Ignite.Services
             {
                 var assignmentViewModel = new DisplayAssignmentsViewModel();
                 assignmentViewModel.CourseId = assignment.CourseId;
-                assignmentViewModel.CourseName = assignment.Course.Name;
+                assignmentViewModel.CourseName = assignment.Course.Name; 
                 assignmentViewModel.DueDate = assignment.DueDate;
                 assignmentViewModel.Type = assignment.Type;
 
