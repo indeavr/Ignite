@@ -19,6 +19,7 @@ canvas {
 }
 
 #central-sign {
+    z-index: 1;
     height: 100%;
     padding: 7% 18%;
 }
@@ -26,6 +27,7 @@ canvas {
 #cental-wrap {
     height: 100%;
     width: 100%;
+    z-index: 1;
     text-align: center;
 }
 
@@ -33,12 +35,14 @@ canvas {
     #cental-wrap > h2 {
         display: block;
         margin-bottom: 3%;
+        z-index: 1;
         color: #FFFFFF;
     }
 
     #cental-wrap > h6 {
         display: block;
         margin-bottom: 10%;
+        z-index: 1;
         color: #FFFFFF;
     }
 
@@ -51,4 +55,9 @@ canvas {
 #particles-js {
     position: absolute;
     height: 100%;
+}
+
+#buttonnn {
+    position: relative;
+    z-index: 9999;
 }

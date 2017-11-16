@@ -1,6 +1,5 @@
 ﻿@section styles{
-    @Styles.Render("~/Content/landingPage")
-    @Styles.Render("~/Content/slider.css")
+    @Styles.Render("~/Content/landingPage.css")
 }
 <section id="sparlky-red">
     <section id="particles-js"></section>
@@ -13,9 +12,18 @@
                 <h6>
                     Courses
                 </h6>
-                <button>
-                    Register
-                </button>
+                @if (this.User.Identity.IsAuthenticated)
+                {
+                    <button class=" btn btn-lg btn-success" id="buttonnn" value="My Courses">
+                        My Courses
+                    </button>
+                }
+                else
+                {
+                    <button class=" btn btn-lg btn-success" id="buttonnn" value="Register">
+                        Login
+                    </button>
+                }
             </div>
 
         </div>
@@ -27,10 +35,21 @@
 @Scripts.Render("~/bundles/VisualSettings")
     @Scripts.Render("~/bundles/particles.js")    
 <script>
+    $('#buttonnn').click(function () {
+        let button = $(this);
+        if (button.val() == "Register") {
+             document.location = '@Url.Action("Login", "Account")';
+        }
+        else {
+              document.location = '@Url.Action("Home", "Usercourse")';
+        }
+    });
+
+
     jQuery(document).ready(function ($) {
-//    particlesJS.load('particles-js', 'particles.json', function() {
-//        console.log('particles.js loaded - callback');
-//    });
+        //    particlesJS.load('particles-js', 'particles.json', function() {
+        //        console.log('particles.js loaded - callback');
+        //    });
         particlesJS("particles-js", {
             "particles": {
                 "number": {
