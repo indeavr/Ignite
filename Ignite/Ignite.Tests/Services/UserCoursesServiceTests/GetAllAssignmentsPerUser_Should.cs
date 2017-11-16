@@ -1,61 +1,69 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Ignite.ViewModels;
-using Moq;
-using Ignite.Data;
-using Ignite.Data.Models;
-using System.Collections.Generic;
-using System.Data.Entity;
-using Ignite.Data.Enums;
-using Ignite.Services.Contracts;
-using Ignite.Services;
-using System.Linq;
+﻿//using System;
+//using Microsoft.VisualStudio.TestTools.UnitTesting;
+//using Ignite.ViewModels;
+//using Moq;
+//using Ignite.Data;
+//using Ignite.Data.Models;
+//using System.Collections.Generic;
+//using System.Data.Entity;
+//using Ignite.Data.Enums;
+//using Ignite.Services.Contracts;
+//using Ignite.Services;
+//using System.Linq;
 
-namespace Ignite.Tests.Services.UserCoursesServiceTests
-{
-    [TestClass]
-    public class GetAllAssignmentsPerUser_Should
-    {
-        [TestMethod]
-        public void GetAllAssignmentsPerUser()    
-        {
-            ////arrange
-            //var username = "User";
-            //var allAssignments = new Mock<AllAssignmentsPerUserViewModels>();
-            //var context = new Mock<ApplicationDbContext>();
+//namespace Ignite.Tests.Services.UserCoursesServiceTests
+//{
+//    [TestClass]
+//    public class GetAllAssignmentsPerUser_Should
+//    {
+//        [TestMethod]
+//        public void GetAllAssignmentsPerUser()    
+//        {
+//            //arrange
+//            var username = "User";
+//            var allAssignments = new AllAssignmentsPerUserViewModels();
+//            var context = new Mock<ApplicationDbContext>();
 
-            //var usersCollection = new List<ApplicationUser>();
+//            var usersCollection = new List<ApplicationUser>();
 
-            //var assignments = new List<Assignment>();
+//            var assignments = new List<DisplayAssignmentsViewModel>();
 
-            //assignments.Add(new Assignment() { State = AssignmentState.Started });
-            //assignments.Add(new Assignment() { State = AssignmentState.Pending });
-            //assignments.Add(new Assignment() { State = AssignmentState.Completed });
-            //assignments.Add(new Assignment() { State = AssignmentState.Overdue });
+//            //assignments.Add(new DisplayAssignmentsViewModel() { State = AssignmentState.Started,
+//            //    Course = new Course() { Name = "Gincho" } });
 
-            //var user = new ApplicationUser() { UserName = username, Assignments = assignments};
+//            //assignments.Add(new DisplayAssignmentsViewModel() { State = AssignmentState.Pending,
+//            //    Course = new Course() { Name = "Gincho" } });
 
-            //usersCollection.Add(user);
+//            //assignments.Add(new DisplayAssignmentsViewModel() { State = AssignmentState.Completed,
+//            //    Course = new Course() { Name = "Gincho" } });
 
-            //var userDbSetMock = new Mock<DbSet<ApplicationUser>>().SetupData(usersCollection);
-            //context.SetupGet(u => u.Users).Returns(userDbSetMock.Object);
+//            //assignments.Add(new DisplayAssignmentsViewModel() { State = AssignmentState.Overdue,
+//            //    Course = new Course() { Name = "Gincho" } });
 
 
-            //var userCourseService = new UserCoursesService(context.Object);
+//            var user = new ApplicationUser() { UserName = username, Assignments = assignments };
 
-            ////act
-            //var actualResult = userCourseService.GetAllAssignmentsPerUser(username);
+//            usersCollection.Add(user);
 
-            ////assert
-            //Assert.AreEqual(1, actualResult.Started.Count);
-            //Assert.AreEqual(1, actualResult.Pending.Count);
-            //Assert.AreEqual(1, actualResult.Completed.Count);
-            //Assert.AreEqual(1, actualResult.Overdue.Count);
+//            var userDbSetMock = new Mock<DbSet<ApplicationUser>>().SetupData(usersCollection);
+//            context.SetupGet(u => u.Users).Returns(userDbSetMock.Object);
 
-            ////Assert.AreEqual(AssignmentState.Started, actualResult.Started.First().State);
-            ////Assert.AreEqual(AssignmentState.Pending, actualResult.Pending.First().State);
-            ////Assert.AreEqual(AssignmentState.Completed, actualResult.Completed.First().State);
-            ////Assert.AreEqual(AssignmentState.Overdue, actualResult.Overdue.First().State);
-        }
-    }
-}
+
+//            var userCourseService = new UserCoursesService(context.Object);
+
+//            //act
+//            var actualResult = userCourseService.GetAllAssignmentsPerUser(username);
+
+//            //assert
+//            Assert.AreEqual(1, actualResult.Started.Count);
+//            Assert.AreEqual(1, actualResult.Pending.Count);
+//            Assert.AreEqual(1, actualResult.Completed.Count);
+//            Assert.AreEqual(1, actualResult.Overdue.Count);
+
+//            Assert.AreEqual(AssignmentState.Started, actualResult.Started.First().State);
+//            Assert.AreEqual(AssignmentState.Pending, actualResult.Pending.First().State);
+//            Assert.AreEqual(AssignmentState.Completed, actualResult.Completed.First().State);
+//            Assert.AreEqual(AssignmentState.Overdue, actualResult.Overdue.First().State);
+//        }
+//    }
+//}

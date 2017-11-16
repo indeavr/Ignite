@@ -18,7 +18,7 @@ namespace Ignite.Tests.Services.QuizServiceTests
     public class SubmitTest_Should
     {
         [TestMethod]
-        public void ReturnCorrectQuizResults_WhenSubmittedQuizIsCorrect()
+        public async Task ReturnCorrectQuizResults_WhenSubmittedQuizIsCorrect()
         {
             // Arange
             var contextMock = new Mock<ApplicationDbContext>();
@@ -120,7 +120,7 @@ namespace Ignite.Tests.Services.QuizServiceTests
             var quizService = new QuizService(contextMock.Object);
 
             // Act
-            var actualResult = quizService.SubmitTest(quizView).Result;
+            var actualResult = await quizService.SubmitTest(quizView);
 
             // Assert
             Assert.AreEqual("Passed", actualResult.Passed);
@@ -130,7 +130,7 @@ namespace Ignite.Tests.Services.QuizServiceTests
         }
 
         [TestMethod]
-        public void ChangeAssignmentStateToCompleted_IfTestIsPassed()
+        public async Task ChangeAssignmentStateToCompleted_IfTestIsPassed()
         {
             // Arange
             var contextMock = new Mock<ApplicationDbContext>();
@@ -224,14 +224,14 @@ namespace Ignite.Tests.Services.QuizServiceTests
             var quizService = new QuizService(contextMock.Object);
 
             // Act
-           quizService.SubmitTest(quizView);
+            await quizService.SubmitTest(quizView);
 
             // Assert
             Assert.AreEqual(AssignmentState.Completed, contextMock.Object.Assignments.First().State);
         }
 
         [TestMethod]
-        public void NotChangeTestResultOfAssignment_IfScoreIsLessThanPreviousOfAssignment()
+        public async Task NotChangeTestResultOfAssignment_IfScoreIsLessThanPreviousOfAssignment()
         {
             // Arange
             var contextMock = new Mock<ApplicationDbContext>();
@@ -332,7 +332,7 @@ namespace Ignite.Tests.Services.QuizServiceTests
             var quizService = new QuizService(contextMock.Object);
 
             // Act
-            quizService.SubmitTest(quizView);
+            await quizService.SubmitTest(quizView);
 
             // Assert
             Assert.AreEqual(testResult, contextMock.Object.Assignments.First().TestResult);
@@ -450,7 +450,7 @@ namespace Ignite.Tests.Services.QuizServiceTests
         }
 
         [TestMethod]
-        public void ReturnViewModelWithFailedTest_WhenScoreIsLessThanRequired()
+        public async Task ReturnViewModelWithFailedTest_WhenScoreIsLessThanRequired()
         {
             // Arange
             var contextMock = new Mock<ApplicationDbContext>();
@@ -544,7 +544,7 @@ namespace Ignite.Tests.Services.QuizServiceTests
             var quizService = new QuizService(contextMock.Object);
 
             // Act
-            var actualResult = quizService.SubmitTest(quizView).Result;
+            var actualResult = await quizService.SubmitTest(quizView);
 
             // Assert
             Assert.AreEqual("Failed", actualResult.Passed);
@@ -554,7 +554,7 @@ namespace Ignite.Tests.Services.QuizServiceTests
         }
 
         [TestMethod]
-        public void CallSaveChanges_WhenTestIsPassedForTheFirstTime()
+        public async Task CallSaveChanges_WhenTestIsPassedForTheFirstTime()
         {
             // Arange
             var contextMock = new Mock<ApplicationDbContext>();
@@ -654,14 +654,14 @@ namespace Ignite.Tests.Services.QuizServiceTests
             var quizService = new QuizService(contextMock.Object);
 
             // Act
-            var actualResult = quizService.SubmitTest(quizView);
+            var actualResult = await quizService.SubmitTest(quizView);
 
             // Assert
             contextMock.Verify(m => m.SaveChangesAsync(), Times.Once);
         }
 
         [TestMethod]
-        public void CallSaveChanges_WhenScoreIsHigherThanPrevious()
+        public async Task CallSaveChanges_WhenScoreIsHigherThanPrevious()
         {
             // Arange
             var contextMock = new Mock<ApplicationDbContext>();
@@ -762,7 +762,7 @@ namespace Ignite.Tests.Services.QuizServiceTests
             var quizService = new QuizService(contextMock.Object);
 
             // Act
-            quizService.SubmitTest(quizView);
+            await quizService.SubmitTest(quizView);
 
             // Assert
             contextMock.Verify(m => m.SaveChangesAsync(), Times.Once);
