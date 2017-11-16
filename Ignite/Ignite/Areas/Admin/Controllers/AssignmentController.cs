@@ -34,10 +34,10 @@ namespace Ignite.Areas.Admin.Controllers
 
         public ActionResult AssignCourse()
         {
-            var allCourses = this.assignmentService.GetAllCourses();
-            var model = new Assignment2ViewModel();
-
-            model.Courses = allCourses;
+            var model = new ListAssignmentViewModel
+            {
+                Courses = this.assignmentService.GetAllCourses()
+            };
 
             return this.View(model);
         }
@@ -54,14 +54,15 @@ namespace Ignite.Areas.Admin.Controllers
                 {
                     Username = u.UserName,
                     UserId = u.Id,
-                    Checked = false
-                })
+                    Checked = false,
+                    Type = false
+        })
                 .ToList();
 
             model.Users = allUsers;
             model.Name = chosenCourse.Name;
-            model.Type = false;
-            
+            model.CourseId = courseId;
+
             return this.View(model);
         }
 
@@ -79,14 +80,21 @@ namespace Ignite.Areas.Admin.Controllers
             return this.View(courseModel);
         }
 
-        public ActionResult RemoveAssignment()
+        public ActionResult ListAssignments()
         {
             var allAssignments = assignmentService.GetAllAssignments();
-            var model = new Assignment2ViewModel();
+            var model = new ListAssignmentViewModel();
 
             model.Assignments = allAssignments;
 
             return this.View(model);
+        }
+        
+        public ActionResult RemoveAssignment(int assignmentId)
+        {
+            assignmentService.RemoveAssignment(assignmentId);
+
+            return this.RedirectToAction("Home", "Admin");
         }
     }
 }

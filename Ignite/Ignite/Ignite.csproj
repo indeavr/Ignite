@@ -202,7 +202,7 @@
     <Compile Include="Areas\Admin\Controllers\ManageUserController.cs" />
     <Compile Include="Areas\Admin\Services\AssignmentService.cs" />
     <Compile Include="Areas\Admin\Services\Interfaces\IAssignmentService.cs" />
-    <Compile Include="Areas\Admin\ViewModels\Assignment2ViewModel.cs" />
+    <Compile Include="Areas\Admin\ViewModels\ListAssignmentViewModel.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
@@ -366,7 +366,7 @@
     <Content Include="Content\fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Areas\Admin\Views\ManageUser\ListUsers.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_EditUser.cshtml" />
-    <Content Include="Areas\Admin\Views\Assignment\RemoveAssignment.cshtml" />
+    <Content Include="Areas\Admin\Views\Assignment\ListAssignments.cshtml" />
     <Content Include="Areas\Admin\Views\Assignment\ManageAssignments.cshtml" />
     <Content Include="Areas\Admin\Views\ManageUser\CreateCustomUser.cshtml" />
     <Content Include="fonts\roboto\Roboto-Bold.eot" />

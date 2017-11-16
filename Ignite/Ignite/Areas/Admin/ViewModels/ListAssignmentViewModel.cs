@@ -6,9 +6,9 @@ using System.Web;
 
 namespace Ignite.Areas.Admin.ViewModels
 {
-    public class Assignment2ViewModel
+    public class ListAssignmentViewModel
     {
-        public Assignment2ViewModel()
+        public ListAssignmentViewModel()
         {
             this.Courses = new List<Course>();
             this.Assignments = new List<Assignment>();

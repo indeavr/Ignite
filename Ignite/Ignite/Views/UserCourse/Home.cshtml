@@ -40,6 +40,7 @@
                                         UpdateTargetId = "tabsuccess",
                                     }, new { @class = "nav-link" })
             </li>
+
             <li class="nav-item">
                 @Ajax.ActionLink("Overdue", "ReturnCollectionPartialView",
                                              new { state = "overdue" },
@@ -50,10 +51,13 @@
                                     }, new { @class = "nav-link" })
             </li>
         </ul>
-        <div class="tab-content">
-            <div class="tab-pane fade in active" id="tabsuccess">
-                @Html.Partial("_CompletedCourses", Model.Started)
-            </div>
+
+    </div>
+
+    <div class="tab-content">
+        <div class="tab-pane fade in active" id="tabsuccess">
+            @Html.Partial("_CompletedCourses", Model.Started)
+
         </div>
     </div>
 </div>
