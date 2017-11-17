@@ -137,12 +137,17 @@
     <Compile Include="Admin\Controllers\AdminControllerTests\UploadSlides_Should.cs" />
     <Compile Include="Admin\Controllers\AssignmentControllerTests\AssignCourse_Should.cs" />
     <Compile Include="Admin\Controllers\AssignmentControllerTests\AssignToGet_Should.cs" />
+    <Compile Include="Admin\Controllers\AssignmentControllerTests\ListAssignmentsShould.cs" />
     <Compile Include="Admin\Controllers\AssignmentControllerTests\ManageAssignments_Should.cs" />
     <Compile Include="Admin\Controllers\AssignmentControllerTests\RemoveAssignment_Should.cs" />
     <Compile Include="Admin\Controllers\AssignToPost_Should.cs" />
     <Compile Include="Admin\Controllers\StatisticsControllerTests\ChangeViewStatistic_Should.cs" />
     <Compile Include="Admin\Controllers\StatisticsControllerTests\DataProviderForTable_Should.cs" />
     <Compile Include="Admin\Controllers\StatisticsControllerTests\Home_Should.cs" />
+    <Compile Include="Admin\Services\AssignmentServiceTests\GetAllAssignments_Should.cs" />
+    <Compile Include="Admin\Services\AssignmentServiceTests\GetAllCourses_Should.cs" />
+    <Compile Include="Admin\Services\AssignmentServiceTests\GetById_Should.cs" />
+    <Compile Include="Admin\Services\AssignmentServiceTests\RemoveAssignment_Should.cs" />
     <Compile Include="Admin\Services\StatisticsServiceTests\Filtrator_Should.cs" />
     <Compile Include="Admin\Services\StatisticsServiceTests\GetDataFromServer_Should.cs" />
     <Compile Include="Admin\Services\StatisticsServiceTests\SearchAndGetData_Should.cs" />
@@ -180,9 +185,7 @@
       <Name>Ignite</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Admin\Services\AssignmentServiceTests\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

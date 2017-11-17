@@ -82,10 +82,10 @@ namespace Ignite.Areas.Admin.Controllers
 
         public ActionResult ListAssignments()
         {
-            var allAssignments = assignmentService.GetAllAssignments();
-            var model = new ListAssignmentViewModel();
-
-            model.Assignments = allAssignments;
+            var model = new ListAssignmentViewModel
+            {
+                Assignments = assignmentService.GetAllAssignments()
+        };
 
             return this.View(model);
         }
