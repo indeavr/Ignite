@@ -15,27 +15,27 @@ using TestStack.FluentMVCTesting;
 namespace Ignite.Tests.Admin.Controllers.AssignmentControllerTests
 {
     [TestClass]
-    public class AssignCourse_Should
+    public class ListAssignmentsShould
     {
         [TestMethod]
-        public void CallGetAllCoursesOnce()
+        public void CallGetAllAssignmentsOnce()
         {
             // Arange
             var assignmentServiceMock = new Mock<IAssignmentService>();
             var storeMock = new Mock<IUserStore<ApplicationUser>>();
             var applicationUserManagerMock = new Mock<ApplicationUserManager>(storeMock.Object);
 
-            var courses = new List<Course>();
+            var assignments = new List<Assignment>();
 
-            assignmentServiceMock.Setup(m => m.GetAllCourses()).Returns(courses);
+            assignmentServiceMock.Setup(m => m.GetAllAssignments()).Returns(assignments);
 
             var controller = new AssignmentController(assignmentServiceMock.Object, applicationUserManagerMock.Object);
 
             // Act
-            controller.AssignCourse();
+            controller.ListAssignments();
 
             // Assert
-            assignmentServiceMock.Verify(a => a.GetAllCourses(), Times.Once);
+            assignmentServiceMock.Verify(a => a.GetAllAssignments(), Times.Once);
         }
 
         [TestMethod]
@@ -46,22 +46,22 @@ namespace Ignite.Tests.Admin.Controllers.AssignmentControllerTests
             var storeMock = new Mock<IUserStore<ApplicationUser>>();
             var applicationUserManagerMock = new Mock<ApplicationUserManager>(storeMock.Object);
 
-            var courses = new List<Course>();
+            var assignments = new List<Assignment>();
 
-            assignmentServiceMock.Setup(m => m.GetAllCourses()).Returns(courses);
+            assignmentServiceMock.Setup(m => m.GetAllAssignments()).Returns(assignments);
 
             var expectedModel = new ListAssignmentViewModel()
             {
-                Courses = courses
+                Assignments = assignments
             };
 
             var controller = new AssignmentController(assignmentServiceMock.Object, applicationUserManagerMock.Object);
 
             // Act & Assert
             controller
-                .WithCallTo(c => c.AssignCourse())
+                .WithCallTo(c => c.ListAssignments())
                 .ShouldRenderDefaultView()
-                .WithModel<ListAssignmentViewModel>(m => Assert.AreSame(expectedModel.Courses, m.Courses));
+                .WithModel<ListAssignmentViewModel>(m => Assert.AreSame(expectedModel.Assignments, m.Assignments));
         }
     }
 }

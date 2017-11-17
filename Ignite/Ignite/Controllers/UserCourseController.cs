@@ -63,9 +63,10 @@ namespace Ignite.Controllers
 
         public async Task<ActionResult> DisplayingCourseSlides(int courseId)
         {
-            var slides = this.userCourseService.DisplayingCoursesSlides(courseId);
-
             var username = this.User.Identity.Name;
+
+            var slides = this.userCourseService.DisplayingCoursesSlides(courseId, username);
+
             //add username
             await this.userCourseService.CheckStateChange(courseId,username);
             slides.CourseId = courseId;

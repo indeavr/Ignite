@@ -28,19 +28,29 @@ namespace Ignite.Admin.Services
             this.context = context;
         }
 
+        public Course ReadCourseFromJson(HttpPostedFileBase json)
+        {
+            Guard.WhenArgument(json, "json").IsNull().Throw();
+            Guard.WhenArgument(json.InputStream, "json.InputStream").IsNull().Throw();
+
+            Course course;
+            using (StreamReader reader = new StreamReader(json.InputStream))
+            {
+                var content = reader.ReadToEnd();
+                Guard.WhenArgument(content, "content").IsNullOrWhiteSpace().IsEmpty().Throw();
+                course = JsonConvert.DeserializeObject<Course>(content);
+            }
+
+            return course;
+        }
+
         public async Task SaveCourse(HttpPostedFileBase json)
         {
             if (json.InputStream.CanRead)
             {
-                Course course;
-                using (StreamReader reader = new StreamReader(json.InputStream))
-                {
-                    var content = reader.ReadToEnd();
-                    Guard.WhenArgument(content, "content").IsNullOrWhiteSpace().IsEmpty().Throw();
-                    course = JsonConvert.DeserializeObject<Course>(content);
-                }
-
-                this.context.Courses.Add(course);
+                Course course = ReadCourseFromJson(json);
+                    
+            this.context.Courses.Add(course);
 
                 try
                 {
@@ -64,6 +74,7 @@ namespace Ignite.Admin.Services
                     throw raise;
                 }
 
+                // Dont miss this
                 this.currentCourseId = course.Id;
             }
         }

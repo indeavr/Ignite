@@ -56,7 +56,7 @@ namespace Ignite.Areas.Admin.Controllers
                     UserId = u.Id,
                     Checked = false,
                     Type = false
-        })
+                })
                 .ToList();
 
             model.Users = allUsers;
@@ -82,14 +82,14 @@ namespace Ignite.Areas.Admin.Controllers
 
         public ActionResult ListAssignments()
         {
-            var allAssignments = assignmentService.GetAllAssignments();
-            var model = new ListAssignmentViewModel();
-
-            model.Assignments = allAssignments;
+            var model = new ListAssignmentViewModel
+            {
+                Assignments = assignmentService.GetAllAssignments()
+        };
 
             return this.View(model);
         }
-        
+
         public ActionResult RemoveAssignment(int assignmentId)
         {
             assignmentService.RemoveAssignment(assignmentId);

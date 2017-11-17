@@ -1,0 +1,34 @@
+{
+	"Name": "ORM Entity Framework",
+	"Description": "Course about ORM's",
+	"DateCreated":"\/Date(1330848000000-0800)\/",
+	"RequiredScore" : "65",
+	"Questions" : [{
+	    "Statement": "Which one is a ORM ?",
+		"CorrectAnswer": "C",
+		"Answers": [
+			{"Text": "Entity Framework", "Letter": "A" },
+			{"Text":"JavaScript", "Letter": "B"},
+			{"Text": "MsTest", "Letter": "C"},
+			{"Text":"JQuery", "Letter": "D"}]
+		},
+		{
+		"Statement": "Which one is a Scripting Language ?",
+		"CorrectAnswer": "B",
+		"Answers": [
+			{"Text": "C#", "Letter": "A" },
+			{"Text": "Python", "Letter": "B"},
+			{"Text":"Java", "Letter": "C"},
+			{"Text":"C++", "Letter": "D"}]
+		},
+		{
+		"Statement": "Which one is a Scripting Language ?",
+		"CorrectAnswer": "B",
+		"Answers": [
+			{"Text": "C#", "Letter": "A" },
+			{"Text": "Python", "Letter": "B"},
+			{"Text":"Java", "Letter": "C"},
+			{"Text":"C++", "Letter": "D"}]
+		}
+		]
+} 

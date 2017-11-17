@@ -48,6 +48,7 @@ namespace Ignite.Tests.Controllers.UserCourseControllerTests
         [TestMethod]
         public void ReturnDeafaultView_WhenParametersAreValid()
         {
+<<<<<<< HEAD
             //Arrange
             //var username = "Mitko";
             //var state = "unconsciousness";
@@ -69,6 +70,22 @@ namespace Ignite.Tests.Controllers.UserCourseControllerTests
                 ShouldRenderDefaultView().
                 WithModel<AllAssignmentsPerUserViewModels>();
 >>>>>>> 65c118282a70587e6a97e6719ce8dbc856d3438c
+=======
+            ////Arrange
+            //var username = "Mitko";
+            //var state = "unconsciousness";
+
+            //var userSirvice = new Mock<IUserCourseService>();
+            //var allAssignments = userSirvice.Setup(a => a.GetAllAssignmentsPerUser(username));
+
+            ////Act
+            //var controller = new UserCourseController();
+
+            ////Assert
+            //controller.WithCallTo(c => c.Home()).
+            //    ShouldRenderDefaultView().
+            //    WithModel<AllAssignmentsPerUserViewModels>();
+>>>>>>> 055679a8517f8d032d5cc5755e1c937de411e696
         }
     }
 }
